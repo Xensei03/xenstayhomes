@@ -1,0 +1,1098 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Xenstay Homes — Property Management at 10%</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,700;1,400;1,500&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root {
+  --ink: #0E0E0D;
+  --deep: #1A1A18;
+  --cream: #F8F4EE;
+  --bone: #EDE7DA;
+  --warm: #C9BFA8;
+  --muted: #8A8478;
+  --gold: #C4954A;
+  --gold-soft: #D4AB6A;
+  --white: #FFFFFF;
+  --green: #2E5D4B;
+  --green-light: #3D7A63;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;}
+body{font-family:'Outfit',sans-serif;background:var(--cream);color:var(--ink);overflow-x:hidden;}
+
+/* NAV */
+nav{
+  position:fixed;top:0;left:0;right:0;z-index:200;
+  display:flex;align-items:center;justify-content:space-between;
+  padding:1.4rem 4rem;
+  background:rgba(248,244,238,0.95);backdrop-filter:blur(16px);
+  border-bottom:1px solid rgba(196,149,74,0.12);
+  transition:all 0.3s;
+}
+.logo{
+  font-family:'Playfair Display',serif;
+  font-size:1.5rem;font-weight:400;letter-spacing:0.06em;
+  color:var(--ink);text-decoration:none;
+}
+.logo span{color:var(--gold);}
+.nav-links{display:flex;gap:2.5rem;align-items:center;}
+.nav-links a{
+  font-size:0.75rem;font-weight:500;letter-spacing:0.12em;
+  text-transform:uppercase;color:var(--muted);
+  text-decoration:none;transition:color 0.2s;
+}
+.nav-links a:hover{color:var(--ink);}
+.nav-btn{
+  font-size:0.7rem;font-weight:600;letter-spacing:0.15em;
+  text-transform:uppercase;background:var(--gold);color:var(--white);
+  border:none;padding:0.75rem 1.75rem;border-radius:3px;
+  cursor:pointer;transition:all 0.2s;text-decoration:none;
+}
+.nav-btn:hover{background:var(--ink);}
+
+/* HERO */
+.hero{
+  min-height:100vh;
+  background:var(--deep);
+  display:grid;grid-template-columns:1fr 1fr;
+  position:relative;overflow:hidden;
+}
+.hero::before{
+  content:'';position:absolute;inset:0;
+  background:radial-gradient(ellipse at 70% 50%, rgba(196,149,74,0.12) 0%, transparent 65%);
+  pointer-events:none;
+}
+.hero-left{
+  display:flex;flex-direction:column;justify-content:center;
+  padding:9rem 4rem 6rem 5rem;position:relative;z-index:2;
+}
+.hero-tag{
+  display:inline-flex;align-items:center;gap:0.75rem;
+  font-size:0.65rem;font-weight:600;letter-spacing:0.3em;text-transform:uppercase;
+  color:var(--gold-soft);margin-bottom:2rem;
+  opacity:0;animation:up 0.7s 0.2s forwards;
+}
+.hero-tag::before{content:'';width:28px;height:1px;background:var(--gold);}
+.hero-h1{
+  font-family:'Playfair Display',serif;
+  font-size:4.2rem;font-weight:400;line-height:1.1;
+  color:var(--white);margin-bottom:1.75rem;
+  opacity:0;animation:up 0.7s 0.4s forwards;
+}
+.hero-h1 em{color:var(--gold-soft);font-style:italic;}
+.hero-h1 .hero-pct{
+  font-size:5rem;font-style:italic;color:var(--gold);
+  display:block;line-height:1;
+}
+.hero-sub{
+  font-size:1rem;font-weight:300;line-height:1.85;
+  color:rgba(255,255,255,0.55);max-width:440px;margin-bottom:3rem;
+  opacity:0;animation:up 0.7s 0.6s forwards;
+}
+.hero-sub strong{color:rgba(255,255,255,0.85);font-weight:500;}
+.hero-ctas{
+  display:flex;gap:1rem;flex-wrap:wrap;
+  opacity:0;animation:up 0.7s 0.8s forwards;
+}
+.btn-gold{
+  font-size:0.72rem;font-weight:600;letter-spacing:0.18em;text-transform:uppercase;
+  background:var(--gold);color:var(--white);border:2px solid var(--gold);
+  padding:1rem 2.25rem;border-radius:3px;
+  text-decoration:none;transition:all 0.25s;cursor:pointer;
+}
+.btn-gold:hover{background:transparent;color:var(--gold);}
+.btn-ghost{
+  font-size:0.72rem;font-weight:600;letter-spacing:0.18em;text-transform:uppercase;
+  background:transparent;color:rgba(255,255,255,0.7);border:2px solid rgba(255,255,255,0.2);
+  padding:1rem 2.25rem;border-radius:3px;
+  text-decoration:none;transition:all 0.25s;cursor:pointer;
+}
+.btn-ghost:hover{border-color:rgba(255,255,255,0.6);color:var(--white);}
+.hero-proof{
+  display:flex;gap:3rem;margin-top:4rem;padding-top:2.5rem;
+  border-top:1px solid rgba(255,255,255,0.08);
+  opacity:0;animation:up 0.7s 1s forwards;
+}
+.proof-num{
+  font-family:'Playfair Display',serif;
+  font-size:2.4rem;font-weight:400;color:var(--white);
+}
+.proof-label{
+  font-size:0.62rem;font-weight:500;letter-spacing:0.15em;
+  text-transform:uppercase;color:rgba(255,255,255,0.35);margin-top:3px;
+}
+.hero-right{
+  position:relative;overflow:hidden;
+  opacity:0;animation:fadeIn 1.2s 0.5s forwards;
+}
+.hero-right::before{
+  content:'';position:absolute;left:0;top:0;bottom:0;width:80px;
+  background:linear-gradient(to right,var(--deep),transparent);z-index:2;
+}
+.hero-right::after{
+  content:'';position:absolute;bottom:0;left:0;right:0;height:120px;
+  background:linear-gradient(to top,var(--deep),transparent);z-index:2;
+}
+.hero-mosaic{
+  position:absolute;inset:0;
+  display:grid;grid-template-columns:1fr 1fr;grid-template-rows:1fr 1fr;gap:3px;
+}
+.mosaic-cell{display:flex;align-items:flex-end;padding:1.25rem;}
+.mc1{background:linear-gradient(160deg,#4A5E3A 0%,#2E3D24 100%);}
+.mc2{background:linear-gradient(160deg,#3D4A6B 0%,#252E4A 100%);}
+.mc3{background:linear-gradient(160deg,#6B4A3D 0%,#4A2E25 100%);}
+.mc4{background:linear-gradient(160deg,#4A6B5D 0%,#2E4A3D 100%);}
+.mc-label{
+  font-family:'Playfair Display',serif;
+  font-size:0.9rem;font-style:italic;color:rgba(255,255,255,0.65);
+  line-height:1.4;
+}
+
+/* FEE CALLOUT STRIP */
+.fee-strip{
+  background:var(--gold);
+  padding:1.5rem 5rem;
+  display:flex;align-items:center;justify-content:center;gap:1rem;
+  flex-wrap:wrap;
+}
+.fee-strip-text{
+  font-size:0.85rem;font-weight:500;color:var(--white);
+  letter-spacing:0.05em;text-align:center;
+}
+.fee-strip-text strong{font-weight:700;}
+.fee-strip-divider{width:1px;height:20px;background:rgba(255,255,255,0.35);}
+
+/* WHY SECTION */
+#why{background:var(--white);padding:7rem 5rem;}
+.why-grid{
+  display:grid;grid-template-columns:1fr 1.4fr;gap:6rem;align-items:center;
+  margin-top:4rem;
+}
+.why-headline{
+  font-family:'Playfair Display',serif;
+  font-size:2.8rem;font-weight:400;line-height:1.25;color:var(--ink);
+}
+.why-headline em{font-style:italic;color:var(--gold);}
+.why-body{
+  font-size:0.95rem;font-weight:300;line-height:1.9;
+  color:var(--muted);margin-top:1.5rem;
+}
+.why-list{margin-top:2.5rem;}
+.why-item{
+  display:flex;gap:1.25rem;align-items:flex-start;
+  padding:1.25rem 0;border-bottom:1px solid var(--bone);
+}
+.why-item:last-child{border-bottom:none;}
+.why-check{
+  width:22px;height:22px;border-radius:50%;
+  background:var(--green);flex-shrink:0;margin-top:2px;
+  display:flex;align-items:center;justify-content:center;
+}
+.why-check svg{width:11px;height:11px;stroke:var(--white);stroke-width:2.5;fill:none;}
+.why-item-text strong{font-weight:600;font-size:0.92rem;display:block;margin-bottom:3px;}
+.why-item-text span{font-size:0.83rem;color:var(--muted);font-weight:300;line-height:1.6;}
+
+/* FEE COMPARISON */
+.fee-compare{background:var(--cream);border-radius:12px;padding:2.5rem;border:1px solid var(--bone);}
+.fee-compare-title{
+  font-size:0.7rem;font-weight:600;letter-spacing:0.2em;text-transform:uppercase;
+  color:var(--muted);margin-bottom:1.75rem;
+}
+.fee-bar-wrap{margin-bottom:1.25rem;}
+.fee-bar-label{
+  display:flex;justify-content:space-between;
+  font-size:0.82rem;margin-bottom:0.5rem;
+}
+.fee-bar-label span:first-child{font-weight:500;}
+.fee-bar-label span:last-child{font-weight:600;}
+.fee-track{height:10px;background:var(--bone);border-radius:5px;overflow:hidden;}
+.fee-fill{height:100%;border-radius:5px;transition:width 1.2s ease;}
+.fee-fill.xenstay{background:var(--green);}
+.fee-fill.competitor{background:var(--warm);}
+.fee-note{
+  margin-top:1.5rem;padding-top:1.5rem;border-top:1px solid var(--bone);
+  font-size:0.8rem;font-weight:300;color:var(--muted);line-height:1.7;
+}
+.fee-note strong{color:var(--green);font-weight:600;}
+
+/* HOW IT WORKS */
+#how{background:var(--deep);padding:7rem 5rem;}
+#how .section-tag{color:var(--gold-soft);}
+#how .section-title{color:var(--white);}
+.steps{
+  display:grid;grid-template-columns:repeat(4,1fr);gap:0;
+  margin-top:4rem;position:relative;
+}
+.steps::before{
+  content:'';position:absolute;top:2.5rem;left:calc(12.5% + 1.5rem);
+  right:calc(12.5% + 1.5rem);height:1px;
+  background:linear-gradient(to right,rgba(196,149,74,0.4),rgba(196,149,74,0.1));
+}
+.step{
+  padding:0 2rem;text-align:center;position:relative;
+}
+.step-num{
+  width:48px;height:48px;border-radius:50%;
+  background:var(--gold);color:var(--white);
+  font-family:'Playfair Display',serif;
+  font-size:1.1rem;font-weight:400;
+  display:flex;align-items:center;justify-content:center;
+  margin:0 auto 1.75rem;position:relative;z-index:1;
+}
+.step-title{
+  font-family:'Playfair Display',serif;
+  font-size:1.2rem;font-weight:400;color:var(--white);margin-bottom:0.75rem;
+}
+.step-desc{
+  font-size:0.8rem;font-weight:300;line-height:1.8;
+  color:rgba(255,255,255,0.45);
+}
+
+/* RESULTS */
+#results{background:var(--ink);padding:6rem 5rem;}
+.results-grid{
+  display:grid;grid-template-columns:repeat(4,1fr);gap:1px;
+  background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.06);
+  margin-top:3.5rem;
+}
+.result-item{
+  background:var(--ink);padding:3rem 2.5rem;text-align:center;
+  transition:background 0.3s;
+}
+.result-item:hover{background:rgba(255,255,255,0.03);}
+.result-num{
+  font-family:'Playfair Display',serif;
+  font-size:3rem;font-weight:400;color:var(--gold);
+  display:block;line-height:1;margin-bottom:0.75rem;
+}
+.result-label{
+  font-size:0.7rem;font-weight:500;letter-spacing:0.15em;
+  text-transform:uppercase;color:rgba(255,255,255,0.35);
+}
+.result-sub{
+  font-size:0.8rem;font-weight:300;color:rgba(255,255,255,0.25);
+  margin-top:0.4rem;
+}
+
+/* SERVICES */
+#services{background:var(--cream);padding:7rem 5rem;}
+.services-grid{
+  display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;
+  margin-top:4rem;
+}
+.service-card{
+  background:var(--white);border-radius:8px;
+  padding:2.5rem;border:1px solid var(--bone);
+  transition:border-color 0.25s,transform 0.25s;
+}
+.service-card:hover{border-color:var(--gold);transform:translateY(-4px);}
+.service-icon{
+  width:44px;height:44px;border-radius:8px;
+  background:rgba(196,149,74,0.1);
+  display:flex;align-items:center;justify-content:center;
+  margin-bottom:1.5rem;
+}
+.service-icon svg{width:20px;height:20px;stroke:var(--gold);stroke-width:1.5;fill:none;}
+.service-name{
+  font-family:'Playfair Display',serif;
+  font-size:1.2rem;font-weight:400;color:var(--ink);margin-bottom:0.75rem;
+}
+.service-desc{font-size:0.83rem;font-weight:300;line-height:1.8;color:var(--muted);}
+.service-included{
+  display:flex;align-items:center;gap:0.5rem;
+  font-size:0.68rem;font-weight:600;letter-spacing:0.12em;text-transform:uppercase;
+  color:var(--green);margin-top:1.5rem;
+}
+.service-included::before{content:'✓';}
+
+/* PORTFOLIO PROOF */
+#portfolio{background:var(--bone);padding:7rem 5rem;}
+.portfolio-intro{
+  display:grid;grid-template-columns:1fr 1fr;gap:4rem;
+  align-items:center;margin-bottom:4rem;
+}
+.portfolio-grid{
+  display:grid;grid-template-columns:repeat(4,1fr);gap:1rem;
+}
+.portfolio-card{
+  background:var(--white);border-radius:6px;overflow:hidden;
+  transition:transform 0.3s;
+}
+.portfolio-card:hover{transform:translateY(-4px);}
+.portfolio-img{height:120px;}
+.pi1{background:linear-gradient(135deg,#4A5E3A,#2E3D24);}
+.pi2{background:linear-gradient(135deg,#3D4A6B,#252E4A);}
+.pi3{background:linear-gradient(135deg,#6B4A3D,#4A2E25);}
+.pi4{background:linear-gradient(135deg,#4A6B5D,#2E4A3D);}
+.pi5{background:linear-gradient(135deg,#5E4A3A,#3D2E24);}
+.pi6{background:linear-gradient(135deg,#3A4A5E,#24304A);}
+.pi7{background:linear-gradient(135deg,#5E3A4A,#3D2430);}
+.pi8{background:linear-gradient(135deg,#3A5E4A,#243D30);}
+.portfolio-info{padding:1rem;}
+.portfolio-city{
+  font-size:0.6rem;font-weight:600;letter-spacing:0.18em;
+  text-transform:uppercase;color:var(--gold);margin-bottom:0.3rem;
+}
+.portfolio-name{
+  font-size:0.82rem;font-weight:500;color:var(--ink);line-height:1.35;
+}
+.portfolio-adr{font-size:0.75rem;color:var(--muted);margin-top:0.35rem;}
+
+/* MARKETS */
+#markets{background:var(--white);padding:6rem 5rem;}
+.markets-grid{
+  display:grid;grid-template-columns:repeat(5,1fr);gap:1rem;
+  margin-top:3.5rem;
+}
+.market-pill{
+  background:var(--cream);border:1px solid var(--bone);border-radius:40px;
+  padding:0.85rem 1.25rem;text-align:center;
+  font-size:0.8rem;font-weight:500;color:var(--ink);
+  transition:all 0.2s;
+}
+.market-pill:hover{background:var(--gold);color:var(--white);border-color:var(--gold);}
+.market-pill.highlight{background:var(--green);color:var(--white);border-color:var(--green);}
+.markets-note{
+  text-align:center;margin-top:2rem;
+  font-size:0.85rem;font-weight:300;color:var(--muted);
+}
+.markets-note strong{color:var(--green);font-weight:600;}
+
+/* TESTIMONIALS */
+#testimonials{background:var(--cream);padding:7rem 5rem;}
+.testi-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.75rem;margin-top:4rem;}
+.testi{
+  background:var(--white);border-radius:8px;padding:2.5rem;
+  border:1px solid var(--bone);position:relative;
+}
+.testi-stars{color:var(--gold);font-size:0.85rem;letter-spacing:2px;margin-bottom:1.25rem;}
+.testi-text{
+  font-family:'Playfair Display',serif;
+  font-size:1rem;font-style:italic;font-weight:400;
+  line-height:1.8;color:var(--ink);margin-bottom:1.75rem;
+}
+.testi-name{font-size:0.82rem;font-weight:600;color:var(--ink);}
+.testi-loc{font-size:0.75rem;color:var(--muted);margin-top:2px;}
+
+/* FAQ */
+#faq{background:var(--white);padding:7rem 5rem;}
+.faq-grid{display:grid;grid-template-columns:1fr 1fr;gap:4rem;margin-top:4rem;}
+.faq-item{padding-bottom:2rem;border-bottom:1px solid var(--bone);cursor:pointer;}
+.faq-q{
+  font-size:0.95rem;font-weight:600;color:var(--ink);
+  display:flex;justify-content:space-between;align-items:center;gap:1rem;
+  user-select:none;
+}
+.faq-icon{
+  width:22px;height:22px;border-radius:50%;border:1.5px solid var(--warm);
+  flex-shrink:0;display:flex;align-items:center;justify-content:center;
+  font-size:1rem;color:var(--muted);transition:all 0.2s;
+}
+.faq-item.open .faq-icon{background:var(--gold);border-color:var(--gold);color:var(--white);}
+.faq-a{
+  font-size:0.85rem;font-weight:300;line-height:1.8;color:var(--muted);
+  margin-top:0.85rem;max-height:0;overflow:hidden;transition:max-height 0.3s ease;
+}
+.faq-item.open .faq-a{max-height:200px;}
+
+/* LEAD CAPTURE */
+#lead{
+  background:var(--green);
+  padding:7rem 5rem;
+  display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:center;
+}
+.lead-title{
+  font-family:'Playfair Display',serif;
+  font-size:3rem;font-weight:400;color:var(--white);line-height:1.2;
+}
+.lead-title em{font-style:italic;}
+.lead-tag{
+  font-size:0.65rem;font-weight:600;letter-spacing:0.3em;text-transform:uppercase;
+  color:rgba(255,255,255,0.55);margin-bottom:1rem;display:block;
+}
+.lead-sub{
+  font-size:0.92rem;font-weight:300;color:rgba(255,255,255,0.65);
+  line-height:1.85;margin-top:1.5rem;
+}
+.lead-perks{margin-top:2.5rem;}
+.lead-perk{
+  display:flex;align-items:center;gap:0.85rem;
+  font-size:0.85rem;font-weight:400;color:rgba(255,255,255,0.8);
+  margin-bottom:0.85rem;
+}
+.lead-perk::before{
+  content:'';width:18px;height:18px;border-radius:50%;
+  background:rgba(255,255,255,0.2);flex-shrink:0;
+  display:flex;align-items:center;justify-content:center;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20' fill='white'%3E%3Cpath d='M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z'/%3E%3C/svg%3E");
+  background-size:12px;background-repeat:no-repeat;background-position:center;
+}
+.lead-form{background:var(--white);border-radius:10px;padding:2.5rem;}
+.lead-form-title{
+  font-family:'Playfair Display',serif;
+  font-size:1.4rem;font-weight:400;color:var(--ink);margin-bottom:1.75rem;
+}
+.frow{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-bottom:1rem;}
+.fg{margin-bottom:1rem;}
+.flabel{
+  display:block;font-size:0.62rem;font-weight:600;letter-spacing:0.15em;
+  text-transform:uppercase;color:var(--muted);margin-bottom:0.45rem;
+}
+.finput,.fselect,.ftextarea{
+  width:100%;font-family:'Outfit',sans-serif;font-size:0.88rem;
+  color:var(--ink);background:var(--cream);
+  border:1.5px solid var(--bone);border-radius:5px;
+  padding:0.8rem 1rem;outline:none;transition:border-color 0.2s;
+}
+.finput:focus,.fselect:focus,.ftextarea:focus{border-color:var(--green);}
+.ftextarea{height:90px;resize:vertical;}
+.fsubmit{
+  width:100%;font-family:'Outfit',sans-serif;
+  font-size:0.75rem;font-weight:600;letter-spacing:0.18em;text-transform:uppercase;
+  background:var(--green);color:var(--white);border:none;
+  padding:1.1rem;border-radius:5px;cursor:pointer;transition:all 0.25s;
+}
+.fsubmit:hover{background:var(--ink);}
+
+/* FOOTER */
+footer{
+  background:var(--ink);padding:3rem 5rem;
+  display:flex;justify-content:space-between;align-items:center;
+  flex-wrap:wrap;gap:1.5rem;
+}
+.footer-logo{
+  font-family:'Playfair Display',serif;font-size:1.25rem;font-weight:400;
+  letter-spacing:0.06em;color:var(--cream);
+}
+.footer-logo span{color:var(--gold);}
+.footer-links{display:flex;gap:2rem;}
+.footer-links a{
+  font-size:0.65rem;font-weight:500;letter-spacing:0.15em;text-transform:uppercase;
+  color:rgba(248,244,238,0.35);text-decoration:none;transition:color 0.2s;
+}
+.footer-links a:hover{color:var(--gold);}
+.footer-copy{font-size:0.7rem;color:rgba(248,244,238,0.25);}
+
+/* SHARED */
+.section-tag{
+  display:inline-block;font-size:0.65rem;font-weight:600;
+  letter-spacing:0.3em;text-transform:uppercase;color:var(--gold);
+  margin-bottom:1rem;
+}
+.section-title{
+  font-family:'Playfair Display',serif;
+  font-size:2.8rem;font-weight:400;line-height:1.2;color:var(--ink);
+}
+.section-title em{font-style:italic;}
+.section-sub{
+  font-size:0.92rem;font-weight:300;line-height:1.85;
+  color:var(--muted);max-width:520px;margin-top:0.75rem;
+}
+
+/* ANIMATIONS */
+@keyframes up{from{opacity:0;transform:translateY(20px);}to{opacity:1;transform:none;}}
+@keyframes fadeIn{from{opacity:0;}to{opacity:1;}}
+.reveal{opacity:0;transform:translateY(28px);transition:opacity 0.65s,transform 0.65s;}
+.reveal.visible{opacity:1;transform:none;}
+.reveal-d1{transition-delay:0.1s;}
+.reveal-d2{transition-delay:0.2s;}
+.reveal-d3{transition-delay:0.3s;}
+.reveal-d4{transition-delay:0.4s;}
+
+@media(max-width:1100px){
+  .hero{grid-template-columns:1fr;}
+  .hero-right{display:none;}
+  nav{padding:1.25rem 2rem;}
+  .nav-links{display:none;}
+  section,#why,#how,#results,#services,#portfolio,#markets,#testimonials,#faq,#lead,footer{padding-left:2rem;padding-right:2rem;}
+  .why-grid,.portfolio-intro{grid-template-columns:1fr;}
+  .steps{grid-template-columns:1fr 1fr;}
+  .steps::before{display:none;}
+  .results-grid{grid-template-columns:1fr 1fr;}
+  .services-grid,.testi-grid{grid-template-columns:1fr 1fr;}
+  .portfolio-grid{grid-template-columns:repeat(2,1fr);}
+  .markets-grid{grid-template-columns:repeat(3,1fr);}
+  .faq-grid{grid-template-columns:1fr;}
+  #lead{grid-template-columns:1fr;}
+}
+@media(max-width:640px){
+  .hero-h1{font-size:3rem;}
+  .hero-h1 .hero-pct{font-size:3.8rem;}
+  .results-grid{grid-template-columns:1fr 1fr;}
+  .services-grid,.testi-grid{grid-template-columns:1fr;}
+  .portfolio-grid{grid-template-columns:1fr 1fr;}
+  .markets-grid{grid-template-columns:repeat(2,1fr);}
+  .frow{grid-template-columns:1fr;}
+}
+</style>
+</head>
+<body>
+
+<nav id="nav">
+  <a href="#" class="logo">Xenstay<span>.</span>Homes</a>
+  <div class="nav-links">
+    <a href="#why">Why Us</a>
+    <a href="#how">How It Works</a>
+    <a href="#services">Services</a>
+    <a href="#portfolio">Portfolio</a>
+    <a href="#faq">FAQ</a>
+  </div>
+  <a href="#lead" class="nav-btn">Get Free Analysis</a>
+</nav>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-left">
+    <p class="hero-tag">California Property Management</p>
+    <h1 class="hero-h1">
+      Full service.<br>
+      <span class="hero-pct">Only 10%.</span>
+      Industry charges <em>20–30%.</em>
+    </h1>
+    <p class="hero-sub">
+      Xenstay Homes manages short-term and long-term rentals across California with <strong>full-service management at half the industry rate.</strong> More income for you, zero hassle.
+    </p>
+    <div class="hero-ctas">
+      <a href="#lead" class="btn-gold">Get Your Free Property Analysis</a>
+      <a href="#why" class="btn-ghost">See How We Compare</a>
+    </div>
+    <div class="hero-proof">
+      <div>
+        <div class="proof-num">28</div>
+        <div class="proof-label">Managed units</div>
+      </div>
+      <div>
+        <div class="proof-num">4.9★</div>
+        <div class="proof-label">Average rating</div>
+      </div>
+      <div>
+        <div class="proof-num">$341K</div>
+        <div class="proof-label">Annual gross managed</div>
+      </div>
+      <div>
+        <div class="proof-num">10%</div>
+        <div class="proof-label">Our flat fee</div>
+      </div>
+    </div>
+  </div>
+  <div class="hero-right">
+    <div class="hero-mosaic">
+      <div class="mc1 mosaic-cell"><p class="mc-label">Skyline Serenity<br>Auburn, CA</p></div>
+      <div class="mc2 mosaic-cell"><p class="mc-label">Punta Mita<br>Mexico</p></div>
+      <div class="mc3 mosaic-cell"><p class="mc-label">Beautiful 4BR<br>West Sacramento</p></div>
+      <div class="mc4 mosaic-cell"><p class="mc-label">Lake Natoma<br>Orangevale</p></div>
+    </div>
+  </div>
+</div>
+
+<!-- FEE STRIP -->
+<div class="fee-strip">
+  <p class="fee-strip-text"><strong>Most managers charge 20–30%.</strong> We charge 10% — and you keep more of every booking.</p>
+  <div class="fee-strip-divider"></div>
+  <p class="fee-strip-text">On a $3,000/mo rental, that's <strong>$300–600 extra in your pocket every month.</strong></p>
+</div>
+
+<!-- WHY -->
+<section id="why">
+  <div class="reveal">
+    <span class="section-tag">Why Xenstay Homes</span>
+  </div>
+  <div class="why-grid">
+    <div class="reveal">
+      <h2 class="why-headline">You earn more.<br>We handle <em>everything.</em></h2>
+      <p class="why-body">Most property managers take 20–30% of your gross income and leave you wondering what you're paying for. At Xenstay Homes, you get full white-glove service at a flat 10% — because we believe in growing together, not extracting from you.</p>
+    </div>
+    <div class="reveal reveal-d1">
+      <div class="fee-compare">
+        <p class="fee-compare-title">Management fee comparison — $3,000/mo property</p>
+        <div class="fee-bar-wrap">
+          <div class="fee-bar-label">
+            <span>Xenstay Homes</span>
+            <span style="color:var(--green);">$300/mo</span>
+          </div>
+          <div class="fee-track"><div class="fee-fill xenstay" style="width:0%" data-width="10%"></div></div>
+        </div>
+        <div class="fee-bar-wrap">
+          <div class="fee-bar-label">
+            <span>Industry average (20%)</span>
+            <span style="color:var(--muted);">$600/mo</span>
+          </div>
+          <div class="fee-track"><div class="fee-fill competitor" style="width:0%" data-width="20%"></div></div>
+        </div>
+        <div class="fee-bar-wrap">
+          <div class="fee-bar-label">
+            <span>Premium managers (30%)</span>
+            <span style="color:var(--muted);">$900/mo</span>
+          </div>
+          <div class="fee-track"><div class="fee-fill competitor" style="width:0%;opacity:0.5" data-width="30%"></div></div>
+        </div>
+        <p class="fee-note">At 10%, you keep <strong>$300–600 more per property per month</strong> compared to typical managers — while receiving the exact same level of service.</p>
+      </div>
+      <div class="why-list" style="margin-top:2rem;">
+        <div class="why-item">
+          <div class="why-check"><svg viewBox="0 0 12 12"><polyline points="2,6 5,9 10,3"/></svg></div>
+          <div class="why-item-text">
+            <strong>No hidden fees or markups</strong>
+            <span>Flat 10% on gross revenue. No setup fees, no surprise charges, no maintenance markups.</span>
+          </div>
+        </div>
+        <div class="why-item">
+          <div class="why-check"><svg viewBox="0 0 12 12"><polyline points="2,6 5,9 10,3"/></svg></div>
+          <div class="why-item-text">
+            <strong>Transparent monthly reporting</strong>
+            <span>Every owner gets a detailed monthly statement — gross revenue, fees, and your net payout.</span>
+          </div>
+        </div>
+        <div class="why-item">
+          <div class="why-check"><svg viewBox="0 0 12 12"><polyline points="2,6 5,9 10,3"/></svg></div>
+          <div class="why-item-text">
+            <strong>$1,000 lease signing bonus — LTR owners</strong>
+            <span>We pay you a $1,000 bonus every time we secure a new long-term tenant for your property.</span>
+          </div>
+        </div>
+        <div class="why-item">
+          <div class="why-check"><svg viewBox="0 0 12 12"><polyline points="2,6 5,9 10,3"/></svg></div>
+          <div class="why-item-text">
+            <strong>Proven across 28 units</strong>
+            <span>We already manage short and long-term rentals across Sacramento, Roseville, Auburn, Folsom, and beyond.</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- HOW IT WORKS -->
+<section id="how">
+  <div class="reveal" style="text-align:center;">
+    <span class="section-tag">Simple Onboarding</span>
+    <h2 class="section-title" style="color:var(--white);margin:0 auto;">From handshake to <em>first booking</em> in days</h2>
+  </div>
+  <div class="steps">
+    <div class="step reveal reveal-d1">
+      <div class="step-num">1</div>
+      <h3 class="step-title">Free property analysis</h3>
+      <p class="step-desc">We evaluate your property's earning potential, review the local market, and give you a revenue projection — at no cost.</p>
+    </div>
+    <div class="step reveal reveal-d2">
+      <div class="step-num">2</div>
+      <h3 class="step-title">Sign management agreement</h3>
+      <p class="step-desc">Simple, transparent contract. 10% management fee clearly outlined. No long lock-in periods, no surprises.</p>
+    </div>
+    <div class="step reveal reveal-d3">
+      <div class="step-num">3</div>
+      <h3 class="step-title">We set everything up</h3>
+      <p class="step-desc">Professional photography, listing creation, pricing strategy, guest screening — we handle every detail of the setup.</p>
+    </div>
+    <div class="step reveal reveal-d4">
+      <div class="step-num">4</div>
+      <h3 class="step-title">You collect your payout</h3>
+      <p class="step-desc">Monthly owner statements, direct deposits, and full transparency. You watch the income — we handle the rest.</p>
+    </div>
+  </div>
+</section>
+
+<!-- RESULTS -->
+<section id="results">
+  <div class="reveal" style="text-align:center;">
+    <span class="section-tag" style="color:var(--gold-soft);">Real Numbers</span>
+    <h2 class="section-title" style="color:var(--white);">What our portfolio <em>produces</em></h2>
+  </div>
+  <div class="results-grid">
+    <div class="result-item reveal">
+      <span class="result-num">$341K</span>
+      <span class="result-label">Annual gross bookings</span>
+      <span class="result-sub">Across 16 STR listings</span>
+    </div>
+    <div class="result-item reveal reveal-d1">
+      <span class="result-num">4.9★</span>
+      <span class="result-label">Average guest rating</span>
+      <span class="result-sub">Across all listings</span>
+    </div>
+    <div class="result-item reveal reveal-d2">
+      <span class="result-num">$432</span>
+      <span class="result-label">Highest ADR achieved</span>
+      <span class="result-sub">Skyline Serenity, Auburn</span>
+    </div>
+    <div class="result-item reveal reveal-d3">
+      <span class="result-num">28</span>
+      <span class="result-label">Units under management</span>
+      <span class="result-sub">STR + long-term rentals</span>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section id="services">
+  <div class="reveal">
+    <span class="section-tag">What's Included at 10%</span>
+    <h2 class="section-title">Everything. <em>No add-ons.</em></h2>
+    <p class="section-sub">Every service below is included in your flat 10% fee. No à la carte pricing, no nickel-and-diming.</p>
+  </div>
+  <div class="services-grid">
+    <div class="service-card reveal">
+      <div class="service-icon">
+        <svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg>
+      </div>
+      <h3 class="service-name">Listing Creation & Optimization</h3>
+      <p class="service-desc">Professional photography coordination, SEO-optimized titles and descriptions, and platform setup on Airbnb and VRBO.</p>
+      <p class="service-included">Included at 10%</p>
+    </div>
+    <div class="service-card reveal reveal-d1">
+      <div class="service-icon">
+        <svg viewBox="0 0 24 24"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 000 7h5a3.5 3.5 0 010 7H6"/></svg>
+      </div>
+      <h3 class="service-name">Dynamic Pricing Strategy</h3>
+      <p class="service-desc">Real-time pricing adjustments based on local demand, events, and seasonality to maximize every night's revenue.</p>
+      <p class="service-included">Included at 10%</p>
+    </div>
+    <div class="service-card reveal reveal-d2">
+      <div class="service-icon">
+        <svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>
+      </div>
+      <h3 class="service-name">24/7 Guest Communication</h3>
+      <p class="service-desc">All guest messaging, check-in coordination, issue resolution, and review management handled by our team.</p>
+      <p class="service-included">Included at 10%</p>
+    </div>
+    <div class="service-card reveal">
+      <div class="service-icon">
+        <svg viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+      </div>
+      <h3 class="service-name">Turnover & Cleaning Coordination</h3>
+      <p class="service-desc">Vetted cleaning crews, quality inspections, and restocking coordination between every guest stay.</p>
+      <p class="service-included">Included at 10%</p>
+    </div>
+    <div class="service-card reveal reveal-d1">
+      <div class="service-icon">
+        <svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
+      </div>
+      <h3 class="service-name">Monthly Owner Statements</h3>
+      <p class="service-desc">Detailed monthly reporting with gross revenue, occupancy rates, your management fee, and net payout — every month.</p>
+      <p class="service-included">Included at 10%</p>
+    </div>
+    <div class="service-card reveal reveal-d2">
+      <div class="service-icon">
+        <svg viewBox="0 0 24 24"><path d="M14.7 6.3a1 1 0 000 1.4l1.6 1.6a1 1 0 001.4 0l3.77-3.77a6 6 0 01-7.94 7.94l-6.91 6.91a2.12 2.12 0 01-3-3l6.91-6.91a6 6 0 017.94-7.94l-3.76 3.76z"/></svg>
+      </div>
+      <h3 class="service-name">Maintenance Coordination</h3>
+      <p class="service-desc">Vetted local vendors, prompt repair coordination, and proactive property upkeep — protecting your asset long term.</p>
+      <p class="service-included">Included at 10%</p>
+    </div>
+  </div>
+</section>
+
+<!-- PORTFOLIO PROOF -->
+<section id="portfolio">
+  <div class="portfolio-intro">
+    <div class="reveal">
+      <span class="section-tag">Our Track Record</span>
+      <h2 class="section-title">Properties we <em>already</em> manage</h2>
+      <p class="section-sub">Every property below is actively managed by Xenstay Homes today — proof of our operational capability across diverse markets and property types.</p>
+    </div>
+    <div class="reveal reveal-d1" style="background:var(--white);border-radius:10px;padding:2rem;border:1px solid var(--bone);">
+      <p style="font-size:0.65rem;font-weight:600;letter-spacing:0.2em;text-transform:uppercase;color:var(--muted);margin-bottom:1.25rem;">Portfolio at a glance</p>
+      <div style="display:flex;flex-direction:column;gap:0.85rem;">
+        <div style="display:flex;justify-content:space-between;font-size:0.85rem;padding-bottom:0.85rem;border-bottom:1px solid var(--bone);">
+          <span style="color:var(--muted);">Short-term rentals (STR)</span><strong>16 listings</strong>
+        </div>
+        <div style="display:flex;justify-content:space-between;font-size:0.85rem;padding-bottom:0.85rem;border-bottom:1px solid var(--bone);">
+          <span style="color:var(--muted);">Long-term rentals (LTR)</span><strong>12 leases</strong>
+        </div>
+        <div style="display:flex;justify-content:space-between;font-size:0.85rem;padding-bottom:0.85rem;border-bottom:1px solid var(--bone);">
+          <span style="color:var(--muted);">Total units managed</span><strong>28 units</strong>
+        </div>
+        <div style="display:flex;justify-content:space-between;font-size:0.85rem;padding-bottom:0.85rem;border-bottom:1px solid var(--bone);">
+          <span style="color:var(--muted);">Annual gross (STR)</span><strong style="color:var(--green);">$341,705</strong>
+        </div>
+        <div style="display:flex;justify-content:space-between;font-size:0.85rem;">
+          <span style="color:var(--muted);">Average guest rating</span><strong style="color:var(--gold);">4.9 ★</strong>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="portfolio-grid">
+    <div class="portfolio-card reveal">
+      <div class="portfolio-img pi1"></div>
+      <div class="portfolio-info">
+        <p class="portfolio-city">Auburn, CA</p>
+        <p class="portfolio-name">Skyline Serenity Retreat</p>
+        <p class="portfolio-adr">$432 ADR · 4.9★</p>
+      </div>
+    </div>
+    <div class="portfolio-card reveal reveal-d1">
+      <div class="portfolio-img pi2"></div>
+      <div class="portfolio-info">
+        <p class="portfolio-city">Punta Negra, Mexico</p>
+        <p class="portfolio-name">Punta Mita Surfers Paradise</p>
+        <p class="portfolio-adr">$415 ADR · 4.96★</p>
+      </div>
+    </div>
+    <div class="portfolio-card reveal reveal-d2">
+      <div class="portfolio-img pi3"></div>
+      <div class="portfolio-info">
+        <p class="portfolio-city">West Sacramento, CA</p>
+        <p class="portfolio-name">Beautiful 4BR Downtown Home</p>
+        <p class="portfolio-adr">$281 ADR · $45K annual</p>
+      </div>
+    </div>
+    <div class="portfolio-card reveal reveal-d3">
+      <div class="portfolio-img pi4"></div>
+      <div class="portfolio-info">
+        <p class="portfolio-city">Orangevale, CA</p>
+        <p class="portfolio-name">Lake Natoma Retreat</p>
+        <p class="portfolio-adr">$191 ADR · 45 bookings</p>
+      </div>
+    </div>
+    <div class="portfolio-card reveal">
+      <div class="portfolio-img pi5"></div>
+      <div class="portfolio-info">
+        <p class="portfolio-city">Rancho Cordova, CA</p>
+        <p class="portfolio-name">Relax & Unwind | Near Folsom</p>
+        <p class="portfolio-adr">$192 ADR · Guest Favorite</p>
+      </div>
+    </div>
+    <div class="portfolio-card reveal reveal-d1">
+      <div class="portfolio-img pi6"></div>
+      <div class="portfolio-info">
+        <p class="portfolio-city">Sacramento, CA</p>
+        <p class="portfolio-name">Xen House 3BR — 10 Min Downtown</p>
+        <p class="portfolio-adr">$272 ADR · 5.0★</p>
+      </div>
+    </div>
+    <div class="portfolio-card reveal reveal-d2">
+      <div class="portfolio-img pi7"></div>
+      <div class="portfolio-info">
+        <p class="portfolio-city">Yuba City, CA</p>
+        <p class="portfolio-city" style="color:var(--muted);margin-top:2px;font-size:0.6rem;letter-spacing:0;text-transform:none;">Long-term rental</p>
+        <p class="portfolio-name">696 Scirocco Dr Duplex</p>
+        <p class="portfolio-adr">$2,500/mo · LTR</p>
+      </div>
+    </div>
+    <div class="portfolio-card reveal reveal-d3">
+      <div class="portfolio-img pi8"></div>
+      <div class="portfolio-info">
+        <p class="portfolio-city">Roseville, CA</p>
+        <p class="portfolio-city" style="color:var(--muted);margin-top:2px;font-size:0.6rem;letter-spacing:0;text-transform:none;">Long-term rental</p>
+        <p class="portfolio-name">207 D St Duplex</p>
+        <p class="portfolio-adr">$4,300/mo combined · LTR</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- MARKETS -->
+<section id="markets">
+  <div class="reveal" style="text-align:center;">
+    <span class="section-tag">Where We Operate</span>
+    <h2 class="section-title">Serving property owners <em>across California</em></h2>
+    <p class="section-sub" style="margin:0.75rem auto 0;">Currently active in these markets — and expanding. If your property is in California, we want to talk.</p>
+  </div>
+  <div class="markets-grid">
+    <div class="market-pill highlight reveal">Sacramento</div>
+    <div class="market-pill highlight reveal reveal-d1">West Sacramento</div>
+    <div class="market-pill highlight reveal reveal-d2">Roseville</div>
+    <div class="market-pill highlight reveal reveal-d3">Rocklin</div>
+    <div class="market-pill highlight reveal reveal-d4">Auburn</div>
+    <div class="market-pill highlight reveal">Orangevale</div>
+    <div class="market-pill highlight reveal reveal-d1">Folsom</div>
+    <div class="market-pill highlight reveal reveal-d2">Rancho Cordova</div>
+    <div class="market-pill highlight reveal reveal-d3">Granite Bay</div>
+    <div class="market-pill highlight reveal reveal-d4">Yuba City</div>
+    <div class="market-pill reveal">San Francisco Bay Area</div>
+    <div class="market-pill reveal reveal-d1">Los Angeles</div>
+    <div class="market-pill reveal reveal-d2">San Diego</div>
+    <div class="market-pill reveal reveal-d3">Lake Tahoe</div>
+    <div class="market-pill reveal reveal-d4">Palm Springs</div>
+  </div>
+  <p class="markets-note reveal"><strong>Not seeing your city?</strong> Reach out — we're actively expanding statewide and may already service your area.</p>
+</section>
+
+<!-- TESTIMONIALS -->
+<section id="testimonials">
+  <div class="reveal">
+    <span class="section-tag">Owner Stories</span>
+    <h2 class="section-title">What our <em>owners say</em></h2>
+  </div>
+  <div class="testi-grid">
+    <div class="testi reveal">
+      <p class="testi-stars">★★★★★</p>
+      <p class="testi-text">"Switched from a manager charging 25% and my net income went up immediately — even though the booking revenue stayed the same. The math doesn't lie."</p>
+      <p class="testi-name">Property Owner</p>
+      <p class="testi-loc">West Sacramento, CA</p>
+    </div>
+    <div class="testi reveal reveal-d1">
+      <p class="testi-stars">★★★★★</p>
+      <p class="testi-text">"I was self-managing and it was taking over my life. Xenstay took over completely at 10% — I now make more per month and spend zero time on it."</p>
+      <p class="testi-name">Property Owner</p>
+      <p class="testi-loc">Roseville, CA</p>
+    </div>
+    <div class="testi reveal reveal-d2">
+      <p class="testi-stars">★★★★★</p>
+      <p class="testi-text">"My Airbnb rating went from 4.6 to 4.9 in three months. The monthly reports are detailed and my payouts are always on time. Couldn't be happier."</p>
+      <p class="testi-name">Property Owner</p>
+      <p class="testi-loc">Rancho Cordova, CA</p>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section id="faq">
+  <div class="reveal">
+    <span class="section-tag">Common Questions</span>
+    <h2 class="section-title">Everything you <em>want to know</em></h2>
+  </div>
+  <div class="faq-grid">
+    <div>
+      <div class="faq-item" onclick="toggleFaq(this)">
+        <p class="faq-q">Is 10% really all-inclusive? <span class="faq-icon">+</span></p>
+        <p class="faq-a">Yes. Our 10% management fee covers listing creation, guest communication, turnover coordination, dynamic pricing, and monthly reporting. There are no setup fees, no maintenance markups, and no hidden charges. The only extras are direct cleaning costs, which are passed through at cost to the owner.</p>
+      </div>
+      <div class="faq-item" onclick="toggleFaq(this)">
+        <p class="faq-q">How does the $1,000 lease signing bonus work? <span class="faq-icon">+</span></p>
+        <p class="faq-a">For long-term rental properties, we pay you a $1,000 bonus every time we successfully secure a new tenant and execute a signed lease. This is our way of rewarding owners who grow with us.</p>
+      </div>
+      <div class="faq-item" onclick="toggleFaq(this)">
+        <p class="faq-q">What's the difference between your STR and LTR fees? <span class="faq-icon">+</span></p>
+        <p class="faq-a">Short-term rentals (Airbnb/VRBO) are managed at 10% of monthly gross bookings. Long-term rentals are managed at 6% of monthly gross rent — plus the $1,000 lease signing bonus each time a new tenant is placed.</p>
+      </div>
+      <div class="faq-item" onclick="toggleFaq(this)">
+        <p class="faq-q">How do owner payouts work? <span class="faq-icon">+</span></p>
+        <p class="faq-a">We pay owners monthly with a detailed statement showing gross revenue, the management fee, and your net payout. Payments are made directly to your bank account. You'll always know exactly what you earned and what we charged.</p>
+      </div>
+    </div>
+    <div>
+      <div class="faq-item" onclick="toggleFaq(this)">
+        <p class="faq-q">Do you operate outside the Sacramento area? <span class="faq-icon">+</span></p>
+        <p class="faq-a">Yes — we currently manage properties across Sacramento, Roseville, Auburn, Orangevale, Folsom, Rancho Cordova, Granite Bay, and Yuba City. We're actively expanding statewide across California. If your property is in CA, reach out and we'll let you know if we can service your market.</p>
+      </div>
+      <div class="faq-item" onclick="toggleFaq(this)">
+        <p class="faq-q">How long does it take to get my property listed? <span class="faq-icon">+</span></p>
+        <p class="faq-a">After signing our management agreement, most properties are live and accepting bookings within 5–7 business days. This includes photo coordination, listing creation, pricing setup, and platform optimization.</p>
+      </div>
+      <div class="faq-item" onclick="toggleFaq(this)">
+        <p class="faq-q">What happens if a guest damages the property? <span class="faq-icon">+</span></p>
+        <p class="faq-a">We coordinate all damage claims through Airbnb's AirCover program, which provides up to $3M in host protection. We handle the documentation and claims process on your behalf so you don't have to deal with the back-and-forth.</p>
+      </div>
+      <div class="faq-item" onclick="toggleFaq(this)">
+        <p class="faq-q">Is there a long-term contract? <span class="faq-icon">+</span></p>
+        <p class="faq-a">Our standard management agreements are straightforward with no unreasonable lock-in periods. We believe our results speak for themselves — owners stay because they're happy, not because they're trapped.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- LEAD CAPTURE -->
+<section id="lead">
+  <div class="reveal">
+    <span class="lead-tag">Free — No Obligation</span>
+    <h2 class="lead-title">Get your free<br><em>property analysis</em></h2>
+    <p class="lead-sub">Tell us about your property and we'll send you a custom revenue projection, local market data, and our honest recommendation — within 24 hours.</p>
+    <div class="lead-perks">
+      <p class="lead-perk">Revenue projection based on local market data</p>
+      <p class="lead-perk">Fee comparison vs. your current manager</p>
+      <p class="lead-perk">No obligation, no sales pressure</p>
+      <p class="lead-perk">Response within 24 hours</p>
+    </div>
+  </div>
+  <div class="lead-form reveal reveal-d1">
+    <p class="lead-form-title">Request your free analysis</p>
+    <div class="frow">
+      <div class="fg">
+        <label class="flabel">First name</label>
+        <input type="text" class="finput" placeholder="Jane">
+      </div>
+      <div class="fg">
+        <label class="flabel">Last name</label>
+        <input type="text" class="finput" placeholder="Smith">
+      </div>
+    </div>
+    <div class="fg">
+      <label class="flabel">Email address</label>
+      <input type="email" class="finput" placeholder="jane@email.com">
+    </div>
+    <div class="fg">
+      <label class="flabel">Property city</label>
+      <input type="text" class="finput" placeholder="Sacramento, CA">
+    </div>
+    <div class="fg">
+      <label class="flabel">Property type</label>
+      <select class="fselect">
+        <option>Single family home</option>
+        <option>Condo / Apartment</option>
+        <option>Duplex</option>
+        <option>Multi-family</option>
+        <option>Other</option>
+      </select>
+    </div>
+    <div class="fg">
+      <label class="flabel">Current situation</label>
+      <select class="fselect">
+        <option>Currently self-managing on Airbnb</option>
+        <option>Currently with a property manager</option>
+        <option>Not yet listed — new to STR</option>
+        <option>Long-term rental looking to switch</option>
+      </select>
+    </div>
+    <div class="fg">
+      <label class="flabel">Anything else we should know?</label>
+      <textarea class="ftextarea" placeholder="Tell us about your property, questions, or concerns..."></textarea>
+    </div>
+    <button class="fsubmit">Send My Free Analysis Request</button>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-logo">Xenstay<span>.</span>Homes</div>
+  <div class="footer-links">
+    <a href="#why">Why Us</a>
+    <a href="#how">How It Works</a>
+    <a href="#services">Services</a>
+    <a href="#portfolio">Portfolio</a>
+    <a href="#faq">FAQ</a>
+    <a href="#lead">Get Analysis</a>
+    <a href="/book">Owner Login</a>
+  </div>
+  <p class="footer-copy">© 2026 XenStays LLC · xenstayhomes.com</p>
+</footer>
+
+<script>
+// Nav scroll effect
+const nav = document.getElementById('nav');
+window.addEventListener('scroll', () => {
+  nav.style.boxShadow = window.scrollY > 80 ? '0 2px 30px rgba(14,14,13,0.08)' : 'none';
+});
+
+// Scroll reveal
+const obs = new IntersectionObserver((entries) => {
+  entries.forEach(e => {
+    if (e.isIntersecting) { e.target.classList.add('visible'); obs.unobserve(e.target); }
+  });
+}, { threshold: 0.08 });
+document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
+
+// Animate fee bars when visible
+const barObs = new IntersectionObserver((entries) => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      e.target.querySelectorAll('.fee-fill').forEach(bar => {
+        bar.style.width = bar.dataset.width;
+      });
+      barObs.unobserve(e.target);
+    }
+  });
+}, { threshold: 0.3 });
+document.querySelectorAll('.fee-compare').forEach(el => barObs.observe(el));
+
+// FAQ accordion
+function toggleFaq(item) {
+  const isOpen = item.classList.contains('open');
+  document.querySelectorAll('.faq-item.open').forEach(i => i.classList.remove('open'));
+  if (!isOpen) item.classList.add('open');
+}
+</script>
+</body>
+</html>

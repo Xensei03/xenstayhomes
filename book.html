@@ -1,0 +1,613 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Book Direct — Xenstay Homes</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;1,400&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root {
+  --ink:#0E0E0D; --deep:#1A1A18; --cream:#F8F4EE; --bone:#EDE7DA;
+  --warm:#C9BFA8; --muted:#8A8478; --gold:#C4954A; --gold-soft:#D4AB6A;
+  --white:#FFFFFF; --green:#2E5D4B; --green-light:#3D7A63;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;}
+body{font-family:'Outfit',sans-serif;background:var(--cream);color:var(--ink);}
+
+nav{
+  display:flex;align-items:center;justify-content:space-between;
+  padding:1.25rem 3rem;background:var(--white);
+  border-bottom:1px solid var(--bone);
+}
+.logo{font-family:'Playfair Display',serif;font-size:1.4rem;font-weight:400;letter-spacing:0.06em;color:var(--ink);text-decoration:none;}
+.logo span{color:var(--gold);}
+.back-link{font-size:0.72rem;font-weight:500;letter-spacing:0.12em;text-transform:uppercase;color:var(--muted);text-decoration:none;display:flex;align-items:center;gap:0.5rem;}
+.back-link:hover{color:var(--ink);}
+
+.page-hero{
+  background:var(--green);padding:3.5rem 3rem 3rem;text-align:center;
+}
+.page-tag{font-size:0.65rem;font-weight:600;letter-spacing:0.3em;text-transform:uppercase;color:rgba(255,255,255,0.55);margin-bottom:0.75rem;}
+.page-title{font-family:'Playfair Display',serif;font-size:2.6rem;font-weight:400;color:var(--white);line-height:1.2;}
+.page-title em{font-style:italic;color:var(--gold-soft);}
+.page-sub{font-size:0.9rem;font-weight:300;color:rgba(255,255,255,0.65);margin-top:0.75rem;max-width:500px;margin-left:auto;margin-right:auto;}
+
+.savings-bar{
+  background:var(--gold);padding:1rem 3rem;
+  display:flex;align-items:center;justify-content:center;gap:3rem;flex-wrap:wrap;
+}
+.saving-pill{text-align:center;}
+.saving-num{font-family:'Playfair Display',serif;font-size:1.6rem;font-weight:400;color:var(--white);}
+.saving-lbl{font-size:0.62rem;font-weight:600;letter-spacing:0.15em;text-transform:uppercase;color:rgba(255,255,255,0.7);}
+
+.main{max-width:1100px;margin:0 auto;padding:3rem 2rem;}
+
+/* PROPERTY SELECTOR */
+.step-label{
+  font-size:0.65rem;font-weight:600;letter-spacing:0.25em;text-transform:uppercase;
+  color:var(--gold);margin-bottom:1rem;display:flex;align-items:center;gap:0.75rem;
+}
+.step-label::before{
+  content:attr(data-step);width:24px;height:24px;border-radius:50%;
+  background:var(--gold);color:var(--white);font-size:0.7rem;
+  display:flex;align-items:center;justify-content:center;flex-shrink:0;
+}
+.step-title{font-family:'Playfair Display',serif;font-size:1.8rem;font-weight:400;color:var(--ink);margin-bottom:2rem;}
+
+.prop-grid{
+  display:grid;grid-template-columns:repeat(3,1fr);gap:1.25rem;margin-bottom:3rem;
+}
+.prop-card{
+  background:var(--white);border:2px solid var(--bone);border-radius:8px;
+  overflow:hidden;cursor:pointer;transition:all 0.2s;
+}
+.prop-card:hover{border-color:var(--gold);transform:translateY(-2px);}
+.prop-card.selected{border-color:var(--green);box-shadow:0 0 0 3px rgba(46,93,75,0.12);}
+.prop-img{height:130px;position:relative;}
+.pi1{background:linear-gradient(135deg,#4A5E3A,#2E3D24);}
+.pi2{background:linear-gradient(135deg,#3D4A6B,#252E4A);}
+.pi3{background:linear-gradient(135deg,#6B4A3D,#4A2E25);}
+.pi4{background:linear-gradient(135deg,#4A6B5D,#2E4A3D);}
+.pi5{background:linear-gradient(135deg,#5E4A3A,#3D2E24);}
+.pi6{background:linear-gradient(135deg,#3A4A5E,#24304A);}
+.pi7{background:linear-gradient(135deg,#5E3A4A,#3D2430);}
+.pi8{background:linear-gradient(135deg,#3A5E4A,#243D30);}
+.pi9{background:linear-gradient(135deg,#6B5E3A,#4A3D24);}
+.prop-check{
+  position:absolute;top:0.6rem;right:0.6rem;
+  width:22px;height:22px;border-radius:50%;
+  background:var(--green);border:2px solid var(--white);
+  display:none;align-items:center;justify-content:center;
+}
+.prop-check svg{width:11px;height:11px;stroke:var(--white);stroke-width:2.5;fill:none;}
+.prop-card.selected .prop-check{display:flex;}
+.prop-body{padding:1rem;}
+.prop-city{font-size:0.6rem;font-weight:600;letter-spacing:0.18em;text-transform:uppercase;color:var(--gold);margin-bottom:0.25rem;}
+.prop-name{font-size:0.9rem;font-weight:500;color:var(--ink);line-height:1.3;}
+.prop-beds{font-size:0.75rem;color:var(--muted);margin-top:0.3rem;}
+.prop-rate{
+  font-family:'Playfair Display',serif;
+  font-size:1.2rem;font-weight:400;color:var(--green);margin-top:0.5rem;
+}
+.prop-rate span{font-family:'Outfit',sans-serif;font-size:0.7rem;color:var(--muted);}
+
+/* BOOKING FORM */
+.booking-layout{display:grid;grid-template-columns:1fr 380px;gap:2.5rem;margin-top:2rem;}
+.booking-form-card{background:var(--white);border-radius:10px;padding:2.5rem;border:1px solid var(--bone);}
+.form-section-title{
+  font-family:'Playfair Display',serif;
+  font-size:1.2rem;font-weight:400;color:var(--ink);
+  margin-bottom:1.5rem;padding-bottom:1rem;border-bottom:1px solid var(--bone);
+}
+.frow{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-bottom:1rem;}
+.fg{margin-bottom:1rem;}
+.flabel{display:block;font-size:0.62rem;font-weight:600;letter-spacing:0.15em;text-transform:uppercase;color:var(--muted);margin-bottom:0.45rem;}
+.finput,.fselect{
+  width:100%;font-family:'Outfit',sans-serif;font-size:0.88rem;
+  color:var(--ink);background:var(--cream);
+  border:1.5px solid var(--bone);border-radius:5px;
+  padding:0.8rem 1rem;outline:none;transition:border-color 0.2s;
+}
+.finput:focus,.fselect:focus{border-color:var(--green);}
+.date-row{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-bottom:1rem;}
+
+/* ORDER SUMMARY */
+.order-card{
+  background:var(--white);border-radius:10px;padding:2rem;
+  border:1px solid var(--bone);position:sticky;top:2rem;
+}
+.order-title{
+  font-family:'Playfair Display',serif;
+  font-size:1.2rem;font-weight:400;color:var(--ink);margin-bottom:1.5rem;
+}
+.order-prop{
+  display:flex;gap:1rem;align-items:center;
+  padding-bottom:1.25rem;margin-bottom:1.25rem;
+  border-bottom:1px solid var(--bone);
+}
+.order-prop-img{width:56px;height:56px;border-radius:6px;flex-shrink:0;}
+.order-prop-name{font-size:0.85rem;font-weight:500;color:var(--ink);line-height:1.4;}
+.order-prop-city{font-size:0.72rem;color:var(--muted);margin-top:2px;}
+.order-row{
+  display:flex;justify-content:space-between;font-size:0.85rem;
+  padding:0.6rem 0;border-bottom:1px solid var(--bone);
+}
+.order-row:last-of-type{border-bottom:none;}
+.order-row span:first-child{color:var(--muted);}
+.order-row span:last-child{font-weight:500;}
+.order-total{
+  display:flex;justify-content:space-between;
+  font-size:1rem;font-weight:600;padding-top:1rem;
+  margin-top:0.5rem;border-top:2px solid var(--ink);
+}
+.order-total span:last-child{color:var(--green);}
+.order-save{
+  background:rgba(46,93,75,0.08);border-radius:6px;padding:0.75rem 1rem;
+  margin-top:1rem;font-size:0.78rem;color:var(--green);font-weight:500;
+  display:flex;align-items:center;gap:0.5rem;
+}
+.order-save::before{content:'✓';}
+
+.insurance-box{
+  background:var(--cream);border-radius:6px;padding:1rem;margin-top:1.25rem;
+  border:1px solid var(--bone);
+}
+.insurance-title{font-size:0.75rem;font-weight:600;color:var(--ink);margin-bottom:0.35rem;}
+.insurance-desc{font-size:0.72rem;color:var(--muted);line-height:1.6;}
+
+.checkout-btn{
+  width:100%;font-family:'Outfit',sans-serif;
+  font-size:0.78rem;font-weight:600;letter-spacing:0.15em;text-transform:uppercase;
+  background:var(--green);color:var(--white);border:none;
+  padding:1.1rem;border-radius:6px;cursor:pointer;transition:all 0.25s;
+  margin-top:1.5rem;
+}
+.checkout-btn:hover{background:var(--ink);}
+.checkout-note{
+  font-size:0.7rem;color:var(--muted);text-align:center;
+  margin-top:0.75rem;line-height:1.6;
+}
+
+.trust-row{
+  display:flex;justify-content:center;gap:2rem;margin-top:1.5rem;
+  padding-top:1.5rem;border-top:1px solid var(--bone);
+  flex-wrap:wrap;
+}
+.trust-item{
+  display:flex;align-items:center;gap:0.4rem;
+  font-size:0.68rem;color:var(--muted);font-weight:500;
+}
+
+/* WIFI SECTION */
+.wifi-section{
+  background:var(--deep);border-radius:10px;padding:2rem;
+  margin-top:2.5rem;display:flex;align-items:center;gap:2rem;flex-wrap:wrap;
+}
+.wifi-icon{font-size:2.5rem;}
+.wifi-content{flex:1;}
+.wifi-title{font-family:'Playfair Display',serif;font-size:1.2rem;font-weight:400;color:var(--white);margin-bottom:0.35rem;}
+.wifi-sub{font-size:0.82rem;font-weight:300;color:rgba(255,255,255,0.5);line-height:1.6;}
+.wifi-select{
+  font-family:'Outfit',sans-serif;font-size:0.85rem;
+  color:var(--ink);background:var(--cream);
+  border:1.5px solid var(--bone);border-radius:5px;
+  padding:0.7rem 1rem;outline:none;min-width:220px;
+}
+.wifi-display{
+  background:rgba(255,255,255,0.08);border-radius:8px;
+  padding:1.25rem 1.5rem;min-width:220px;text-align:center;
+  border:1px solid rgba(255,255,255,0.1);
+}
+.wifi-network{font-size:0.7rem;font-weight:600;letter-spacing:0.12em;text-transform:uppercase;color:rgba(255,255,255,0.4);margin-bottom:0.3rem;}
+.wifi-password{font-family:'Playfair Display',serif;font-size:1.5rem;font-weight:400;color:var(--gold-soft);letter-spacing:0.08em;}
+.wifi-password-label{font-size:0.65rem;color:rgba(255,255,255,0.3);margin-top:0.25rem;}
+
+@media(max-width:900px){
+  .prop-grid{grid-template-columns:repeat(2,1fr);}
+  .booking-layout{grid-template-columns:1fr;}
+  nav{padding:1rem 1.5rem;}
+  .main{padding:2rem 1.5rem;}
+  .savings-bar{gap:1.5rem;padding:1rem 1.5rem;}
+}
+@media(max-width:560px){
+  .prop-grid{grid-template-columns:1fr 1fr;}
+  .frow,.date-row{grid-template-columns:1fr;}
+  .trust-row{gap:1rem;}
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="index.html" class="logo">Xenstay<span>.</span>Homes</a>
+  <a href="index.html" class="back-link">← Back to main site</a>
+</nav>
+
+<div class="page-hero">
+  <p class="page-tag">Skip the Platform Fees</p>
+  <h1 class="page-title">Book <em>direct</em> with Xenstay</h1>
+  <p class="page-sub">No Airbnb service fees. Same great properties. Real host support. Plus your WiFi password is right here.</p>
+</div>
+
+<div class="savings-bar">
+  <div class="saving-pill">
+    <div class="saving-num">~11%</div>
+    <div class="saving-lbl">You save vs Airbnb</div>
+  </div>
+  <div class="saving-pill">
+    <div class="saving-num">Protected</div>
+    <div class="saving-lbl">Per-stay insurance included</div>
+  </div>
+  <div class="saving-pill">
+    <div class="saving-num">Direct</div>
+    <div class="saving-lbl">Support from your host</div>
+  </div>
+  <div class="saving-pill">
+    <div class="saving-num">Instant</div>
+    <div class="saving-lbl">Booking confirmation</div>
+  </div>
+</div>
+
+<div class="main">
+
+  <!-- WIFI FIRST - what guests scan for -->
+  <div class="wifi-section">
+    <div style="font-size:2rem;">📶</div>
+    <div class="wifi-content">
+      <p class="wifi-title">Get your WiFi password</p>
+      <p class="wifi-sub">Select your property below to see the network name and password for your stay.</p>
+    </div>
+    <select class="wifi-select" id="wifi-select" onchange="showWifi(this.value)">
+      <option value="">Select your property...</option>
+      <option value="clubhouse">The Club House — West Sacramento</option>
+      <option value="natomas">3BR Remodeled — Downtown &amp; Airport</option>
+      <option value="west1">Beautiful 4BR — West Sacramento</option>
+      <option value="california">Charming 3BR — West Sac Retreat</option>
+      <option value="kathryn">Cozy Cottage — Pool &amp; Hot Tub, Fair Oaks</option>
+      <option value="yuba">Cozy Buttes 3BR — Yuba City</option>
+      <option value="hotel">Hotel Suite + Patio — Sacramento</option>
+      <option value="laknatoma">Lake Natoma Retreat — Orangevale</option>
+      <option value="roseville">Modern 4BR — West Roseville</option>
+      <option value="punta">Punta Mita Surfers Paradise</option>
+      <option value="rancho">Rancho Heaven 4BD — Rancho Cordova</option>
+      <option value="relax">Relax &amp; Unwind — Rancho/Near Folsom</option>
+      <option value="skyline">Skyline Serenity Retreat — Auburn</option>
+      <option value="hilltop">Spacious Hilltop 3BR — Auburn</option>
+      <option value="nest">The Nest @ Skyline — Auburn</option>
+      <option value="xen">Xen House 3BR — 10 Min Downtown</option>
+    </select>
+    <div class="wifi-display" id="wifi-display" style="display:none;">
+      <p class="wifi-network" id="wifi-network">Network</p>
+      <p class="wifi-password" id="wifi-password">••••••••</p>
+      <p class="wifi-password-label">WiFi Password — tap to copy</p>
+    </div>
+  </div>
+
+  <!-- STEP 1: SELECT PROPERTY -->
+  <div style="margin-top:3.5rem;">
+    <p class="step-label" data-step="1">Select your property</p>
+    <h2 class="step-title">Which property are you booking?</h2>
+    <div class="prop-grid" id="prop-grid">
+
+      <div class="prop-card" onclick="selectProp(this,'Skyline Serenity Retreat','Auburn, CA','4 bed · 2 bath · up to 10 guests',432,'pi1')">
+        <div class="prop-img pi1">
+          <div class="prop-check"><svg viewBox="0 0 12 12"><polyline points="2,6 5,9 10,3"/></svg></div>
+        </div>
+        <div class="prop-body">
+          <p class="prop-city">Auburn, CA</p>
+          <p class="prop-name">Skyline Serenity Retreat</p>
+          <p class="prop-beds">4 bed · 2 bath · 10 guests</p>
+          <p class="prop-rate">$432 <span>/ night</span></p>
+        </div>
+      </div>
+
+      <div class="prop-card" onclick="selectProp(this,'Punta Mita Surfers Paradise','Punta Negra, Mexico','4 bed · 3 bath · up to 9 guests',415,'pi2')">
+        <div class="prop-img pi2">
+          <div class="prop-check"><svg viewBox="0 0 12 12"><polyline points="2,6 5,9 10,3"/></svg></div>
+        </div>
+        <div class="prop-body">
+          <p class="prop-city">Punta Negra, Mexico</p>
+          <p class="prop-name">Punta Mita Surfers Paradise</p>
+          <p class="prop-beds">4 bed · 3 bath · 9 guests</p>
+          <p class="prop-rate">$415 <span>/ night</span></p>
+        </div>
+      </div>
+
+      <div class="prop-card" onclick="selectProp(this,'Beautiful 4BR Downtown Home','West Sacramento, CA','4 bed · 3 bath · up to 9 guests',281,'pi3')">
+        <div class="prop-img pi3">
+          <div class="prop-check"><svg viewBox="0 0 12 12"><polyline points="2,6 5,9 10,3"/></svg></div>
+        </div>
+        <div class="prop-body">
+          <p class="prop-city">West Sacramento, CA</p>
+          <p class="prop-name">Beautiful 4BR Downtown Home</p>
+          <p class="prop-beds">4 bed · 3 bath · 9 guests</p>
+          <p class="prop-rate">$281 <span>/ night</span></p>
+        </div>
+      </div>
+
+      <div class="prop-card" onclick="selectProp(this,'Rancho Heaven — 4BD','Rancho Cordova, CA','4 bed · 3 bath · up to 7 guests',237,'pi4')">
+        <div class="prop-img pi4">
+          <div class="prop-check"><svg viewBox="0 0 12 12"><polyline points="2,6 5,9 10,3"/></svg></div>
+        </div>
+        <div class="prop-body">
+          <p class="prop-city">Rancho Cordova, CA</p>
+          <p class="prop-name">Rancho Heaven | Sunroom | Game Room</p>
+          <p class="prop-beds">4 bed · 3 bath · 7 guests</p>
+          <p class="prop-rate">$237 <span>/ night</span></p>
+        </div>
+      </div>
+
+      <div class="prop-card" onclick="selectProp(this,'Relax & Unwind — Near Folsom','Rancho Cordova, CA','3 bed · 2 bath · up to 6 guests',192,'pi5')">
+        <div class="prop-img pi5">
+          <div class="prop-check"><svg viewBox="0 0 12 12"><polyline points="2,6 5,9 10,3"/></svg></div>
+        </div>
+        <div class="prop-body">
+          <p class="prop-city">Rancho Cordova, CA</p>
+          <p class="prop-name">Relax & Unwind | Huge Yard</p>
+          <p class="prop-beds">3 bed · 2 bath · 6 guests</p>
+          <p class="prop-rate">$192 <span>/ night</span></p>
+        </div>
+      </div>
+
+      <div class="prop-card" onclick="selectProp(this,'Lake Natoma Retreat','Orangevale, CA','3 bed · 2 bath · up to 6 guests',191,'pi6')">
+        <div class="prop-img pi6">
+          <div class="prop-check"><svg viewBox="0 0 12 12"><polyline points="2,6 5,9 10,3"/></svg></div>
+        </div>
+        <div class="prop-body">
+          <p class="prop-city">Orangevale, CA</p>
+          <p class="prop-name">Lake Natoma Retreat</p>
+          <p class="prop-beds">3 bed · 2 bath · 6 guests</p>
+          <p class="prop-rate">$191 <span>/ night</span></p>
+        </div>
+      </div>
+
+      <div class="prop-card" onclick="selectProp(this,'Xen House 3BR — 10 Min Downtown','Sacramento, CA','3 bed · 2 bath · up to 6 guests',272,'pi7')">
+        <div class="prop-img pi7">
+          <div class="prop-check"><svg viewBox="0 0 12 12"><polyline points="2,6 5,9 10,3"/></svg></div>
+        </div>
+        <div class="prop-body">
+          <p class="prop-city">Sacramento, CA</p>
+          <p class="prop-name">Xen House 3BR — 10 Min Downtown</p>
+          <p class="prop-beds">3 bed · 2 bath · 6 guests</p>
+          <p class="prop-rate">$272 <span>/ night</span></p>
+        </div>
+      </div>
+
+      <div class="prop-card" onclick="selectProp(this,'The Club House','West Sacramento, CA','2 bed · 2 bath · up to 4 guests',186,'pi8')">
+        <div class="prop-img pi8">
+          <div class="prop-check"><svg viewBox="0 0 12 12"><polyline points="2,6 5,9 10,3"/></svg></div>
+        </div>
+        <div class="prop-body">
+          <p class="prop-city">West Sacramento, CA</p>
+          <p class="prop-name">The Club House — 7 Min Downtown</p>
+          <p class="prop-beds">2 bed · 2 bath · 4 guests</p>
+          <p class="prop-rate">$186 <span>/ night</span></p>
+        </div>
+      </div>
+
+      <div class="prop-card" onclick="selectProp(this,'Charming 3BR West Sac Retreat','West Sacramento, CA','3 bed · 2 bath · up to 7 guests',263,'pi9')">
+        <div class="prop-img pi9">
+          <div class="prop-check"><svg viewBox="0 0 12 12"><polyline points="2,6 5,9 10,3"/></svg></div>
+        </div>
+        <div class="prop-body">
+          <p class="prop-city">West Sacramento, CA</p>
+          <p class="prop-name">Charming 3BR | Fire Pit | Backyard</p>
+          <p class="prop-beds">3 bed · 2 bath · 7 guests</p>
+          <p class="prop-rate">$263 <span>/ night</span></p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- STEP 2: BOOKING FORM + ORDER SUMMARY -->
+  <div id="booking-section" style="display:none;">
+    <p class="step-label" data-step="2">Your booking details</p>
+    <h2 class="step-title">Complete your reservation</h2>
+
+    <div class="booking-layout">
+      <div>
+        <div class="booking-form-card">
+          <p class="form-section-title">Stay details</p>
+          <div class="date-row">
+            <div class="fg">
+              <label class="flabel">Check-in date</label>
+              <input type="date" class="finput" id="checkin" onchange="calcTotal()">
+            </div>
+            <div class="fg">
+              <label class="flabel">Check-out date</label>
+              <input type="date" class="finput" id="checkout" onchange="calcTotal()">
+            </div>
+          </div>
+          <div class="fg">
+            <label class="flabel">Number of guests</label>
+            <select class="fselect" id="guests">
+              <option>1 guest</option><option>2 guests</option><option>3 guests</option>
+              <option>4 guests</option><option>5 guests</option><option>6 guests</option>
+              <option>7 guests</option><option>8 guests</option>
+              <option>9 guests</option><option>10 guests</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="booking-form-card" style="margin-top:1.25rem;">
+          <p class="form-section-title">Your information</p>
+          <div class="frow">
+            <div class="fg">
+              <label class="flabel">First name</label>
+              <input type="text" class="finput" placeholder="Jane">
+            </div>
+            <div class="fg">
+              <label class="flabel">Last name</label>
+              <input type="text" class="finput" placeholder="Smith">
+            </div>
+          </div>
+          <div class="fg">
+            <label class="flabel">Email</label>
+            <input type="email" class="finput" placeholder="jane@email.com">
+          </div>
+          <div class="fg">
+            <label class="flabel">Phone</label>
+            <input type="tel" class="finput" placeholder="(555) 000-0000">
+          </div>
+        </div>
+
+        <div class="booking-form-card" style="margin-top:1.25rem;">
+          <p class="form-section-title">Payment</p>
+          <div class="fg">
+            <label class="flabel">Card number</label>
+            <input type="text" class="finput" placeholder="•••• •••• •••• ••••" maxlength="19">
+          </div>
+          <div class="frow">
+            <div class="fg">
+              <label class="flabel">Expiry</label>
+              <input type="text" class="finput" placeholder="MM / YY" maxlength="7">
+            </div>
+            <div class="fg">
+              <label class="flabel">CVC</label>
+              <input type="text" class="finput" placeholder="•••" maxlength="4">
+            </div>
+          </div>
+          <p style="font-size:0.72rem;color:var(--muted);margin-top:0.5rem;">Payments processed securely via Stripe. Your card details are encrypted and never stored.</p>
+        </div>
+      </div>
+
+      <!-- ORDER SUMMARY -->
+      <div>
+        <div class="order-card">
+          <p class="order-title">Booking summary</p>
+          <div class="order-prop">
+            <div class="order-prop-img pi1" id="summary-img"></div>
+            <div>
+              <p class="order-prop-name" id="summary-name">Select a property above</p>
+              <p class="order-prop-city" id="summary-city">—</p>
+            </div>
+          </div>
+          <div class="order-row"><span>Nightly rate</span><span id="s-rate">—</span></div>
+          <div class="order-row"><span>Nights</span><span id="s-nights">—</span></div>
+          <div class="order-row"><span>Subtotal</span><span id="s-subtotal">—</span></div>
+          <div class="order-row"><span>Guest insurance (Safely)</span><span id="s-insurance">—</span></div>
+          <div class="order-row" style="color:var(--green);"><span>Airbnb fees saved</span><span id="s-savings" style="color:var(--green);">—</span></div>
+          <div class="order-total"><span>Total due</span><span id="s-total">—</span></div>
+
+          <div class="order-save" id="save-banner" style="display:none;">
+            You save vs booking on Airbnb
+          </div>
+
+          <div class="insurance-box">
+            <p class="insurance-title">Guest protection included</p>
+            <p class="insurance-desc">Your stay includes per-stay damage protection powered by Safely — covering accidental damage up to $5,000. No security deposit required.</p>
+          </div>
+
+          <button class="checkout-btn" onclick="submitBooking()">Confirm & Pay →</button>
+          <p class="checkout-note">By booking you agree to our guest policies. Full refund if cancelled 5+ days before check-in.</p>
+
+          <div class="trust-row">
+            <span class="trust-item">🔒 Stripe secured</span>
+            <span class="trust-item">✓ No platform fees</span>
+            <span class="trust-item">⚡ Instant confirm</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<script>
+let selectedProp = null;
+let selectedRate = 0;
+
+// WiFi passwords (placeholder — you'd replace with real ones)
+const wifiData = {
+  clubhouse:  { net:'XenstayClub',    pw:'Welcome2024!' },
+  natomas:    { net:'XenstayNatomas', pw:'Natomas2024!' },
+  west1:      { net:'XenstayWest1',   pw:'Downtown2024' },
+  california: { net:'XenstayCA',      pw:'WestSac2024!' },
+  kathryn:    { net:'XenstayOaks',    pw:'FairOaks2024' },
+  yuba:       { net:'XenstayYuba',    pw:'YubaCity2024' },
+  hotel:      { net:'XenstayHotel',   pw:'Sac2024Hotel' },
+  laknatoma:  { net:'XenstayLake',    pw:'Natoma2024LK' },
+  roseville:  { net:'XenstayRose',    pw:'Roseville24!' },
+  punta:      { net:'XenstayPunta',   pw:'Surfing2024!' },
+  rancho:     { net:'XenstayRancho',  pw:'Heaven2024!!' },
+  relax:      { net:'XenstayRelax',   pw:'Folsom2024!!' },
+  skyline:    { net:'XenstaySkyline', pw:'Auburn2024Sky' },
+  hilltop:    { net:'XenstayHill',    pw:'Auburn2024Hi!' },
+  nest:       { net:'XenstayNest',    pw:'Nest2024Sky!!' },
+  xen:        { net:'XenstayXen',     pw:'XenHouse2024!' }
+};
+
+function showWifi(key) {
+  const d = wifiData[key];
+  if (!d) { document.getElementById('wifi-display').style.display='none'; return; }
+  document.getElementById('wifi-network').textContent = d.net;
+  document.getElementById('wifi-password').textContent = d.pw;
+  const display = document.getElementById('wifi-display');
+  display.style.display='block';
+  document.getElementById('wifi-password').onclick = () => {
+    navigator.clipboard.writeText(d.pw).then(() => {
+      document.getElementById('wifi-password').textContent = 'Copied!';
+      setTimeout(() => document.getElementById('wifi-password').textContent = d.pw, 1500);
+    });
+  };
+}
+
+function selectProp(card, name, city, beds, rate, imgClass) {
+  document.querySelectorAll('.prop-card').forEach(c => c.classList.remove('selected'));
+  card.classList.add('selected');
+  selectedProp = { name, city, beds, rate, imgClass };
+  selectedRate = rate;
+  document.getElementById('summary-name').textContent = name;
+  document.getElementById('summary-city').textContent = city;
+  document.getElementById('summary-img').className = 'order-prop-img ' + imgClass;
+  document.getElementById('s-rate').textContent = '$' + rate + '/night';
+  document.getElementById('booking-section').style.display = 'block';
+  document.getElementById('booking-section').scrollIntoView({ behavior:'smooth', block:'start' });
+  calcTotal();
+}
+
+function calcTotal() {
+  if (!selectedRate) return;
+  const ci = document.getElementById('checkin').value;
+  const co = document.getElementById('checkout').value;
+  if (!ci || !co) return;
+  const nights = Math.round((new Date(co) - new Date(ci)) / 86400000);
+  if (nights <= 0) return;
+  const subtotal = selectedRate * nights;
+  const insurance = Math.round(subtotal * 0.035);
+  const airbnbFees = Math.round(subtotal * 0.14);
+  const total = subtotal + insurance;
+  const saved = airbnbFees - insurance;
+
+  document.getElementById('s-nights').textContent = nights + ' night' + (nights>1?'s':'');
+  document.getElementById('s-subtotal').textContent = '$' + subtotal.toLocaleString();
+  document.getElementById('s-insurance').textContent = '+$' + insurance;
+  document.getElementById('s-savings').textContent = '-$' + Math.max(0,saved).toLocaleString();
+  document.getElementById('s-total').textContent = '$' + total.toLocaleString();
+
+  const banner = document.getElementById('save-banner');
+  if (saved > 0) {
+    banner.textContent = '✓ You save $' + saved.toLocaleString() + ' vs booking on Airbnb';
+    banner.style.display = 'flex';
+  }
+}
+
+function submitBooking() {
+  alert('Booking submitted! You will receive a confirmation email shortly. For questions, contact us at xenstayhomes.com or text your host directly.');
+}
+
+// Format card input
+document.addEventListener('DOMContentLoaded', () => {
+  const card = document.querySelector('input[placeholder*="••••"]');
+  if (card) {
+    card.addEventListener('input', e => {
+      let v = e.target.value.replace(/\D/g,'').slice(0,16);
+      e.target.value = v.replace(/(.{4})/g,'$1 ').trim();
+    });
+  }
+});
+</script>
+</body>
+</html>

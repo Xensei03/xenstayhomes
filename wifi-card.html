@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Xenstay Homes — In-Unit WiFi Card</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;1,400&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+body{
+  font-family:'Outfit',sans-serif;
+  background:#E8E2D8;
+  display:flex;flex-direction:column;align-items:center;justify-content:center;
+  min-height:100vh;padding:2rem;gap:2rem;
+}
+.print-note{
+  font-size:0.75rem;color:#8A8478;text-align:center;
+  max-width:500px;line-height:1.6;
+}
+.print-note strong{color:#1A1A18;}
+.cards-wrap{
+  display:flex;flex-direction:column;gap:2rem;align-items:center;
+}
+@media print{
+  body{background:white;padding:0;gap:0;}
+  .print-note,.print-btn{display:none;}
+  .cards-wrap{gap:0;}
+}
+
+/* CARD */
+.wifi-card{
+  width:3.5in;height:2in;
+  background:#1A1A18;
+  border-radius:12px;overflow:hidden;
+  display:grid;grid-template-columns:1fr auto;
+  position:relative;
+  box-shadow:0 8px 40px rgba(0,0,0,0.25);
+  page-break-after:always;
+}
+.wifi-card::before{
+  content:'';position:absolute;
+  top:-30px;right:80px;
+  width:120px;height:120px;border-radius:50%;
+  background:radial-gradient(circle,rgba(196,149,74,0.15),transparent 70%);
+  pointer-events:none;
+}
+
+.card-left{
+  padding:0.85rem 0.85rem 0.85rem 1rem;
+  display:flex;flex-direction:column;justify-content:space-between;
+}
+.card-logo{
+  font-family:'Playfair Display',serif;
+  font-size:0.95rem;font-weight:400;letter-spacing:0.06em;
+  color:rgba(255,255,255,0.9);
+}
+.card-logo span{color:#C4954A;}
+
+.card-wifi-section{}
+.card-label{
+  font-size:0.45rem;font-weight:600;letter-spacing:0.25em;
+  text-transform:uppercase;color:rgba(255,255,255,0.4);
+  margin-bottom:0.15rem;
+}
+.card-value{
+  font-size:0.75rem;font-weight:500;color:rgba(255,255,255,0.9);
+  letter-spacing:0.04em;
+  font-family:'Outfit',monospace;
+}
+.card-value.pw{color:#D4AB6A;font-size:0.8rem;}
+
+.card-footer{
+  display:flex;flex-direction:column;gap:0.15rem;
+}
+.card-footer-line{
+  font-size:0.45rem;font-weight:500;
+  letter-spacing:0.12em;text-transform:uppercase;
+  color:rgba(255,255,255,0.3);
+}
+.card-footer-url{color:#C4954A;font-size:0.5rem;}
+
+.card-right{
+  background:rgba(255,255,255,0.05);
+  border-left:1px solid rgba(255,255,255,0.06);
+  padding:0.75rem;display:flex;flex-direction:column;
+  align-items:center;justify-content:center;gap:0.5rem;
+  min-width:1.4in;
+}
+.qr-wrap{
+  background:white;border-radius:6px;
+  padding:6px;width:90px;height:90px;
+  display:flex;align-items:center;justify-content:center;
+}
+.qr-wrap svg{width:78px;height:78px;}
+.card-scan-text{
+  font-size:0.42rem;font-weight:600;letter-spacing:0.1em;
+  text-transform:uppercase;color:rgba(255,255,255,0.4);
+  text-align:center;line-height:1.5;
+}
+.card-scan-url{
+  font-size:0.48rem;font-weight:600;
+  color:#C4954A;text-align:center;letter-spacing:0.05em;
+}
+
+/* SAVE BANNER ON CARD */
+.card-save{
+  font-size:0.42rem;font-weight:600;letter-spacing:0.12em;
+  text-transform:uppercase;
+  background:rgba(196,149,74,0.15);
+  color:#D4AB6A;padding:0.2rem 0.4rem;border-radius:3px;
+  text-align:center;
+}
+
+.print-btn{
+  font-family:'Outfit',sans-serif;
+  font-size:0.75rem;font-weight:600;letter-spacing:0.15em;text-transform:uppercase;
+  background:#2E5D4B;color:white;border:none;
+  padding:0.85rem 2rem;border-radius:6px;cursor:pointer;
+  transition:background 0.2s;
+}
+.print-btn:hover{background:#1A1A18;}
+.card-variant-label{
+  font-size:0.65rem;color:#8A8478;text-align:center;
+  margin-bottom:0.35rem;
+}
+</style>
+</head>
+<body>
+
+<p class="print-note">
+  <strong>In-unit WiFi cards for Xenstay Homes.</strong><br>
+  Print on cardstock and place near the router or in the welcome binder at each property. Update the WiFi name and password for each property before printing. The QR code links to xenstayhomes.com/book.
+</p>
+
+<div class="cards-wrap">
+
+  <!-- CARD 1: DARK (primary) -->
+  <div>
+    <p class="card-variant-label">Primary card — print for all units</p>
+    <div class="wifi-card">
+      <div class="card-left">
+        <div class="card-logo">Xenstay<span>.</span>Homes</div>
+
+        <div class="card-wifi-section">
+          <div style="margin-bottom:0.5rem;">
+            <p class="card-label">WiFi network</p>
+            <p class="card-value">XenstayHomes_5G</p>
+          </div>
+          <div>
+            <p class="card-label">Password</p>
+            <p class="card-value pw">Welcome2024!</p>
+          </div>
+        </div>
+
+        <div class="card-footer">
+          <p class="card-save">Book direct & save ~11% on your next stay</p>
+          <p class="card-footer-line">Questions? Contact your host directly</p>
+          <p class="card-footer-url">xenstayhomes.com/book</p>
+        </div>
+      </div>
+
+      <div class="card-right">
+        <div class="qr-wrap">
+          <svg viewBox="0 0 78 78" xmlns="http://www.w3.org/2000/svg">
+            <rect x="4" y="4" width="26" height="26" fill="none" stroke="#1A1A18" stroke-width="3.5"/>
+            <rect x="10" y="10" width="14" height="14" fill="#1A1A18"/>
+            <rect x="48" y="4" width="26" height="26" fill="none" stroke="#1A1A18" stroke-width="3.5"/>
+            <rect x="54" y="10" width="14" height="14" fill="#1A1A18"/>
+            <rect x="4" y="48" width="26" height="26" fill="none" stroke="#1A1A18" stroke-width="3.5"/>
+            <rect x="10" y="54" width="14" height="14" fill="#1A1A18"/>
+            <rect x="48" y="48" width="7" height="7" fill="#1A1A18"/>
+            <rect x="59" y="48" width="7" height="7" fill="#1A1A18"/>
+            <rect x="48" y="59" width="7" height="7" fill="#1A1A18"/>
+            <rect x="59" y="59" width="15" height="15" fill="#1A1A18"/>
+            <rect x="35" y="4" width="7" height="7" fill="#1A1A18"/>
+            <rect x="35" y="15" width="7" height="7" fill="#1A1A18"/>
+            <rect x="35" y="26" width="7" height="7" fill="#1A1A18"/>
+            <rect x="35" y="37" width="7" height="7" fill="#1A1A18"/>
+            <rect x="4" y="37" width="7" height="7" fill="#1A1A18"/>
+            <rect x="15" y="37" width="7" height="7" fill="#1A1A18"/>
+            <rect x="26" y="37" width="7" height="7" fill="#1A1A18"/>
+            <rect x="48" y="37" width="7" height="7" fill="#1A1A18"/>
+            <rect x="63" y="37" width="7" height="7" fill="#1A1A18"/>
+          </svg>
+        </div>
+        <p class="card-scan-text">Scan to book<br>direct & save</p>
+        <p class="card-scan-url">xenstayhomes.com</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- CARD 2: GOLD accent variant -->
+  <div>
+    <p class="card-variant-label">Gold variant — for premium properties (Skyline, Punta Mita)</p>
+    <div class="wifi-card" style="background:linear-gradient(135deg,#1A1208 0%,#1A1A18 60%);">
+      <div class="card-left">
+        <div class="card-logo">Xenstay<span>.</span>Homes</div>
+
+        <div class="card-wifi-section">
+          <div style="margin-bottom:0.5rem;">
+            <p class="card-label">WiFi network</p>
+            <p class="card-value">XenstaySkyline_5G</p>
+          </div>
+          <div>
+            <p class="card-label">Password</p>
+            <p class="card-value pw">Auburn2024Sky</p>
+          </div>
+        </div>
+
+        <div class="card-footer">
+          <p class="card-save">Book direct & save — skip the Airbnb fee</p>
+          <p class="card-footer-line">Skyline Serenity Retreat · Auburn, CA</p>
+          <p class="card-footer-url">xenstayhomes.com/book</p>
+        </div>
+      </div>
+
+      <div class="card-right" style="background:rgba(196,149,74,0.08);border-left:1px solid rgba(196,149,74,0.15);">
+        <div class="qr-wrap">
+          <svg viewBox="0 0 78 78" xmlns="http://www.w3.org/2000/svg">
+            <rect x="4" y="4" width="26" height="26" fill="none" stroke="#1A1A18" stroke-width="3.5"/>
+            <rect x="10" y="10" width="14" height="14" fill="#1A1A18"/>
+            <rect x="48" y="4" width="26" height="26" fill="none" stroke="#1A1A18" stroke-width="3.5"/>
+            <rect x="54" y="10" width="14" height="14" fill="#1A1A18"/>
+            <rect x="4" y="48" width="26" height="26" fill="none" stroke="#1A1A18" stroke-width="3.5"/>
+            <rect x="10" y="54" width="14" height="14" fill="#1A1A18"/>
+            <rect x="48" y="48" width="7" height="7" fill="#1A1A18"/>
+            <rect x="59" y="48" width="7" height="7" fill="#1A1A18"/>
+            <rect x="48" y="59" width="7" height="7" fill="#1A1A18"/>
+            <rect x="59" y="59" width="15" height="15" fill="#1A1A18"/>
+            <rect x="35" y="4" width="7" height="7" fill="#1A1A18"/>
+            <rect x="35" y="15" width="7" height="7" fill="#1A1A18"/>
+            <rect x="35" y="26" width="7" height="7" fill="#1A1A18"/>
+            <rect x="35" y="37" width="7" height="7" fill="#1A1A18"/>
+            <rect x="4" y="37" width="7" height="7" fill="#1A1A18"/>
+            <rect x="15" y="37" width="7" height="7" fill="#1A1A18"/>
+            <rect x="26" y="37" width="7" height="7" fill="#1A1A18"/>
+            <rect x="48" y="37" width="7" height="7" fill="#1A1A18"/>
+            <rect x="63" y="37" width="7" height="7" fill="#1A1A18"/>
+          </svg>
+        </div>
+        <p class="card-scan-text">Scan to book<br>direct & save</p>
+        <p class="card-scan-url">xenstayhomes.com</p>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<button class="print-btn" onclick="window.print()">Print WiFi Cards</button>
+
+</body>
+</html>
