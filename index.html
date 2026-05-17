@@ -527,13 +527,92 @@ footer{
   .markets-grid{grid-template-columns:repeat(2,1fr);}
   .frow{grid-template-columns:1fr;}
 }
+
+/* ── MOBILE FIXES ── */
+@media(max-width:768px){
+  /* Nav — hamburger */
+  .nav-links{display:none;}
+  .nav-btn{display:none;}
+  nav{padding:1rem 1.25rem;}
+  .nav-hamburger{
+    display:flex;flex-direction:column;gap:5px;cursor:pointer;
+    width:24px;
+  }
+  .nav-hamburger span{
+    display:block;height:2px;background:var(--ink);border-radius:2px;
+    transition:all 0.3s;
+  }
+
+  /* Hero — stack vertically, hide mosaic on small screens */
+  .hero{
+    grid-template-columns:1fr !important;
+    min-height:auto !important;
+  }
+  .hero-left{padding:2.5rem 1.25rem 2rem;}
+  .hero-h1{font-size:2.4rem;}
+  .hero-right{
+    height:220px;
+    grid-template-columns:1fr 1fr !important;
+    grid-template-rows:1fr 1fr !important;
+  }
+  .hero-stats{gap:1rem;flex-wrap:wrap;}
+  .hero-btns{flex-direction:column;gap:0.75rem;}
+  .hero-btns .btn-primary,.hero-btns .btn-secondary{width:100%;text-align:center;}
+
+  /* Fee strip */
+  .fee-strip{flex-direction:column;gap:0.5rem;padding:1rem 1.25rem;text-align:center;}
+
+  /* Sections */
+  section{padding:3rem 1.25rem !important;}
+  .section-title{font-size:1.8rem !important;}
+
+  /* Why us grid */
+  .why-grid{grid-template-columns:1fr !important;}
+
+  /* How it works steps */
+  .steps-grid{grid-template-columns:1fr 1fr !important;}
+
+  /* Results */
+  .results-grid{grid-template-columns:1fr 1fr !important;}
+
+  /* Services */
+  .services-grid{grid-template-columns:1fr !important;}
+
+  /* Portfolio */
+  .portfolio-grid{grid-template-columns:1fr 1fr !important;gap:0.75rem !important;}
+  .portfolio-img{height:140px !important;}
+
+  /* About section */
+  .about-layout{grid-template-columns:1fr !important;}
+  .about-img{height:260px !important;min-height:unset !important;}
+
+  /* Lead form */
+  .lead-layout{grid-template-columns:1fr !important;}
+
+  /* FAQ */
+  .faq-layout{grid-template-columns:1fr !important;}
+
+  /* Footer */
+  footer{padding:2rem 1.25rem !important;}
+  .footer-grid{grid-template-columns:1fr !important;gap:2rem !important;}
+  .footer-bottom{flex-direction:column;gap:0.75rem;text-align:center;}
+}
+
+@media(max-width:480px){
+  .hero-h1{font-size:2rem;}
+  .portfolio-grid{grid-template-columns:1fr !important;}
+  .steps-grid{grid-template-columns:1fr !important;}
+  .results-grid{grid-template-columns:1fr 1fr !important;}
+  .hero-stats{gap:0.75rem;}
+  .stat-num{font-size:1.8rem;}
+}
 </style>
 </head>
 <body>
 
 <nav id="nav">
   <a href="#" class="logo">Xenstay<span>.</span>Homes</a>
-  <div class="nav-links">
+  <button class="nav-hamburger" onclick="toggleMobileMenu()" aria-label="Menu" style="display:none;background:none;border:none;padding:0;cursor:pointer;flex-direction:column;gap:5px;"><span style="display:block;height:2px;width:24px;background:var(--ink);border-radius:2px;"></span><span style="display:block;height:2px;width:24px;background:var(--ink);border-radius:2px;"></span><span style="display:block;height:2px;width:24px;background:var(--ink);border-radius:2px;"></span></button><div class="nav-links" id="nav-links">
     <a href="#why">Why Us</a>
     <a href="#how">How It Works</a>
     <a href="#services">Services</a>
@@ -1060,6 +1139,35 @@ footer{
 </footer>
 
 <script>
+function toggleMobileMenu(){
+  const links = document.getElementById('nav-links');
+  const btn = document.querySelector('.nav-hamburger');
+  if(links.style.display==='flex'){
+    links.style.display='none';
+    btn.style.opacity='1';
+  } else {
+    links.style.display='flex';
+    links.style.flexDirection='column';
+    links.style.position='absolute';
+    links.style.top='60px';
+    links.style.left='0';
+    links.style.right='0';
+    links.style.background='rgba(248,244,238,0.98)';
+    links.style.padding='1rem 1.25rem 1.5rem';
+    links.style.gap='1.25rem';
+    links.style.zIndex='1000';
+    links.style.backdropFilter='blur(10px)';
+  }
+}
+// Show hamburger on mobile
+if(window.innerWidth<=768){
+  document.querySelector('.nav-hamburger').style.display='flex';
+}
+window.addEventListener('resize',()=>{
+  const btn = document.querySelector('.nav-hamburger');
+  if(btn) btn.style.display = window.innerWidth<=768 ? 'flex' : 'none';
+});
+
 // Nav scroll effect
 const nav = document.getElementById('nav');
 window.addEventListener('scroll', () => {
