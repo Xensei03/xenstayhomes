@@ -24,6 +24,15 @@ html{scroll-behavior:smooth;}
 body{font-family:'Outfit',sans-serif;background:var(--cream);color:var(--ink);overflow-x:hidden;}
 
 /* NAV */
+.hamburger{
+  display:none;
+  flex-direction:column;gap:5px;
+  background:none;border:none;cursor:pointer;padding:4px;
+}
+.hamburger span{
+  display:block;width:24px;height:2px;
+  background:var(--ink);border-radius:2px;transition:all 0.3s;
+}
 nav{
   position:fixed;top:0;left:0;right:0;z-index:200;
   display:flex;align-items:center;justify-content:space-between;
@@ -530,96 +539,98 @@ footer{
 
 /* ── MOBILE FIXES ── */
 @media(max-width:768px){
-  /* Nav — hamburger */
-  .nav-links{display:none;}
-  .nav-btn{display:none;}
+  /* NAV */
+  .nav-links{display:none !important;}
+  .nav-btn{display:none !important;}
   nav{padding:1rem 1.25rem;}
-  .nav-hamburger{
-    display:flex;flex-direction:column;gap:5px;cursor:pointer;
-    width:24px;
-  }
-  .nav-hamburger span{
-    display:block;height:2px;background:var(--ink);border-radius:2px;
-    transition:all 0.3s;
-  }
+  .hamburger{display:flex !important;}
 
-  /* Hero — stack vertically, hide mosaic on small screens */
+  /* HERO — stack, show mosaic below */
   .hero{
-    grid-template-columns:1fr !important;
+    display:block !important;
     min-height:auto !important;
   }
-  .hero-left{padding:2.5rem 1.25rem 2rem;}
-  .hero-h1{font-size:2.4rem;}
+  .hero-left{
+    padding:2.5rem 1.25rem 2rem;
+    min-height:auto;
+  }
+  .hero-h1{font-size:2.2rem !important;}
   .hero-right{
-    height:220px;
+    display:grid !important;
     grid-template-columns:1fr 1fr !important;
     grid-template-rows:1fr 1fr !important;
+    height:240px;
+    gap:2px;
   }
-  .hero-stats{gap:1rem;flex-wrap:wrap;}
-  .hero-btns{flex-direction:column;gap:0.75rem;}
-  .hero-btns .btn-primary,.hero-btns .btn-secondary{width:100%;text-align:center;}
+  .hero-btns{flex-wrap:wrap;gap:0.75rem;}
+  .hero-stats{gap:1rem;}
 
-  /* Fee strip */
+  /* FEE STRIP */
   .fee-strip{flex-direction:column;gap:0.5rem;padding:1rem 1.25rem;text-align:center;}
 
-  /* Sections */
-  section{padding:3rem 1.25rem !important;}
+  /* SECTIONS */
+  section,#why,#how,#services,#portfolio,#about,#markets,#testimonials,#faq,#lead{
+    padding:3rem 1.25rem !important;
+  }
   .section-title{font-size:1.8rem !important;}
 
-  /* Why us grid */
+  /* WHY */
   .why-grid{grid-template-columns:1fr !important;}
 
-  /* How it works steps */
-  .steps-grid{grid-template-columns:1fr 1fr !important;}
+  /* HOW */
+  .steps-grid{grid-template-columns:1fr 1fr !important;gap:1rem !important;}
 
-  /* Results */
+  /* RESULTS */
   .results-grid{grid-template-columns:1fr 1fr !important;}
+  .result-num{font-size:2rem !important;}
 
-  /* Services */
+  /* SERVICES */
   .services-grid{grid-template-columns:1fr !important;}
 
-  /* Portfolio */
+  /* PORTFOLIO */
   .portfolio-grid{grid-template-columns:1fr 1fr !important;gap:0.75rem !important;}
-  .portfolio-img{height:140px !important;}
+  .portfolio-img{height:130px !important;}
 
-  /* About section */
-  .about-layout{grid-template-columns:1fr !important;}
-  .about-img{height:260px !important;min-height:unset !important;}
+  /* ABOUT */
+  .about-layout{grid-template-columns:1fr !important;gap:0 !important;}
+  .about-img{height:240px !important;order:-1;}
 
-  /* Lead form */
-  .lead-layout{grid-template-columns:1fr !important;}
+  /* MARKETS */
+  .markets-grid{gap:0.5rem !important;}
+
+  /* LEAD */
+  .lead-layout{grid-template-columns:1fr !important;gap:2rem !important;}
 
   /* FAQ */
   .faq-layout{grid-template-columns:1fr !important;}
 
-  /* Footer */
-  footer{padding:2rem 1.25rem !important;}
-  .footer-grid{grid-template-columns:1fr !important;gap:2rem !important;}
+  /* FOOTER */
+  footer{padding:2.5rem 1.25rem !important;}
+  .footer-grid{grid-template-columns:1fr 1fr !important;gap:2rem !important;}
   .footer-bottom{flex-direction:column;gap:0.75rem;text-align:center;}
 }
-
 @media(max-width:480px){
-  .hero-h1{font-size:2rem;}
+  .hero-h1{font-size:1.9rem !important;}
   .portfolio-grid{grid-template-columns:1fr !important;}
   .steps-grid{grid-template-columns:1fr !important;}
-  .results-grid{grid-template-columns:1fr 1fr !important;}
-  .hero-stats{gap:0.75rem;}
-  .stat-num{font-size:1.8rem;}
+  .footer-grid{grid-template-columns:1fr !important;}
+  .hero-stats{flex-wrap:wrap;gap:0.75rem;}
 }
+
 </style>
 </head>
 <body>
 
 <nav id="nav">
   <a href="#" class="logo">Xenstay<span>.</span>Homes</a>
-  <button class="nav-hamburger" onclick="toggleMobileMenu()" aria-label="Menu" style="display:none;background:none;border:none;padding:0;cursor:pointer;flex-direction:column;gap:5px;"><span style="display:block;height:2px;width:24px;background:var(--ink);border-radius:2px;"></span><span style="display:block;height:2px;width:24px;background:var(--ink);border-radius:2px;"></span><span style="display:block;height:2px;width:24px;background:var(--ink);border-radius:2px;"></span></button><div class="nav-links" id="nav-links">
+  <button class="nav-hamburger" onclick="toggleMobileMenu()" aria-label="Menu" style="display:none;background:none;border:none;padding:0;cursor:pointer;flex-direction:column;gap:5px;"><span style="display:block;height:2px;width:24px;background:var(--ink);border-radius:2px;"></span><span style="display:block;height:2px;width:24px;background:var(--ink);border-radius:2px;"></span><span style="display:block;height:2px;width:24px;background:var(--ink);border-radius:2px;"></span></button><div class="nav-links" id="mobile-nav" id="nav-links">
     <a href="#why">Why Us</a>
     <a href="#how">How It Works</a>
     <a href="#services">Services</a>
     <a href="#portfolio">Portfolio</a>
     <a href="#faq">FAQ</a>
   </div>
-  <a href="#lead" class="nav-btn">Get Free Analysis</a>
+  <button class="hamburger" id="hamburger-btn" onclick="document.getElementById('mobile-nav').style.cssText=document.getElementById('mobile-nav').style.display==='flex'?'display:none':'display:flex;flex-direction:column;position:absolute;top:70px;left:0;right:0;background:rgba(248,244,238,0.97);padding:1.5rem;gap:1.25rem;backdrop-filter:blur(10px);z-index:999;border-bottom:1px solid var(--bone)'" aria-label="Open menu"><span></span><span></span><span></span></button><a href="#lead" class="nav-btn">Get Free Analysis</a>
 </nav>
 
 <!-- HERO -->
@@ -1168,6 +1179,15 @@ window.addEventListener('resize',()=>{
   if(btn) btn.style.display = window.innerWidth<=768 ? 'flex' : 'none';
 });
 
+// Mobile nav
+if(window.innerWidth<=768){
+  const hb=document.getElementById('hamburger-btn');
+  if(hb)hb.style.display='flex';
+}
+window.addEventListener('resize',()=>{
+  const hb=document.getElementById('hamburger-btn');
+  if(hb)hb.style.display=window.innerWidth<=768?'flex':'none';
+});
 // Nav scroll effect
 const nav = document.getElementById('nav');
 window.addEventListener('scroll', () => {
