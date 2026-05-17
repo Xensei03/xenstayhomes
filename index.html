@@ -21,7 +21,7 @@
 }
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
 html{scroll-behavior:smooth;}
-body{font-family:'Outfit',sans-serif;background:var(--cream);color:var(--ink);overflow-x:clip;}
+body{font-family:'Outfit',sans-serif;background:var(--cream);color:var(--ink);overflow-x:hidden;}
 
 /* NAV */
 nav{
@@ -552,96 +552,44 @@ footer{
   .frow{grid-template-columns:1fr;}
 }
 
-/* ── MOBILE FIXES ── */
+
+/* ═══ MOBILE ═══ */
+.hamburger{display:none;flex-direction:column;gap:5px;background:none;border:none;cursor:pointer;padding:6px;flex-shrink:0;}
+.hamburger span{display:block;width:22px;height:2px;background:var(--ink);border-radius:2px;}
 @media(max-width:768px){
-  /* FIX OVERFLOW */
-  body{overflow-x:hidden;}
-  /* NAV */
-  .nav-links{display:none !important;}
-  .nav-btn{display:none !important;}
+  .nav-links,.nav-btn{display:none !important;}
   .hamburger{display:flex !important;}
   nav{padding:1rem 1.25rem;}
-  .hamburger{display:flex !important;}
-
-  /* HERO — stack, show mosaic below */
-  .hero{
-    display:block !important;
-    min-height:auto !important;
-  }
-  .hero-left{
-    padding:2.5rem 1.25rem 2rem;
-    min-height:auto;
-  }
-  .hero-h1{font-size:2.2rem !important;}
-  .hero-right{
-    display:grid !important;
-    grid-template-columns:1fr 1fr !important;
-    grid-template-rows:1fr 1fr !important;
-    height:240px;
-    gap:2px;
-  }
-  .hero-btns{flex-wrap:wrap;gap:0.75rem;}
-  .hero-stats{gap:1rem;}
-
-  /* FEE STRIP */
-  .fee-strip{flex-direction:column;gap:0.5rem;padding:1rem 1.25rem;text-align:center;}
-
-  /* SECTIONS */
-  section,#why,#how,#services,#portfolio,#about,#markets,#testimonials,#faq,#lead{
-    padding:3rem 1.25rem !important;
-  }
-  .section-title{font-size:1.8rem !important;}
-
-  /* WHY */
-  .why-grid{grid-template-columns:1fr !important;}
-
-  /* HOW */
-  .steps-grid{grid-template-columns:1fr 1fr !important;gap:1rem !important;}
-
-  /* RESULTS */
-  .results-grid{grid-template-columns:1fr 1fr !important;}
-  .result-num{font-size:2rem !important;}
-
-  /* SERVICES */
-  .services-grid{grid-template-columns:1fr !important;}
-
-  /* PORTFOLIO */
+  .nav-links.mobile-open{display:flex !important;flex-direction:column;position:fixed;top:64px;left:0;right:0;background:rgba(248,244,238,0.98);backdrop-filter:blur(12px);padding:1.5rem 1.25rem 2rem;gap:1.5rem;z-index:199;border-bottom:1px solid #EDE7DA;box-shadow:0 8px 24px rgba(0,0,0,0.08);}
+  .hero{display:block !important;min-height:auto !important;overflow:hidden;}
+  .hero-left{padding:2.5rem 1.25rem 2rem;width:100%;box-sizing:border-box;}
+  .hero-h1{font-size:2rem !important;line-height:1.15 !important;}
+  .hero-right{display:grid !important;grid-template-columns:1fr 1fr !important;grid-template-rows:140px 140px !important;gap:2px;width:100%;}
+  .hero-btns{flex-direction:column;gap:0.75rem;}
+  .hero-btns a,.hero-btns button{width:100%;text-align:center;box-sizing:border-box;}
+  .hero-stats{gap:1rem;flex-wrap:wrap;}
+  .fee-strip{flex-direction:column;gap:0.4rem;padding:1rem 1.25rem;text-align:center;}
+  section{padding:3rem 1.25rem !important;}
+  .section-title{font-size:1.7rem !important;}
+  .why-grid,.services-grid,.about-layout,.lead-layout,.faq-layout{grid-template-columns:1fr !important;}
+  .steps-grid,.results-grid{grid-template-columns:1fr 1fr !important;}
   .portfolio-grid{grid-template-columns:1fr 1fr !important;gap:0.75rem !important;}
-  .portfolio-img{height:130px !important;}
-
-  /* ABOUT */
-  .about-layout{grid-template-columns:1fr !important;gap:0 !important;}
-  .about-img{height:240px !important;order:-1;}
-
-  /* MARKETS */
-  .markets-grid{gap:0.5rem !important;}
-
-  /* LEAD */
-  .lead-layout{grid-template-columns:1fr !important;gap:2rem !important;}
-
-  /* FAQ */
-  .faq-layout{grid-template-columns:1fr !important;}
-
-  /* FOOTER */
-  footer{padding:2.5rem 1.25rem !important;}
+  .portfolio-img{height:120px !important;}
+  .about-img{height:220px !important;min-height:unset !important;}
   .footer-grid{grid-template-columns:1fr 1fr !important;gap:2rem !important;}
-  .footer-bottom{flex-direction:column;gap:0.75rem;text-align:center;}
+  .footer-bottom{flex-direction:column;gap:0.5rem;text-align:center;}
 }
 @media(max-width:480px){
-  .hero-h1{font-size:1.9rem !important;}
-  .portfolio-grid{grid-template-columns:1fr !important;}
-  .steps-grid{grid-template-columns:1fr !important;}
-  .footer-grid{grid-template-columns:1fr !important;}
-  .hero-stats{flex-wrap:wrap;gap:0.75rem;}
+  .hero-h1{font-size:1.75rem !important;}
+  .portfolio-grid,.steps-grid,.footer-grid{grid-template-columns:1fr !important;}
 }
-
 </style>
 </head>
 <body>
 
 <nav id="nav">
   <a href="#" class="logo">Xenstay<span>.</span>Homes</a>
-  <div class="nav-links" id="mobile-nav" id="nav-links">
+  <div class="nav-links" id="nav-links">
     <a href="#why">Why Us</a>
     <a href="#how">How It Works</a>
     <a href="#services">Services</a>
@@ -649,9 +597,8 @@ footer{
     <a href="#faq">FAQ</a>
   </div>
   <a href="#lead" class="nav-btn">Get Free Analysis</a>
-  <button class="hamburger" id="hamburger-btn" aria-label="Menu" onclick="toggleNav()">
-    <span></span><span></span><span></span>
-  </button>
+  
+  <button class="hamburger" id="hamburger-btn" aria-label="Menu" onclick="document.querySelector('.nav-links').classList.toggle('mobile-open')"><span></span><span></span><span></span></button>
 </nav>
 
 <!-- HERO -->
