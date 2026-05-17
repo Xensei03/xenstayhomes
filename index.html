@@ -528,9 +528,10 @@ footer{
 
 @media(max-width:1100px){
   .hero{grid-template-columns:1fr;}
-  .hero-right{display:none;}
+  .hero-right{display:grid;height:300px;grid-template-columns:1fr 1fr;grid-template-rows:150px 150px;gap:2px;}
   nav{padding:1.25rem 2rem;}
-  .nav-links{display:none;}
+  .nav-links{display:none !important;}
+  .hamburger{display:flex !important;}
   section,#why,#how,#results,#services,#portfolio,#markets,#testimonials,#faq,#lead,footer{padding-left:2rem;padding-right:2rem;}
   .why-grid,.portfolio-intro{grid-template-columns:1fr;}
   .steps{grid-template-columns:1fr 1fr;}
