@@ -1159,6 +1159,20 @@ function toggleFaq(item) {
   document.querySelectorAll('.faq-item.open').forEach(i => i.classList.remove('open'));
   if (!isOpen) item.classList.add('open');
 }
+
+// Fallback: ensure all reveals become visible after page load on mobile
+if (window.innerWidth <= 1100) {
+  setTimeout(() => {
+    document.querySelectorAll('.reveal:not(.visible)').forEach(el => el.classList.add('visible'));
+  }, 800);
+}
+window.addEventListener('resize', () => {
+  if (window.innerWidth <= 1100) {
+    setTimeout(() => {
+      document.querySelectorAll('.reveal:not(.visible)').forEach(el => el.classList.add('visible'));
+    }, 300);
+  }
+});
 </script>
 </body>
 </html>
