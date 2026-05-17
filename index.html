@@ -24,15 +24,6 @@ html{scroll-behavior:smooth;}
 body{font-family:'Outfit',sans-serif;background:var(--cream);color:var(--ink);overflow-x:clip;}
 
 /* NAV */
-.hamburger{
-  display:none !important;
-  flex-direction:column;gap:5px;
-  background:none;border:none;cursor:pointer;padding:4px;
-}
-.hamburger span{
-  display:block;width:24px;height:2px;
-  background:var(--ink);border-radius:2px;transition:all 0.3s;
-}
 nav{
   position:fixed;top:0;left:0;right:0;z-index:200;
   display:flex;align-items:center;justify-content:space-between;
@@ -40,6 +31,30 @@ nav{
   background:rgba(248,244,238,0.95);backdrop-filter:blur(16px);
   border-bottom:1px solid rgba(196,149,74,0.12);
   transition:all 0.3s;
+
+.hamburger{
+  display:none;
+  flex-direction:column;gap:5px;
+  background:none;border:none;cursor:pointer;padding:6px;
+  flex-shrink:0;
+}
+.hamburger span{
+  display:block;width:22px;height:2px;
+  background:var(--ink);border-radius:2px;
+}
+#mobile-nav.open{
+  display:flex !important;
+  flex-direction:column;
+  position:fixed;
+  top:68px;left:0;right:0;
+  background:rgba(248,244,238,0.98);
+  padding:1.5rem 1.25rem 2rem;
+  gap:1.5rem;
+  z-index:199;
+  border-bottom:1px solid var(--bone);
+  backdrop-filter:blur(12px);
+  box-shadow:0 8px 24px rgba(0,0,0,0.08);
+}
 }
 .logo{
   font-family:'Playfair Display',serif;
@@ -626,14 +641,17 @@ footer{
 
 <nav id="nav">
   <a href="#" class="logo">Xenstay<span>.</span>Homes</a>
-  <button class="nav-hamburger" onclick="toggleMobileMenu()" aria-label="Menu" style="display:none;background:none;border:none;padding:0;cursor:pointer;flex-direction:column;gap:5px;"><span style="display:block;height:2px;width:24px;background:var(--ink);border-radius:2px;"></span><span style="display:block;height:2px;width:24px;background:var(--ink);border-radius:2px;"></span><span style="display:block;height:2px;width:24px;background:var(--ink);border-radius:2px;"></span></button><div class="nav-links" id="mobile-nav" id="nav-links">
+  <div class="nav-links" id="mobile-nav" id="nav-links">
     <a href="#why">Why Us</a>
     <a href="#how">How It Works</a>
     <a href="#services">Services</a>
     <a href="#portfolio">Portfolio</a>
     <a href="#faq">FAQ</a>
   </div>
-  <button class="hamburger" id="hamburger-btn" onclick="document.getElementById('mobile-nav').style.cssText=document.getElementById('mobile-nav').style.display==='flex'?'display:none':'display:flex;flex-direction:column;position:absolute;top:70px;left:0;right:0;background:rgba(248,244,238,0.97);padding:1.5rem;gap:1.25rem;backdrop-filter:blur(10px);z-index:999;border-bottom:1px solid var(--bone)'" aria-label="Open menu"><span></span><span></span><span></span></button><a href="#lead" class="nav-btn">Get Free Analysis</a>
+  <a href="#lead" class="nav-btn">Get Free Analysis</a>
+  <button class="hamburger" id="hamburger-btn" aria-label="Menu" onclick="toggleNav()">
+    <span></span><span></span><span></span>
+  </button>
 </nav>
 
 <!-- HERO -->
@@ -1153,44 +1171,11 @@ footer{
 </footer>
 
 <script>
-function toggleMobileMenu(){
-  const links = document.getElementById('nav-links');
-  const btn = document.querySelector('.nav-hamburger');
-  if(links.style.display==='flex'){
-    links.style.display='none';
-    btn.style.opacity='1';
-  } else {
-    links.style.display='flex';
-    links.style.flexDirection='column';
-    links.style.position='absolute';
-    links.style.top='60px';
-    links.style.left='0';
-    links.style.right='0';
-    links.style.background='rgba(248,244,238,0.98)';
-    links.style.padding='1rem 1.25rem 1.5rem';
-    links.style.gap='1.25rem';
-    links.style.zIndex='1000';
-    links.style.backdropFilter='blur(10px)';
-  }
 }
 // Show hamburger on mobile
 if(window.innerWidth<=768){
-  document.querySelector('.nav-hamburger').style.display='flex';
-}
-window.addEventListener('resize',()=>{
-  const btn = document.querySelector('.nav-hamburger');
-  if(btn) btn.style.display = window.innerWidth<=768 ? 'flex' : 'none';
-});
-
-// Mobile nav
-if(window.innerWidth<=768){
-  const hb=document.getElementById('hamburger-btn');
-  if(hb)hb.style.display='flex';
-}
-window.addEventListener('resize',()=>{
-  const hb=document.getElementById('hamburger-btn');
-  if(hb)hb.style.display=window.innerWidth<=768?'flex':'none';
-});
+  document.querySelector('window.addEventListener('resize',()=>{
+  const btn = document.querySelector('}
 // Nav scroll effect
 const nav = document.getElementById('nav');
 window.addEventListener('scroll', () => {
