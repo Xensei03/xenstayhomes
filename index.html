@@ -519,7 +519,7 @@ footer{
 /* ANIMATIONS */
 @keyframes up{from{opacity:0;transform:translateY(20px);}to{opacity:1;transform:none;}}
 @keyframes fadeIn{from{opacity:0;}to{opacity:1;}}
-.reveal{opacity:0;transform:translateY(28px);transition:opacity 0.65s,transform 0.65s;}
+.reveal{opacity:1;transform:none;transition:opacity 0.65s,transform 0.65s;}
 .reveal.visible{opacity:1;transform:none;}
 .reveal-d1{transition-delay:0.1s;}
 .reveal-d2{transition-delay:0.2s;}
@@ -1160,19 +1160,7 @@ function toggleFaq(item) {
   if (!isOpen) item.classList.add('open');
 }
 
-// Fallback: ensure all reveals become visible after page load on mobile
-if (window.innerWidth <= 1100) {
-  setTimeout(() => {
-    document.querySelectorAll('.reveal:not(.visible)').forEach(el => el.classList.add('visible'));
-  }, 800);
-}
-window.addEventListener('resize', () => {
-  if (window.innerWidth <= 1100) {
-    setTimeout(() => {
-      document.querySelectorAll('.reveal:not(.visible)').forEach(el => el.classList.add('visible'));
-    }, 300);
-  }
-});
+
 </script>
 </body>
 </html>
