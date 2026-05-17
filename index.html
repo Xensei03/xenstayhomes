@@ -21,11 +21,11 @@
 }
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
 html{scroll-behavior:smooth;}
-body{font-family:'Outfit',sans-serif;background:var(--cream);color:var(--ink);overflow-x:hidden;}
+body{font-family:'Outfit',sans-serif;background:var(--cream);color:var(--ink);overflow-x:clip;}
 
 /* NAV */
 .hamburger{
-  display:none;
+  display:none !important;
   flex-direction:column;gap:5px;
   background:none;border:none;cursor:pointer;padding:4px;
 }
@@ -539,9 +539,12 @@ footer{
 
 /* ── MOBILE FIXES ── */
 @media(max-width:768px){
+  /* FIX OVERFLOW */
+  body{overflow-x:hidden;}
   /* NAV */
   .nav-links{display:none !important;}
   .nav-btn{display:none !important;}
+  .hamburger{display:flex !important;}
   nav{padding:1rem 1.25rem;}
   .hamburger{display:flex !important;}
 
