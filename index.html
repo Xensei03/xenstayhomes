@@ -29,6 +29,8 @@
   "name": "XenStays LLC",
   "url": "https://xenstayhomes.com/",
   "description": "Short-term and long-term rental property management serving the greater Sacramento, CA area.",
+  "telephone": "+1-916-915-3332",
+  "email": "Byron@realtorphilosophy.com",
   "areaServed": {
     "@type": "City",
     "name": "Sacramento"
@@ -107,6 +109,12 @@ nav{
   cursor:pointer;transition:all 0.2s;text-decoration:none;
 }
 .nav-btn:hover{background:var(--ink);}
+.nav-phone-desktop{
+  font-size:0.8rem;font-weight:500;color:var(--ink);
+  text-decoration:none;letter-spacing:0.02em;white-space:nowrap;
+}
+.nav-phone-desktop:hover{color:var(--gold);}
+.nav-phone{display:none;}
 
 /* HERO */
 .hero{
@@ -570,8 +578,9 @@ footer{
 
 @media(max-width:1100px){
   nav{padding:1.25rem 2rem;}
-  .nav-links,.nav-btn{display:none;}
+  .nav-links,.nav-btn,.nav-phone-desktop{display:none;}
   .hamburger{display:flex;}
+  .nav-phone{display:block;font-size:0.85rem;font-weight:600;color:var(--gold);padding-top:0.25rem;border-top:1px solid var(--bone);margin-top:0.25rem;}
   .hero{grid-template-columns:1fr;}
   .hero-right{display:grid;height:300px;grid-template-columns:1fr 1fr;grid-template-rows:150px 150px;gap:2px;}
   section,footer{padding-left:2rem;padding-right:2rem;}
@@ -623,7 +632,9 @@ footer{
     <a href="#services">Services</a>
     <a href="#portfolio">Portfolio</a>
     <a href="#faq">FAQ</a>
+    <a href="tel:+19169153332" class="nav-phone">(916) 915-3332</a>
   </div>
+  <a href="tel:+19169153332" class="nav-phone-desktop">(916) 915-3332</a>
   <a href="#lead" class="nav-btn">Get Free Analysis</a>
   <button class="hamburger" id="hamburger" aria-label="Open menu" aria-expanded="false" aria-controls="nav-links"><span></span><span></span><span></span></button>
 </nav>
@@ -1144,6 +1155,8 @@ footer{
     <a href="#portfolio">Portfolio</a>
     <a href="#faq">FAQ</a>
     <a href="#lead">Get Analysis</a>
+    <a href="tel:+19169153332">(916) 915-3332</a>
+    <a href="mailto:Byron@realtorphilosophy.com">Byron@realtorphilosophy.com</a>
   </div>
   <p class="footer-copy">© 2026 XenStays LLC · xenstayhomes.com</p>
 </footer>
@@ -1240,7 +1253,7 @@ leadForm.addEventListener('submit', async (e) => {
     leadStatus.style.color = '#2E5D4B';
     leadStatus.style.display = 'block';
   } catch (err) {
-    leadStatus.textContent = 'Something went wrong. Please email us directly or try again.';
+    leadStatus.innerHTML = 'Something went wrong. Please call <a href="tel:+19169153332" style="color:inherit;text-decoration:underline;">(916) 915-3332</a> or email <a href="mailto:Byron@realtorphilosophy.com" style="color:inherit;text-decoration:underline;">Byron@realtorphilosophy.com</a> directly.';
     leadStatus.style.color = '#B33A3A';
     leadStatus.style.display = 'block';
   } finally {
