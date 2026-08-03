@@ -64,6 +64,11 @@
   --white: #FFFFFF;
   --green: #2E5D4B;
   --green-light: #3D7A63;
+  /* shape + elevation: one consistent rounded language, one shadow tier */
+  --r-sm: 8px;
+  --r-md: 14px;
+  --r-full: 999px;
+  --shadow: 0 0 0 1px rgba(14,14,13,0.03), 0 2px 8px rgba(14,14,13,0.05), 0 6px 16px rgba(14,14,13,0.07);
 }
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
 html{scroll-behavior:smooth;}
@@ -78,14 +83,14 @@ select:focus-visible,textarea:focus-visible{
   html{scroll-behavior:auto;}
   *,*::before,*::after{animation-duration:0.01ms !important;animation-iteration-count:1 !important;transition-duration:0.01ms !important;}
 }
-body{font-family:'Outfit',sans-serif;background:var(--cream);color:var(--ink);overflow-x:hidden;}
+body{font-family:'Outfit',sans-serif;background:var(--white);color:var(--ink);overflow-x:hidden;}
 
 /* NAV */
 nav{
   position:fixed;top:0;left:0;right:0;z-index:200;
   display:flex;align-items:center;justify-content:space-between;
   padding:1.4rem 4rem;
-  background:rgba(248,244,238,0.95);backdrop-filter:blur(16px);
+  background:rgba(255,255,255,0.92);backdrop-filter:blur(16px);
   border-bottom:1px solid rgba(196,149,74,0.12);
   transition:all 0.3s;
 }
@@ -105,7 +110,7 @@ nav{
 .nav-btn{
   font-size:0.7rem;font-weight:600;letter-spacing:0.15em;
   text-transform:uppercase;background:var(--gold);color:var(--white);
-  border:none;padding:0.75rem 1.75rem;border-radius:3px;
+  border:none;padding:0.75rem 1.75rem;border-radius:var(--r-full);
   cursor:pointer;transition:all 0.2s;text-decoration:none;
 }
 .nav-btn:hover{background:var(--ink);}
@@ -141,15 +146,26 @@ nav{
 .hero-tag::before{content:'';width:28px;height:1px;background:var(--gold);}
 .hero-h1{
   font-family:'Playfair Display',serif;
-  font-size:4.2rem;font-weight:400;line-height:1.1;
-  color:var(--white);margin-bottom:1.75rem;
+  font-size:3.1rem;font-weight:400;line-height:1.18;
+  color:var(--white);margin-bottom:2.25rem;max-width:520px;
   opacity:0;animation:up 0.7s 0.4s forwards;
 }
 .hero-h1 em{color:var(--gold-soft);font-style:italic;}
-.hero-h1 .hero-pct{
-  font-size:5rem;font-style:italic;color:var(--gold);
-  display:block;line-height:1;
+.hero-stat{
+  display:flex;align-items:flex-end;gap:1.5rem;margin-bottom:2.25rem;
+  opacity:0;animation:up 0.7s 0.5s forwards;
 }
+.hero-stat-num{
+  font-family:'Playfair Display',serif;font-style:italic;font-weight:700;
+  font-size:8rem;line-height:0.8;color:var(--gold);white-space:nowrap;
+}
+.hero-stat-num sup{font-size:0.36em;font-style:normal;top:-0.5em;}
+.hero-stat-copy{display:flex;flex-direction:column;gap:0.4rem;padding-bottom:1.1rem;}
+.hero-stat-label{
+  font-size:0.95rem;font-weight:600;color:var(--white);letter-spacing:0.01em;
+}
+.hero-stat-compare{font-size:0.82rem;color:rgba(255,255,255,0.58);}
+.hero-stat-compare strong{color:var(--gold-soft);font-weight:600;}
 .hero-sub{
   font-size:1rem;font-weight:300;line-height:1.85;
   color:rgba(255,255,255,0.72);max-width:440px;margin-bottom:3rem;
@@ -163,14 +179,14 @@ nav{
 .btn-gold{
   font-size:0.72rem;font-weight:600;letter-spacing:0.18em;text-transform:uppercase;
   background:var(--gold);color:var(--white);border:2px solid var(--gold);
-  padding:1rem 2.25rem;border-radius:3px;
+  padding:1rem 2.25rem;border-radius:var(--r-full);
   text-decoration:none;transition:all 0.25s;cursor:pointer;
 }
 .btn-gold:hover{background:transparent;color:var(--gold);}
 .btn-ghost{
   font-size:0.72rem;font-weight:600;letter-spacing:0.18em;text-transform:uppercase;
   background:transparent;color:rgba(255,255,255,0.7);border:2px solid rgba(255,255,255,0.2);
-  padding:1rem 2.25rem;border-radius:3px;
+  padding:1rem 2.25rem;border-radius:var(--r-full);
   text-decoration:none;transition:all 0.25s;cursor:pointer;
 }
 .btn-ghost:hover{border-color:rgba(255,255,255,0.6);color:var(--white);}
@@ -188,30 +204,29 @@ nav{
   text-transform:uppercase;color:rgba(255,255,255,0.62);margin-top:3px;
 }
 .hero-right{
-  position:relative;overflow:hidden;
+  position:relative;overflow:hidden;margin:14px 14px 14px 0;border-radius:var(--r-md);
   opacity:0;animation:fadeIn 1.2s 0.5s forwards;
 }
 .hero-right::before{
-  content:'';position:absolute;left:0;top:0;bottom:0;width:80px;
-  background:linear-gradient(to right,var(--deep),transparent);z-index:2;
+  content:'';position:absolute;left:0;top:0;right:0;height:140px;
+  background:linear-gradient(to bottom,rgba(14,14,13,0.55),transparent);z-index:2;
 }
 .hero-right::after{
-  content:'';position:absolute;bottom:0;left:0;right:0;height:120px;
-  background:linear-gradient(to top,var(--deep),transparent);z-index:2;
+  content:'';position:absolute;bottom:0;left:0;right:0;height:180px;
+  background:linear-gradient(to top,rgba(14,14,13,0.75),transparent);z-index:2;
 }
-.hero-mosaic{
-  position:absolute;inset:0;
-  display:grid;grid-template-columns:1fr 1fr;grid-template-rows:1fr 1fr;gap:3px;
+.hero-photo{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;}
+.hero-photo-caption{
+  position:absolute;bottom:2rem;left:2rem;right:2rem;z-index:3;
+  display:flex;align-items:baseline;gap:0.6rem;
 }
-.mosaic-cell{display:flex;align-items:flex-end;padding:1.25rem;}
-.mc1{background:linear-gradient(160deg,#4A5E3A 0%,#2E3D24 100%);}
-.mc2{background:linear-gradient(160deg,#3D4A6B 0%,#252E4A 100%);}
-.mc3{background:linear-gradient(160deg,#6B4A3D 0%,#4A2E25 100%);}
-.mc4{background:linear-gradient(160deg,#4A6B5D 0%,#2E4A3D 100%);}
-.mc-label{
-  font-family:'Playfair Display',serif;
-  font-size:0.9rem;font-style:italic;color:rgba(255,255,255,0.65);
-  line-height:1.4;
+.hero-photo-caption .name{
+  font-family:'Playfair Display',serif;font-style:italic;
+  font-size:1.35rem;color:var(--white);
+}
+.hero-photo-caption .loc{
+  font-size:0.7rem;font-weight:500;letter-spacing:0.12em;text-transform:uppercase;
+  color:rgba(255,255,255,0.65);
 }
 
 /* FEE CALLOUT STRIP */
@@ -229,7 +244,7 @@ nav{
 .fee-strip-divider{width:1px;height:20px;background:rgba(255,255,255,0.35);}
 
 /* WHY SECTION */
-#why{background:var(--white);padding:7rem 5rem;}
+#why{background:var(--white);padding:5rem 5rem;}
 .why-grid{
   display:grid;grid-template-columns:1fr 1.4fr;gap:6rem;align-items:center;
   margin-top:4rem;
@@ -259,7 +274,7 @@ nav{
 .why-item-text span{font-size:0.83rem;color:var(--muted);font-weight:300;line-height:1.6;}
 
 /* FEE COMPARISON */
-.fee-compare{background:var(--cream);border-radius:12px;padding:2.5rem;border:1px solid var(--bone);}
+.fee-compare{background:var(--cream);border-radius:var(--r-md);padding:2.5rem;border:1px solid var(--bone);box-shadow:var(--shadow);}
 .fee-compare-title{
   font-size:0.7rem;font-weight:600;letter-spacing:0.2em;text-transform:uppercase;
   color:var(--muted);margin-bottom:1.75rem;
@@ -282,7 +297,7 @@ nav{
 .fee-note strong{color:var(--green);font-weight:600;}
 
 /* HOW IT WORKS */
-#how{background:var(--deep);padding:7rem 5rem;}
+#how{background:var(--deep);padding:5rem 5rem;}
 #how .section-tag{color:var(--gold-soft);}
 #how .section-title{color:var(--white);}
 .steps{
@@ -315,7 +330,7 @@ nav{
 }
 
 /* RESULTS */
-#results{background:var(--ink);padding:6rem 5rem;}
+#results{background:var(--ink);padding:5rem 5rem;}
 .results-grid{
   display:grid;grid-template-columns:repeat(4,1fr);gap:1px;
   background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.06);
@@ -341,19 +356,19 @@ nav{
 }
 
 /* SERVICES */
-#services{background:var(--cream);padding:7rem 5rem;}
+#services{background:var(--cream);padding:5rem 5rem;}
 .services-grid{
   display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;
   margin-top:4rem;
 }
 .service-card{
-  background:var(--white);border-radius:8px;
+  background:var(--white);border-radius:var(--r-md);
   padding:2.5rem;border:1px solid var(--bone);
-  transition:border-color 0.25s,transform 0.25s;
+  transition:border-color 0.25s,transform 0.25s,box-shadow 0.25s;
 }
-.service-card:hover{border-color:var(--gold);transform:translateY(-4px);}
+.service-card:hover{border-color:var(--gold);transform:translateY(-4px);box-shadow:var(--shadow);}
 .service-icon{
-  width:44px;height:44px;border-radius:8px;
+  width:44px;height:44px;border-radius:var(--r-sm);
   background:rgba(196,149,74,0.1);
   display:flex;align-items:center;justify-content:center;
   margin-bottom:1.5rem;
@@ -372,7 +387,7 @@ nav{
 .service-included::before{content:'✓';}
 
 /* PORTFOLIO PROOF */
-#portfolio{background:var(--bone);padding:7rem 5rem;}
+#portfolio{background:var(--bone);padding:5rem 5rem;}
 .portfolio-intro{
   display:grid;grid-template-columns:1fr 1fr;gap:4rem;
   align-items:center;margin-bottom:4rem;
@@ -381,11 +396,19 @@ nav{
   display:grid;grid-template-columns:repeat(4,1fr);gap:1rem;
 }
 .portfolio-card{
-  background:var(--white);border-radius:6px;overflow:hidden;
-  transition:transform 0.3s;
+  background:var(--white);border-radius:var(--r-md);overflow:hidden;
+  transition:transform 0.25s,box-shadow 0.25s;
 }
-.portfolio-card:hover{transform:translateY(-4px);}
-.portfolio-img{height:120px;}
+.portfolio-card:hover{transform:translateY(-4px);box-shadow:var(--shadow);}
+.portfolio-img{position:relative;}
+.portfolio-badge{
+  position:absolute;top:0.6rem;left:0.6rem;z-index:1;
+  background:var(--white);color:var(--ink);
+  font-size:0.62rem;font-weight:600;letter-spacing:0.02em;
+  padding:0.35rem 0.65rem;border-radius:var(--r-full);
+  box-shadow:var(--shadow);
+}
+.portfolio-img{height:200px;}
 .pi1{background:linear-gradient(135deg,#4A5E3A,#2E3D24);}
 .pi2{background:linear-gradient(135deg,#3D4A6B,#252E4A);}
 .pi3{background:linear-gradient(135deg,#6B4A3D,#4A2E25);}
@@ -405,19 +428,19 @@ nav{
 .portfolio-adr{font-size:0.75rem;color:var(--muted);margin-top:0.35rem;}
 
 /* MARKETS */
-#markets{background:var(--white);padding:6rem 5rem;}
+#markets{background:var(--white);padding:5rem 5rem;}
 .markets-grid{
   display:grid;grid-template-columns:repeat(5,1fr);gap:1rem;
   margin-top:3.5rem;
 }
 .market-pill{
-  background:var(--cream);border:1px solid var(--bone);border-radius:40px;
+  background:var(--cream);border:1px solid var(--bone);border-radius:var(--r-full);
   padding:0.85rem 1.25rem;text-align:center;
   font-size:0.8rem;font-weight:500;color:var(--ink);
   transition:all 0.2s;
 }
 .market-pill:hover{background:var(--gold);color:var(--white);border-color:var(--gold);}
-.market-pill.highlight{background:var(--green);color:var(--white);border-color:var(--green);}
+.market-pill.highlight{background:var(--gold);color:var(--white);border-color:var(--gold);}
 .markets-note{
   text-align:center;margin-top:2rem;
   font-size:0.85rem;font-weight:300;color:var(--muted);
@@ -425,13 +448,20 @@ nav{
 .markets-note strong{color:var(--green);font-weight:600;}
 
 /* TESTIMONIALS */
-#testimonials{background:var(--cream);padding:7rem 5rem;}
+#testimonials{background:var(--cream);padding:5rem 5rem;}
 .testi-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.75rem;margin-top:4rem;}
 .testi{
-  background:var(--white);border-radius:8px;padding:2.5rem;
+  background:var(--white);border-radius:var(--r-md);padding:2.5rem;
   border:1px solid var(--bone);position:relative;
+  transition:box-shadow 0.25s,transform 0.25s;
 }
-.testi-stars{color:var(--gold);font-size:0.85rem;letter-spacing:2px;margin-bottom:1.25rem;}
+.testi:hover{box-shadow:var(--shadow);transform:translateY(-4px);}
+.testi-quote{
+  position:absolute;top:1.5rem;right:1.75rem;
+  font-family:'Playfair Display',serif;font-size:3.5rem;font-style:italic;
+  color:var(--bone);line-height:1;pointer-events:none;
+}
+.testi-stars{color:var(--ink);font-size:0.8rem;letter-spacing:2px;margin-bottom:1.25rem;}
 .testi-text{
   font-family:'Playfair Display',serif;
   font-size:1rem;font-style:italic;font-weight:400;
@@ -441,7 +471,7 @@ nav{
 .testi-loc{font-size:0.75rem;color:var(--muted);margin-top:2px;}
 
 /* FAQ */
-#faq{background:var(--white);padding:7rem 5rem;}
+#faq{background:var(--white);padding:5rem 5rem;}
 .faq-grid{display:grid;grid-template-columns:1fr 1fr;gap:4rem;margin-top:4rem;}
 .faq-item{padding-bottom:2rem;border-bottom:1px solid var(--bone);}
 .faq-q{
@@ -466,7 +496,7 @@ nav{
 
 /* LEAD CAPTURE */
 #lead{
-  background:var(--green);
+  background:var(--deep);
   padding:7rem 5rem;
   display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:center;
 }
@@ -474,7 +504,7 @@ nav{
   font-family:'Playfair Display',serif;
   font-size:3rem;font-weight:400;color:var(--white);line-height:1.2;
 }
-.lead-title em{font-style:italic;}
+.lead-title em{font-style:italic;color:var(--gold-soft);}
 .lead-tag{
   font-size:0.65rem;font-weight:600;letter-spacing:0.3em;text-transform:uppercase;
   color:rgba(255,255,255,0.72);margin-bottom:1rem;display:block;
@@ -496,7 +526,7 @@ nav{
   background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20' fill='white'%3E%3Cpath d='M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z'/%3E%3C/svg%3E");
   background-size:12px;background-repeat:no-repeat;background-position:center;
 }
-.lead-form{background:var(--white);border-radius:10px;padding:2.5rem;}
+.lead-form{background:var(--white);border-radius:var(--r-md);padding:2.5rem;box-shadow:var(--shadow);}
 .lead-form-title{
   font-family:'Playfair Display',serif;
   font-size:1.4rem;font-weight:400;color:var(--ink);margin-bottom:1.75rem;
@@ -510,16 +540,16 @@ nav{
 .finput,.fselect,.ftextarea{
   width:100%;font-family:'Outfit',sans-serif;font-size:0.88rem;
   color:var(--ink);background:var(--cream);
-  border:1.5px solid var(--bone);border-radius:5px;
+  border:1.5px solid var(--bone);border-radius:var(--r-sm);
   padding:0.8rem 1rem;outline:none;transition:border-color 0.2s;
 }
-.finput:focus,.fselect:focus,.ftextarea:focus{border-color:var(--green);}
+.finput:focus,.fselect:focus,.ftextarea:focus{border-color:var(--gold);}
 .ftextarea{height:90px;resize:vertical;}
 .fsubmit{
   width:100%;font-family:'Outfit',sans-serif;
   font-size:0.75rem;font-weight:600;letter-spacing:0.18em;text-transform:uppercase;
-  background:var(--green);color:var(--white);border:none;
-  padding:1.1rem;border-radius:5px;cursor:pointer;transition:all 0.25s;
+  background:var(--gold);color:var(--white);border:none;
+  padding:1.1rem;border-radius:var(--r-full);cursor:pointer;transition:all 0.25s;
 }
 .fsubmit:hover{background:var(--ink);}
 
@@ -582,7 +612,8 @@ footer{
   .hamburger{display:flex;}
   .nav-phone{display:block;font-size:0.85rem;font-weight:600;color:var(--gold);padding-top:0.25rem;border-top:1px solid var(--bone);margin-top:0.25rem;}
   .hero{grid-template-columns:1fr;}
-  .hero-right{display:grid;height:300px;grid-template-columns:1fr 1fr;grid-template-rows:150px 150px;gap:2px;}
+  .hero-right{height:340px;order:-1;margin:0;border-radius:0;}
+  .hero-stat-num{font-size:6rem;}
   section,footer{padding-left:2rem;padding-right:2rem;}
   .why-grid,.portfolio-intro,.faq-grid,#lead{grid-template-columns:1fr;}
   .steps{grid-template-columns:1fr 1fr;}
@@ -596,9 +627,11 @@ footer{
   nav{padding:1rem 1.25rem;}
   .hero{min-height:auto;}
   .hero-left{padding:2.5rem 1.25rem 2rem;}
-  .hero-h1{font-size:2rem;line-height:1.15;}
-  .hero-h1 .hero-pct{font-size:2.6rem;}
-  .hero-right{height:280px;grid-template-rows:140px 140px;}
+  .hero-h1{font-size:1.9rem;line-height:1.2;}
+  .hero-stat-num{font-size:4.5rem;}
+  .hero-stat-label{font-size:0.85rem;}
+  .hero-right{height:220px;}
+  .hero-photo-caption .name{font-size:1.1rem;}
   .hero-ctas{flex-direction:column;gap:0.75rem;}
   .hero-ctas .btn-gold,.hero-ctas .btn-ghost{width:100%;text-align:center;}
   .hero-proof{gap:1.5rem;}
@@ -614,8 +647,8 @@ footer{
 }
 
 @media(max-width:480px){
-  .hero-h1{font-size:1.75rem;}
-  .hero-h1 .hero-pct{font-size:2.2rem;}
+  .hero-h1{font-size:1.6rem;}
+  .hero-stat-num{font-size:3.6rem;}
   .hero-proof{gap:1rem;}
   .portfolio-grid,.steps,.results-grid{grid-template-columns:1fr;}
 }
@@ -643,11 +676,14 @@ footer{
 <div class="hero">
   <div class="hero-left">
     <p class="hero-tag">California Property Management</p>
-    <h1 class="hero-h1">
-      Full service.<br>
-      <span class="hero-pct">Only 10%.</span>
-      Industry charges <em>20–30%.</em>
-    </h1>
+    <h1 class="hero-h1">Full-service management. <em>A fraction of the fee.</em></h1>
+    <div class="hero-stat">
+      <span class="hero-stat-num">10<sup>%</sup></span>
+      <div class="hero-stat-copy">
+        <span class="hero-stat-label">Our flat management fee</span>
+        <span class="hero-stat-compare">Industry charges <strong>20–30%</strong></span>
+      </div>
+    </div>
     <p class="hero-sub">
       Xenstay Homes manages short-term and long-term rentals across California with <strong>full-service management at half the industry rate.</strong> More income for you, zero hassle.
     </p>
@@ -669,17 +705,16 @@ footer{
         <div class="proof-label">Annual gross managed</div>
       </div>
       <div>
-        <div class="proof-num">10%</div>
-        <div class="proof-label">Our flat fee</div>
+        <div class="proof-num">$0</div>
+        <div class="proof-label">Setup fees</div>
       </div>
     </div>
   </div>
   <div class="hero-right">
-    <div class="hero-mosaic">
-      <div class="mosaic-cell" style="background:none;overflow:hidden;position:relative;"><img src="images_xenstay/skyline.jpg" style="width:100%;height:100%;object-fit:cover;position:absolute;inset:0;" alt="Skyline Serenity Retreat vacation rental in Auburn, California" width="800" height="791" decoding="async" fetchpriority="high"><p class="mc-label" style="position:relative;z-index:1;">Skyline Serenity<br>Auburn, CA</p></div>
-      <div class="mosaic-cell" style="background:none;overflow:hidden;position:relative;"><img src="images_xenstay/puntaMita.jpg" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;" alt="Punta Mita Surfers Paradise beach rental in Punta Negra, Mexico" width="770" height="800" decoding="async" fetchpriority="high"><p class="mc-label" style="position:relative;z-index:1;">Punta Mita<br>Mexico</p></div>
-      <div class="mosaic-cell" style="background:none;overflow:hidden;position:relative;"><img src="images_xenstay/beautiful4br.jpg" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;" alt="Beautiful 4-bedroom short-term rental in West Sacramento, California" width="730" height="800" decoding="async" fetchpriority="high"><p class="mc-label" style="position:relative;z-index:1;">Beautiful 4BR<br>West Sacramento</p></div>
-      <div class="mosaic-cell" style="background:none;overflow:hidden;position:relative;"><img src="images_xenstay/lakeNatoma.jpg" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;" alt="Lake Natoma Retreat vacation rental in Orangevale, California" width="760" height="800" decoding="async" fetchpriority="high"><p class="mc-label" style="position:relative;z-index:1;">Lake Natoma<br>Orangevale</p></div>
+    <img class="hero-photo" src="images_xenstay/skyline.jpg" alt="Skyline Serenity Retreat, a Xenstay Homes managed property in Auburn, California" width="800" height="791" decoding="async" fetchpriority="high">
+    <div class="hero-photo-caption">
+      <span class="name">Skyline Serenity Retreat</span>
+      <span class="loc">Auburn, CA</span>
     </div>
   </div>
 </div>
@@ -888,7 +923,7 @@ footer{
       <h2 class="section-title">Properties we <em>already</em> manage</h2>
       <p class="section-sub">Every property below is actively managed by Xenstay Homes today — proof of our operational capability across diverse markets and property types.</p>
     </div>
-    <div class="reveal reveal-d1" style="background:var(--white);border-radius:10px;padding:2rem;border:1px solid var(--bone);">
+    <div class="reveal reveal-d1" style="background:var(--white);border-radius:var(--r-md);padding:2rem;border:1px solid var(--bone);box-shadow:var(--shadow);">
       <p style="font-size:0.65rem;font-weight:600;letter-spacing:0.2em;text-transform:uppercase;color:var(--muted);margin-bottom:1.25rem;">Portfolio at a glance</p>
       <div style="display:flex;flex-direction:column;gap:0.85rem;">
         <div style="display:flex;justify-content:space-between;font-size:0.85rem;padding-bottom:0.85rem;border-bottom:1px solid var(--bone);">
@@ -911,7 +946,7 @@ footer{
   </div>
   <div class="portfolio-grid">
     <div class="portfolio-card reveal">
-      <div class="portfolio-img" style="overflow:hidden;"><img src="images_xenstay/skyline.jpg" style="width:100%;height:100%;object-fit:cover;display:block;" alt="Skyline Serenity Retreat, a managed short-term rental in Auburn, CA" width="800" height="791" loading="lazy" decoding="async"></div>
+      <div class="portfolio-img" style="overflow:hidden;"><span class="portfolio-badge">4.9★ Guest favorite</span><img src="images_xenstay/skyline.jpg" style="width:100%;height:100%;object-fit:cover;display:block;" alt="Skyline Serenity Retreat, a managed short-term rental in Auburn, CA" width="800" height="791" loading="lazy" decoding="async"></div>
       <div class="portfolio-info">
         <p class="portfolio-city">Auburn, CA</p>
         <p class="portfolio-name">Skyline Serenity Retreat</p>
@@ -919,7 +954,7 @@ footer{
       </div>
     </div>
     <div class="portfolio-card reveal reveal-d1">
-      <div class="portfolio-img" style="overflow:hidden;"><img src="images_xenstay/puntaMita.jpg" style="width:100%;height:100%;object-fit:cover;display:block;" alt="Punta Mita Surfers Paradise, a managed short-term rental in Punta Negra, Mexico" width="770" height="800" loading="lazy" decoding="async"></div>
+      <div class="portfolio-img" style="overflow:hidden;"><span class="portfolio-badge">4.96★ Guest favorite</span><img src="images_xenstay/puntaMita.jpg" style="width:100%;height:100%;object-fit:cover;display:block;" alt="Punta Mita Surfers Paradise, a managed short-term rental in Punta Negra, Mexico" width="770" height="800" loading="lazy" decoding="async"></div>
       <div class="portfolio-info">
         <p class="portfolio-city">Punta Negra, Mexico</p>
         <p class="portfolio-name">Punta Mita Surfers Paradise</p>
@@ -927,7 +962,7 @@ footer{
       </div>
     </div>
     <div class="portfolio-card reveal reveal-d2">
-      <div class="portfolio-img" style="overflow:hidden;"><img src="images_xenstay/beautiful4br.jpg" style="width:100%;height:100%;object-fit:cover;display:block;" alt="Beautiful 4BR downtown home, a managed short-term rental in West Sacramento, CA" width="730" height="800" loading="lazy" decoding="async"></div>
+      <div class="portfolio-img" style="overflow:hidden;"><span class="portfolio-badge">$45K annual</span><img src="images_xenstay/beautiful4br.jpg" style="width:100%;height:100%;object-fit:cover;display:block;" alt="Beautiful 4BR downtown home, a managed short-term rental in West Sacramento, CA" width="730" height="800" loading="lazy" decoding="async"></div>
       <div class="portfolio-info">
         <p class="portfolio-city">West Sacramento, CA</p>
         <p class="portfolio-name">Beautiful 4BR Downtown Home</p>
@@ -935,7 +970,7 @@ footer{
       </div>
     </div>
     <div class="portfolio-card reveal reveal-d3">
-      <div class="portfolio-img" style="overflow:hidden;"><img src="images_xenstay/lakeNatoma.jpg" style="width:100%;height:100%;object-fit:cover;display:block;" alt="Lake Natoma Retreat, a managed short-term rental in Orangevale, CA" width="760" height="800" loading="lazy" decoding="async"></div>
+      <div class="portfolio-img" style="overflow:hidden;"><span class="portfolio-badge">45 bookings</span><img src="images_xenstay/lakeNatoma.jpg" style="width:100%;height:100%;object-fit:cover;display:block;" alt="Lake Natoma Retreat, a managed short-term rental in Orangevale, CA" width="760" height="800" loading="lazy" decoding="async"></div>
       <div class="portfolio-info">
         <p class="portfolio-city">Orangevale, CA</p>
         <p class="portfolio-name">Lake Natoma Retreat</p>
@@ -943,7 +978,7 @@ footer{
       </div>
     </div>
     <div class="portfolio-card reveal">
-      <div class="portfolio-img" style="overflow:hidden;"><img src="images_xenstay/relaxRancho.jpg" style="width:100%;height:100%;object-fit:cover;display:block;" alt="Relax & Unwind near Folsom, a managed short-term rental in Rancho Cordova, CA" width="800" height="770" loading="lazy" decoding="async"></div>
+      <div class="portfolio-img" style="overflow:hidden;"><span class="portfolio-badge">Guest favorite</span><img src="images_xenstay/relaxRancho.jpg" style="width:100%;height:100%;object-fit:cover;display:block;" alt="Relax & Unwind near Folsom, a managed short-term rental in Rancho Cordova, CA" width="800" height="770" loading="lazy" decoding="async"></div>
       <div class="portfolio-info">
         <p class="portfolio-city">Rancho Cordova, CA</p>
         <p class="portfolio-name">Relax & Unwind | Near Folsom</p>
@@ -951,7 +986,7 @@ footer{
       </div>
     </div>
     <div class="portfolio-card reveal reveal-d1">
-      <div class="portfolio-img" style="overflow:hidden;"><img src="images_xenstay/xenHouse.jpg" style="width:100%;height:100%;object-fit:cover;display:block;" alt="Xen House 3BR, a managed short-term rental in Sacramento, CA" width="752" height="800" loading="lazy" decoding="async"></div>
+      <div class="portfolio-img" style="overflow:hidden;"><span class="portfolio-badge">5.0★ Guest favorite</span><img src="images_xenstay/xenHouse.jpg" style="width:100%;height:100%;object-fit:cover;display:block;" alt="Xen House 3BR, a managed short-term rental in Sacramento, CA" width="752" height="800" loading="lazy" decoding="async"></div>
       <div class="portfolio-info">
         <p class="portfolio-city">Sacramento, CA</p>
         <p class="portfolio-name">Xen House 3BR — 10 Min Downtown</p>
@@ -959,7 +994,7 @@ footer{
       </div>
     </div>
     <div class="portfolio-card reveal reveal-d2">
-      <div class="portfolio-img" style="overflow:hidden;"><img src="images_xenstay/yubaCity.jpg" style="width:100%;height:100%;object-fit:cover;display:block;" alt="696 Scirocco Dr Duplex, a managed long-term rental in Yuba City, CA" width="735" height="800" loading="lazy" decoding="async"></div>
+      <div class="portfolio-img" style="overflow:hidden;"><span class="portfolio-badge">Long-term rental</span><img src="images_xenstay/yubaCity.jpg" style="width:100%;height:100%;object-fit:cover;display:block;" alt="696 Scirocco Dr Duplex, a managed long-term rental in Yuba City, CA" width="735" height="800" loading="lazy" decoding="async"></div>
       <div class="portfolio-info">
         <p class="portfolio-city">Yuba City, CA</p>
         <p class="portfolio-city" style="color:var(--muted);margin-top:2px;font-size:0.6rem;letter-spacing:0;text-transform:none;">Long-term rental</p>
@@ -968,7 +1003,7 @@ footer{
       </div>
     </div>
     <div class="portfolio-card reveal reveal-d3">
-      <div class="portfolio-img" style="overflow:hidden;"><img src="images_xenstay/roseville4br.jpg" style="width:100%;height:100%;object-fit:cover;display:block;" alt="207 D St Duplex, a managed long-term rental in Roseville, CA" width="724" height="800" loading="lazy" decoding="async"></div>
+      <div class="portfolio-img" style="overflow:hidden;"><span class="portfolio-badge">Long-term rental</span><img src="images_xenstay/roseville4br.jpg" style="width:100%;height:100%;object-fit:cover;display:block;" alt="207 D St Duplex, a managed long-term rental in Roseville, CA" width="724" height="800" loading="lazy" decoding="async"></div>
       <div class="portfolio-info">
         <p class="portfolio-city">Roseville, CA</p>
         <p class="portfolio-city" style="color:var(--muted);margin-top:2px;font-size:0.6rem;letter-spacing:0;text-transform:none;">Long-term rental</p>
@@ -1014,18 +1049,21 @@ footer{
   </div>
   <div class="testi-grid">
     <div class="testi reveal">
+      <span class="testi-quote" aria-hidden="true">"</span>
       <p class="testi-stars">★★★★★</p>
       <p class="testi-text">"Switched from a manager charging 25% and my net income went up immediately — even though the booking revenue stayed the same. The math doesn't lie."</p>
       <p class="testi-name">Property Owner</p>
       <p class="testi-loc">West Sacramento, CA</p>
     </div>
     <div class="testi reveal reveal-d1">
+      <span class="testi-quote" aria-hidden="true">"</span>
       <p class="testi-stars">★★★★★</p>
       <p class="testi-text">"I was self-managing and it was taking over my life. Xenstay took over completely at 10% — I now make more per month and spend zero time on it."</p>
       <p class="testi-name">Property Owner</p>
       <p class="testi-loc">Roseville, CA</p>
     </div>
     <div class="testi reveal reveal-d2">
+      <span class="testi-quote" aria-hidden="true">"</span>
       <p class="testi-stars">★★★★★</p>
       <p class="testi-text">"My Airbnb rating went from 4.6 to 4.9 in three months. The monthly reports are detailed and my payouts are always on time. Couldn't be happier."</p>
       <p class="testi-name">Property Owner</p>
@@ -1095,6 +1133,10 @@ footer{
   </div>
   <form class="lead-form reveal reveal-d1" id="lead-form">
     <p class="lead-form-title">Request your free analysis</p>
+    <div style="position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden;" aria-hidden="true">
+      <label for="f-company">Company</label>
+      <input type="text" id="f-company" name="company" tabindex="-1" autocomplete="off">
+    </div>
     <div class="frow">
       <div class="fg">
         <label class="flabel" for="f-firstName">First name</label>
@@ -1226,13 +1268,20 @@ function toggleFaq(btn) {
 }
 
 // Lead form -> Google Sheet via Apps Script
-const LEAD_ENDPOINT = 'https://script.google.com/macros/s/AKfycbyrSAEsutENLJKBeJuWhrmZoWEKfJ-37MDYztp32kk4Xvb4LLdSCoiDr7ZddOP4p6M/exec';
+const LEAD_ENDPOINT = 'https://script.google.com/macros/s/AKfycbyUtJUgvzUMmVav9POShrdZ5jXZ31mcAm297H2KguIX1bTkzKEkZYSVG9mX4UJcRyQC/exec';
 const leadForm = document.getElementById('lead-form');
 const leadStatus = document.getElementById('lead-form-status');
 const leadSubmit = document.getElementById('lead-form-submit');
 
 leadForm.addEventListener('submit', async (e) => {
   e.preventDefault();
+  if (leadForm.elements['company'].value) {
+    leadForm.reset();
+    leadStatus.textContent = "Thanks! We'll send your free analysis within 24 hours.";
+    leadStatus.style.color = '#2E5D4B';
+    leadStatus.style.display = 'block';
+    return;
+  }
   leadSubmit.disabled = true;
   leadSubmit.textContent = 'Sending...';
   leadStatus.style.display = 'none';
