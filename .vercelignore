@@ -1,0 +1,9 @@
+# Files kept in the repo but NOT deployed to the live site.
+
+# Unpublished pages. book.html had a guest WiFi lookup that exposed credentials
+# publicly, and a booking form that collected card details while claiming Stripe
+# encryption it did not have. Both need a real backend before they go live again.
+archive/
+
+# Reference only — this is pasted into the Google Apps Script editor, not served.
+apps-script/

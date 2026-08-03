@@ -519,39 +519,19 @@ nav{
 let selectedProp = null;
 let selectedRate = 0;
 
-// WiFi passwords (placeholder — you'd replace with real ones)
-const wifiData = {
-  clubhouse:  { net:'XenstayClub',    pw:'Welcome2024!' },
-  natomas:    { net:'XenstayNatomas', pw:'Natomas2024!' },
-  west1:      { net:'XenstayWest1',   pw:'Downtown2024' },
-  california: { net:'XenstayCA',      pw:'WestSac2024!' },
-  kathryn:    { net:'XenstayOaks',    pw:'FairOaks2024' },
-  yuba:       { net:'XenstayYuba',    pw:'YubaCity2024' },
-  hotel:      { net:'XenstayHotel',   pw:'Sac2024Hotel' },
-  laknatoma:  { net:'XenstayLake',    pw:'Natoma2024LK' },
-  roseville:  { net:'XenstayRose',    pw:'Roseville24!' },
-  punta:      { net:'XenstayPunta',   pw:'Surfing2024!' },
-  rancho:     { net:'XenstayRancho',  pw:'Heaven2024!!' },
-  relax:      { net:'XenstayRelax',   pw:'Folsom2024!!' },
-  skyline:    { net:'XenstaySkyline', pw:'Auburn2024Sky' },
-  hilltop:    { net:'XenstayHill',    pw:'Auburn2024Hi!' },
-  nest:       { net:'XenstayNest',    pw:'Nest2024Sky!!' },
-  xen:        { net:'XenstayXen',     pw:'XenHouse2024!' }
-};
-
+// NOTE: WiFi credentials were removed from this file.
+//
+// They must NEVER be stored here. Anything in this file is downloaded in full
+// by every visitor and readable via View Source — there is no way to "hide" a
+// password in client-side JavaScript. The previous version exposed the network
+// name and password for all 16 properties to anyone who loaded the page.
+//
+// If a self-serve WiFi lookup is wanted later, it needs a real backend that
+// authenticates the guest (e.g. against an active booking) and returns only
+// that one property's credentials. Until then, send WiFi details to guests
+// directly through the booking platform's messaging.
 function showWifi(key) {
-  const d = wifiData[key];
-  if (!d) { document.getElementById('wifi-display').style.display='none'; return; }
-  document.getElementById('wifi-network').textContent = d.net;
-  document.getElementById('wifi-password').textContent = d.pw;
-  const display = document.getElementById('wifi-display');
-  display.style.display='block';
-  document.getElementById('wifi-password').onclick = () => {
-    navigator.clipboard.writeText(d.pw).then(() => {
-      document.getElementById('wifi-password').textContent = 'Copied!';
-      setTimeout(() => document.getElementById('wifi-password').textContent = d.pw, 1500);
-    });
-  };
+  document.getElementById('wifi-display').style.display = 'none';
 }
 
 function selectProp(card, name, city, beds, rate, imgClass) {

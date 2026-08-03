@@ -3,8 +3,52 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Xenstay Homes — Property Management at 10%</title>
+<title>Xenstay Homes | Sacramento Property Management at 10% — Free Analysis</title>
+<meta name="description" content="Sacramento-area short-term & long-term rental property management starting at 10%. Get a free revenue analysis for your Airbnb, duplex, or rental property in 24 hours.">
+<link rel="canonical" href="https://xenstayhomes.com/">
+
+<!-- Open Graph -->
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Xenstay Homes">
+<meta property="og:title" content="Xenstay Homes | Sacramento Property Management at 10%">
+<meta property="og:description" content="Sacramento-area short-term & long-term rental property management starting at 10%. Get a free revenue analysis for your property in 24 hours.">
+<meta property="og:url" content="https://xenstayhomes.com/">
+<meta property="og:image" content="https://xenstayhomes.com/images_xenstay/skyline.jpg">
+
+<!-- Twitter -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Xenstay Homes | Sacramento Property Management at 10%">
+<meta name="twitter:description" content="Sacramento-area short-term & long-term rental property management starting at 10%. Get a free revenue analysis for your property in 24 hours.">
+<meta name="twitter:image" content="https://xenstayhomes.com/images_xenstay/skyline.jpg">
+
+<!-- Local business structured data -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "RealEstateAgent",
+  "name": "XenStays LLC",
+  "url": "https://xenstayhomes.com/",
+  "description": "Short-term and long-term rental property management serving the greater Sacramento, CA area.",
+  "areaServed": {
+    "@type": "City",
+    "name": "Sacramento"
+  },
+  "address": {
+    "@type": "PostalAddress",
+    "addressLocality": "Sacramento",
+    "addressRegion": "CA",
+    "addressCountry": "US"
+  }
+}
+</script>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,700;1,400;1,500&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
+<script>
+  window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };
+</script>
+<script defer src="/_vercel/insights/script.js"></script>
 <style>
 :root {
   --ink: #0E0E0D;
@@ -21,6 +65,17 @@
 }
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
 html{scroll-behavior:smooth;}
+/* Visible keyboard focus everywhere. :focus-visible keeps it off mouse clicks. */
+a:focus-visible,button:focus-visible,input:focus-visible,
+select:focus-visible,textarea:focus-visible{
+  outline:3px solid var(--gold);
+  outline-offset:3px;
+  border-radius:2px;
+}
+@media(prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto;}
+  *,*::before,*::after{animation-duration:0.01ms !important;animation-iteration-count:1 !important;transition-duration:0.01ms !important;}
+}
 body{font-family:'Outfit',sans-serif;background:var(--cream);color:var(--ink);overflow-x:hidden;}
 
 /* NAV */
@@ -31,30 +86,6 @@ nav{
   background:rgba(248,244,238,0.95);backdrop-filter:blur(16px);
   border-bottom:1px solid rgba(196,149,74,0.12);
   transition:all 0.3s;
-
-.hamburger{
-  display:none;
-  flex-direction:column;gap:5px;
-  background:none;border:none;cursor:pointer;padding:6px;
-  flex-shrink:0;
-}
-.hamburger span{
-  display:block;width:22px;height:2px;
-  background:var(--ink);border-radius:2px;
-}
-#mobile-nav.open{
-  display:flex !important;
-  flex-direction:column;
-  position:fixed;
-  top:68px;left:0;right:0;
-  background:rgba(248,244,238,0.98);
-  padding:1.5rem 1.25rem 2rem;
-  gap:1.5rem;
-  z-index:199;
-  border-bottom:1px solid var(--bone);
-  backdrop-filter:blur(12px);
-  box-shadow:0 8px 24px rgba(0,0,0,0.08);
-}
 }
 .logo{
   font-family:'Playfair Display',serif;
@@ -113,7 +144,7 @@ nav{
 }
 .hero-sub{
   font-size:1rem;font-weight:300;line-height:1.85;
-  color:rgba(255,255,255,0.55);max-width:440px;margin-bottom:3rem;
+  color:rgba(255,255,255,0.72);max-width:440px;margin-bottom:3rem;
   opacity:0;animation:up 0.7s 0.6s forwards;
 }
 .hero-sub strong{color:rgba(255,255,255,0.85);font-weight:500;}
@@ -136,7 +167,7 @@ nav{
 }
 .btn-ghost:hover{border-color:rgba(255,255,255,0.6);color:var(--white);}
 .hero-proof{
-  display:flex;gap:3rem;margin-top:4rem;padding-top:2.5rem;
+  display:flex;flex-wrap:wrap;gap:3rem;margin-top:4rem;padding-top:2.5rem;
   border-top:1px solid rgba(255,255,255,0.08);
   opacity:0;animation:up 0.7s 1s forwards;
 }
@@ -146,7 +177,7 @@ nav{
 }
 .proof-label{
   font-size:0.62rem;font-weight:500;letter-spacing:0.15em;
-  text-transform:uppercase;color:rgba(255,255,255,0.35);margin-top:3px;
+  text-transform:uppercase;color:rgba(255,255,255,0.62);margin-top:3px;
 }
 .hero-right{
   position:relative;overflow:hidden;
@@ -272,7 +303,7 @@ nav{
 }
 .step-desc{
   font-size:0.8rem;font-weight:300;line-height:1.8;
-  color:rgba(255,255,255,0.45);
+  color:rgba(255,255,255,0.68);
 }
 
 /* RESULTS */
@@ -294,10 +325,10 @@ nav{
 }
 .result-label{
   font-size:0.7rem;font-weight:500;letter-spacing:0.15em;
-  text-transform:uppercase;color:rgba(255,255,255,0.35);
+  text-transform:uppercase;color:rgba(255,255,255,0.62);
 }
 .result-sub{
-  font-size:0.8rem;font-weight:300;color:rgba(255,255,255,0.25);
+  font-size:0.8rem;font-weight:300;color:rgba(255,255,255,0.6);
   margin-top:0.4rem;
 }
 
@@ -404,11 +435,14 @@ nav{
 /* FAQ */
 #faq{background:var(--white);padding:7rem 5rem;}
 .faq-grid{display:grid;grid-template-columns:1fr 1fr;gap:4rem;margin-top:4rem;}
-.faq-item{padding-bottom:2rem;border-bottom:1px solid var(--bone);cursor:pointer;}
+.faq-item{padding-bottom:2rem;border-bottom:1px solid var(--bone);}
 .faq-q{
   font-size:0.95rem;font-weight:600;color:var(--ink);
   display:flex;justify-content:space-between;align-items:center;gap:1rem;
   user-select:none;
+  /* rendered as a <button> so it is focusable and operable by keyboard */
+  width:100%;text-align:left;background:none;border:none;padding:0;
+  font-family:inherit;cursor:pointer;
 }
 .faq-icon{
   width:22px;height:22px;border-radius:50%;border:1.5px solid var(--warm);
@@ -435,7 +469,7 @@ nav{
 .lead-title em{font-style:italic;}
 .lead-tag{
   font-size:0.65rem;font-weight:600;letter-spacing:0.3em;text-transform:uppercase;
-  color:rgba(255,255,255,0.55);margin-bottom:1rem;display:block;
+  color:rgba(255,255,255,0.72);margin-bottom:1rem;display:block;
 }
 .lead-sub{
   font-size:0.92rem;font-weight:300;color:rgba(255,255,255,0.65);
@@ -492,13 +526,13 @@ footer{
   letter-spacing:0.06em;color:var(--cream);
 }
 .footer-logo span{color:var(--gold);}
-.footer-links{display:flex;gap:2rem;}
+.footer-links{display:flex;flex-wrap:wrap;gap:1rem 2rem;}
 .footer-links a{
   font-size:0.65rem;font-weight:500;letter-spacing:0.15em;text-transform:uppercase;
-  color:rgba(248,244,238,0.35);text-decoration:none;transition:color 0.2s;
+  color:rgba(248,244,238,0.68);text-decoration:none;transition:color 0.2s;
 }
 .footer-links a:hover{color:var(--gold);}
-.footer-copy{font-size:0.7rem;color:rgba(248,244,238,0.25);}
+.footer-copy{font-size:0.7rem;color:rgba(248,244,238,0.6);}
 
 /* SHARED */
 .section-tag{
@@ -526,63 +560,55 @@ footer{
 .reveal-d3{transition-delay:0.3s;}
 .reveal-d4{transition-delay:0.4s;}
 
+/* ═══ RESPONSIVE ═══
+   One ordered system: 1100 → 768 → 480. Later blocks override earlier ones,
+   so no !important is needed. Selectors here must match the class names actually
+   used in the markup (.hero-ctas, .hero-proof, .steps — not .hero-btns/.hero-stats/.steps-grid). */
+.hamburger{display:none;flex-direction:column;gap:5px;background:none;border:none;cursor:pointer;padding:6px;flex-shrink:0;}
+.hamburger span{display:block;width:22px;height:2px;background:var(--ink);border-radius:2px;}
+.nav-links.mobile-open{display:flex !important;flex-direction:column;position:fixed;top:64px;left:0;right:0;background:rgba(248,244,238,0.98);backdrop-filter:blur(12px);padding:1.5rem 1.25rem 2rem;gap:1.5rem;z-index:199;border-bottom:1px solid var(--bone);box-shadow:0 8px 24px rgba(0,0,0,0.08);}
+
 @media(max-width:1100px){
+  nav{padding:1.25rem 2rem;}
+  .nav-links,.nav-btn{display:none;}
+  .hamburger{display:flex;}
   .hero{grid-template-columns:1fr;}
   .hero-right{display:grid;height:300px;grid-template-columns:1fr 1fr;grid-template-rows:150px 150px;gap:2px;}
-  nav{padding:1.25rem 2rem;}
-  .nav-links{display:none !important;}
-  .hamburger{display:flex !important;}
-  section,#why,#how,#results,#services,#portfolio,#markets,#testimonials,#faq,#lead,footer{padding-left:2rem;padding-right:2rem;}
-  .why-grid,.portfolio-intro{grid-template-columns:1fr;}
+  section,footer{padding-left:2rem;padding-right:2rem;}
+  .why-grid,.portfolio-intro,.faq-grid,#lead{grid-template-columns:1fr;}
   .steps{grid-template-columns:1fr 1fr;}
   .steps::before{display:none;}
-  .results-grid{grid-template-columns:1fr 1fr;}
-  .services-grid,.testi-grid{grid-template-columns:1fr 1fr;}
+  .results-grid,.services-grid,.testi-grid{grid-template-columns:1fr 1fr;}
   .portfolio-grid{grid-template-columns:repeat(2,1fr);}
   .markets-grid{grid-template-columns:repeat(3,1fr);}
-  .faq-grid{grid-template-columns:1fr;}
-  #lead{grid-template-columns:1fr;}
 }
-@media(max-width:640px){
-  .hero-h1{font-size:3rem;}
-  .hero-h1 .hero-pct{font-size:3.8rem;}
-  .results-grid{grid-template-columns:1fr 1fr;}
+
+@media(max-width:768px){
+  nav{padding:1rem 1.25rem;}
+  .hero{min-height:auto;}
+  .hero-left{padding:2.5rem 1.25rem 2rem;}
+  .hero-h1{font-size:2rem;line-height:1.15;}
+  .hero-h1 .hero-pct{font-size:2.6rem;}
+  .hero-right{height:280px;grid-template-rows:140px 140px;}
+  .hero-ctas{flex-direction:column;gap:0.75rem;}
+  .hero-ctas .btn-gold,.hero-ctas .btn-ghost{width:100%;text-align:center;}
+  .hero-proof{gap:1.5rem;}
+  .fee-strip{flex-direction:column;gap:0.4rem;padding:1rem 1.25rem;text-align:center;}
+  section{padding:3rem 1.25rem;}
+  footer{padding-left:1.25rem;padding-right:1.25rem;}
+  .section-title{font-size:1.7rem;}
   .services-grid,.testi-grid{grid-template-columns:1fr;}
-  .portfolio-grid{grid-template-columns:1fr 1fr;}
+  .portfolio-grid{grid-template-columns:1fr 1fr;gap:0.75rem;}
+  .portfolio-img{height:120px;}
   .markets-grid{grid-template-columns:repeat(2,1fr);}
   .frow{grid-template-columns:1fr;}
 }
 
-
-
-/* ═══ MOBILE ═══ */
-.hamburger{display:none;flex-direction:column;gap:5px;background:none;border:none;cursor:pointer;padding:6px;flex-shrink:0;}
-.hamburger span{display:block;width:22px;height:2px;background:var(--ink);border-radius:2px;}
-.nav-links.mobile-open{display:flex !important;flex-direction:column;position:fixed;top:64px;left:0;right:0;background:rgba(248,244,238,0.98);backdrop-filter:blur(12px);padding:1.5rem 1.25rem 2rem;gap:1.5rem;z-index:199;border-bottom:1px solid #EDE7DA;box-shadow:0 8px 24px rgba(0,0,0,0.08);}
-@media(max-width:768px){
-  .nav-links,.nav-btn{display:none !important;}
-  .hamburger{display:flex !important;}
-  nav{padding:1rem 1.25rem !important;}
-  .hero{grid-template-columns:1fr !important;min-height:auto !important;}
-  .hero-left{padding:2.5rem 1.25rem 2rem !important;}
-  .hero-h1{font-size:2rem !important;line-height:1.15 !important;}
-  .hero-right{height:280px;grid-template-columns:1fr 1fr !important;grid-template-rows:140px 140px !important;gap:2px;}
-  .hero-btns{flex-direction:column !important;gap:0.75rem !important;}
-  .hero-stats{gap:1rem;flex-wrap:wrap;}
-  .fee-strip{flex-direction:column !important;gap:0.4rem !important;padding:1rem 1.25rem !important;text-align:center;}
-  section{padding:3rem 1.25rem !important;}
-  .section-title{font-size:1.7rem !important;}
-  .why-grid,.services-grid,.about-layout,.lead-layout,.faq-layout{grid-template-columns:1fr !important;}
-  .steps-grid,.results-grid{grid-template-columns:1fr 1fr !important;}
-  .portfolio-grid{grid-template-columns:1fr 1fr !important;gap:0.75rem !important;}
-  .portfolio-img{height:120px !important;}
-  .about-img{height:220px !important;min-height:unset !important;}
-  .footer-grid{grid-template-columns:1fr 1fr !important;gap:2rem !important;}
-  .footer-bottom{flex-direction:column !important;text-align:center;}
-}
 @media(max-width:480px){
-  .hero-h1{font-size:1.75rem !important;}
-  .portfolio-grid,.steps-grid,.footer-grid{grid-template-columns:1fr !important;}
+  .hero-h1{font-size:1.75rem;}
+  .hero-h1 .hero-pct{font-size:2.2rem;}
+  .hero-proof{gap:1rem;}
+  .portfolio-grid,.steps,.results-grid{grid-template-columns:1fr;}
 }
 
 </style>
@@ -599,9 +625,7 @@ footer{
     <a href="#faq">FAQ</a>
   </div>
   <a href="#lead" class="nav-btn">Get Free Analysis</a>
-  
-  
-  <button class="hamburger" aria-label="Menu" onclick="document.querySelector('.nav-links').classList.toggle('mobile-open')"><span></span><span></span><span></span></button>
+  <button class="hamburger" id="hamburger" aria-label="Open menu" aria-expanded="false" aria-controls="nav-links"><span></span><span></span><span></span></button>
 </nav>
 
 <!-- HERO -->
@@ -641,10 +665,10 @@ footer{
   </div>
   <div class="hero-right">
     <div class="hero-mosaic">
-      <div class="mosaic-cell" style="background:none;overflow:hidden;position:relative;"><img src="images_xenstay/skyline.jpg" style="width:100%;height:100%;object-fit:cover;position:absolute;inset:0;"><p class="mc-label" style="position:relative;z-index:1;">Skyline Serenity<br>Auburn, CA</p></div>
-      <div class="mosaic-cell" style="background:none;overflow:hidden;position:relative;"><img src="images_xenstay/puntaMita.jpg" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;"><p class="mc-label" style="position:relative;z-index:1;">Punta Mita<br>Mexico</p></div>
-      <div class="mosaic-cell" style="background:none;overflow:hidden;position:relative;"><img src="images_xenstay/beautiful4br.jpg" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;"><p class="mc-label" style="position:relative;z-index:1;">Beautiful 4BR<br>West Sacramento</p></div>
-      <div class="mosaic-cell" style="background:none;overflow:hidden;position:relative;"><img src="images_xenstay/lakeNatoma.jpg" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;"><p class="mc-label" style="position:relative;z-index:1;">Lake Natoma<br>Orangevale</p></div>
+      <div class="mosaic-cell" style="background:none;overflow:hidden;position:relative;"><img src="images_xenstay/skyline.jpg" style="width:100%;height:100%;object-fit:cover;position:absolute;inset:0;" alt="Skyline Serenity Retreat vacation rental in Auburn, California" width="800" height="791" decoding="async" fetchpriority="high"><p class="mc-label" style="position:relative;z-index:1;">Skyline Serenity<br>Auburn, CA</p></div>
+      <div class="mosaic-cell" style="background:none;overflow:hidden;position:relative;"><img src="images_xenstay/puntaMita.jpg" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;" alt="Punta Mita Surfers Paradise beach rental in Punta Negra, Mexico" width="770" height="800" decoding="async" fetchpriority="high"><p class="mc-label" style="position:relative;z-index:1;">Punta Mita<br>Mexico</p></div>
+      <div class="mosaic-cell" style="background:none;overflow:hidden;position:relative;"><img src="images_xenstay/beautiful4br.jpg" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;" alt="Beautiful 4-bedroom short-term rental in West Sacramento, California" width="730" height="800" decoding="async" fetchpriority="high"><p class="mc-label" style="position:relative;z-index:1;">Beautiful 4BR<br>West Sacramento</p></div>
+      <div class="mosaic-cell" style="background:none;overflow:hidden;position:relative;"><img src="images_xenstay/lakeNatoma.jpg" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;" alt="Lake Natoma Retreat vacation rental in Orangevale, California" width="760" height="800" decoding="async" fetchpriority="high"><p class="mc-label" style="position:relative;z-index:1;">Lake Natoma<br>Orangevale</p></div>
     </div>
   </div>
 </div>
@@ -694,28 +718,28 @@ footer{
       </div>
       <div class="why-list" style="margin-top:2rem;">
         <div class="why-item">
-          <div class="why-check"><svg viewBox="0 0 12 12"><polyline points="2,6 5,9 10,3"/></svg></div>
+          <div class="why-check"><svg aria-hidden="true" viewBox="0 0 12 12"><polyline points="2,6 5,9 10,3"/></svg></div>
           <div class="why-item-text">
             <strong>No hidden fees or markups</strong>
             <span>Flat 10% on gross revenue. No setup fees, no surprise charges, no maintenance markups.</span>
           </div>
         </div>
         <div class="why-item">
-          <div class="why-check"><svg viewBox="0 0 12 12"><polyline points="2,6 5,9 10,3"/></svg></div>
+          <div class="why-check"><svg aria-hidden="true" viewBox="0 0 12 12"><polyline points="2,6 5,9 10,3"/></svg></div>
           <div class="why-item-text">
             <strong>Transparent monthly reporting</strong>
             <span>Every owner gets a detailed monthly statement — gross revenue, fees, and your net payout.</span>
           </div>
         </div>
         <div class="why-item">
-          <div class="why-check"><svg viewBox="0 0 12 12"><polyline points="2,6 5,9 10,3"/></svg></div>
+          <div class="why-check"><svg aria-hidden="true" viewBox="0 0 12 12"><polyline points="2,6 5,9 10,3"/></svg></div>
           <div class="why-item-text">
             <strong>$1,000 lease signing bonus — LTR owners</strong>
             <span>We pay you a $1,000 bonus every time we secure a new long-term tenant for your property.</span>
           </div>
         </div>
         <div class="why-item">
-          <div class="why-check"><svg viewBox="0 0 12 12"><polyline points="2,6 5,9 10,3"/></svg></div>
+          <div class="why-check"><svg aria-hidden="true" viewBox="0 0 12 12"><polyline points="2,6 5,9 10,3"/></svg></div>
           <div class="why-item-text">
             <strong>Proven across 28 units</strong>
             <span>We already manage short and long-term rentals across Sacramento, Roseville, Auburn, Folsom, and beyond.</span>
@@ -796,7 +820,7 @@ footer{
   <div class="services-grid">
     <div class="service-card reveal">
       <div class="service-icon">
-        <svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg>
+        <svg aria-hidden="true" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg>
       </div>
       <h3 class="service-name">Listing Creation & Optimization</h3>
       <p class="service-desc">Professional photography coordination, SEO-optimized titles and descriptions, and platform setup on Airbnb and VRBO.</p>
@@ -804,7 +828,7 @@ footer{
     </div>
     <div class="service-card reveal reveal-d1">
       <div class="service-icon">
-        <svg viewBox="0 0 24 24"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 000 7h5a3.5 3.5 0 010 7H6"/></svg>
+        <svg aria-hidden="true" viewBox="0 0 24 24"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 000 7h5a3.5 3.5 0 010 7H6"/></svg>
       </div>
       <h3 class="service-name">Dynamic Pricing Strategy</h3>
       <p class="service-desc">Real-time pricing adjustments based on local demand, events, and seasonality to maximize every night's revenue.</p>
@@ -812,7 +836,7 @@ footer{
     </div>
     <div class="service-card reveal reveal-d2">
       <div class="service-icon">
-        <svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>
+        <svg aria-hidden="true" viewBox="0 0 24 24"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>
       </div>
       <h3 class="service-name">24/7 Guest Communication</h3>
       <p class="service-desc">All guest messaging, check-in coordination, issue resolution, and review management handled by our team.</p>
@@ -820,7 +844,7 @@ footer{
     </div>
     <div class="service-card reveal">
       <div class="service-icon">
-        <svg viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+        <svg aria-hidden="true" viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
       </div>
       <h3 class="service-name">Turnover & Cleaning Coordination</h3>
       <p class="service-desc">Vetted cleaning crews, quality inspections, and restocking coordination between every guest stay.</p>
@@ -828,7 +852,7 @@ footer{
     </div>
     <div class="service-card reveal reveal-d1">
       <div class="service-icon">
-        <svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
+        <svg aria-hidden="true" viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
       </div>
       <h3 class="service-name">Monthly Owner Statements</h3>
       <p class="service-desc">Detailed monthly reporting with gross revenue, occupancy rates, your management fee, and net payout — every month.</p>
@@ -836,7 +860,7 @@ footer{
     </div>
     <div class="service-card reveal reveal-d2">
       <div class="service-icon">
-        <svg viewBox="0 0 24 24"><path d="M14.7 6.3a1 1 0 000 1.4l1.6 1.6a1 1 0 001.4 0l3.77-3.77a6 6 0 01-7.94 7.94l-6.91 6.91a2.12 2.12 0 01-3-3l6.91-6.91a6 6 0 017.94-7.94l-3.76 3.76z"/></svg>
+        <svg aria-hidden="true" viewBox="0 0 24 24"><path d="M14.7 6.3a1 1 0 000 1.4l1.6 1.6a1 1 0 001.4 0l3.77-3.77a6 6 0 01-7.94 7.94l-6.91 6.91a2.12 2.12 0 01-3-3l6.91-6.91a6 6 0 017.94-7.94l-3.76 3.76z"/></svg>
       </div>
       <h3 class="service-name">Maintenance Coordination</h3>
       <p class="service-desc">Vetted local vendors, prompt repair coordination, and proactive property upkeep — protecting your asset long term.</p>
@@ -876,7 +900,7 @@ footer{
   </div>
   <div class="portfolio-grid">
     <div class="portfolio-card reveal">
-      <div class="portfolio-img" style="overflow:hidden;"><img src="images_xenstay/skyline.jpg" style="width:100%;height:100%;object-fit:cover;display:block;"></div>
+      <div class="portfolio-img" style="overflow:hidden;"><img src="images_xenstay/skyline.jpg" style="width:100%;height:100%;object-fit:cover;display:block;" alt="Skyline Serenity Retreat, a managed short-term rental in Auburn, CA" width="800" height="791" loading="lazy" decoding="async"></div>
       <div class="portfolio-info">
         <p class="portfolio-city">Auburn, CA</p>
         <p class="portfolio-name">Skyline Serenity Retreat</p>
@@ -884,7 +908,7 @@ footer{
       </div>
     </div>
     <div class="portfolio-card reveal reveal-d1">
-      <div class="portfolio-img" style="overflow:hidden;"><img src="images_xenstay/puntaMita.jpg" style="width:100%;height:100%;object-fit:cover;display:block;"></div>
+      <div class="portfolio-img" style="overflow:hidden;"><img src="images_xenstay/puntaMita.jpg" style="width:100%;height:100%;object-fit:cover;display:block;" alt="Punta Mita Surfers Paradise, a managed short-term rental in Punta Negra, Mexico" width="770" height="800" loading="lazy" decoding="async"></div>
       <div class="portfolio-info">
         <p class="portfolio-city">Punta Negra, Mexico</p>
         <p class="portfolio-name">Punta Mita Surfers Paradise</p>
@@ -892,7 +916,7 @@ footer{
       </div>
     </div>
     <div class="portfolio-card reveal reveal-d2">
-      <div class="portfolio-img" style="overflow:hidden;"><img src="images_xenstay/beautiful4br.jpg" style="width:100%;height:100%;object-fit:cover;display:block;"></div>
+      <div class="portfolio-img" style="overflow:hidden;"><img src="images_xenstay/beautiful4br.jpg" style="width:100%;height:100%;object-fit:cover;display:block;" alt="Beautiful 4BR downtown home, a managed short-term rental in West Sacramento, CA" width="730" height="800" loading="lazy" decoding="async"></div>
       <div class="portfolio-info">
         <p class="portfolio-city">West Sacramento, CA</p>
         <p class="portfolio-name">Beautiful 4BR Downtown Home</p>
@@ -900,7 +924,7 @@ footer{
       </div>
     </div>
     <div class="portfolio-card reveal reveal-d3">
-      <div class="portfolio-img" style="overflow:hidden;"><img src="images_xenstay/lakeNatoma.jpg" style="width:100%;height:100%;object-fit:cover;display:block;"></div>
+      <div class="portfolio-img" style="overflow:hidden;"><img src="images_xenstay/lakeNatoma.jpg" style="width:100%;height:100%;object-fit:cover;display:block;" alt="Lake Natoma Retreat, a managed short-term rental in Orangevale, CA" width="760" height="800" loading="lazy" decoding="async"></div>
       <div class="portfolio-info">
         <p class="portfolio-city">Orangevale, CA</p>
         <p class="portfolio-name">Lake Natoma Retreat</p>
@@ -908,7 +932,7 @@ footer{
       </div>
     </div>
     <div class="portfolio-card reveal">
-      <div class="portfolio-img" style="overflow:hidden;"><img src="images_xenstay/relaxRancho.jpg" style="width:100%;height:100%;object-fit:cover;display:block;"></div>
+      <div class="portfolio-img" style="overflow:hidden;"><img src="images_xenstay/relaxRancho.jpg" style="width:100%;height:100%;object-fit:cover;display:block;" alt="Relax & Unwind near Folsom, a managed short-term rental in Rancho Cordova, CA" width="800" height="770" loading="lazy" decoding="async"></div>
       <div class="portfolio-info">
         <p class="portfolio-city">Rancho Cordova, CA</p>
         <p class="portfolio-name">Relax & Unwind | Near Folsom</p>
@@ -916,7 +940,7 @@ footer{
       </div>
     </div>
     <div class="portfolio-card reveal reveal-d1">
-      <div class="portfolio-img" style="overflow:hidden;"><img src="images_xenstay/xenHouse.jpg" style="width:100%;height:100%;object-fit:cover;display:block;"></div>
+      <div class="portfolio-img" style="overflow:hidden;"><img src="images_xenstay/xenHouse.jpg" style="width:100%;height:100%;object-fit:cover;display:block;" alt="Xen House 3BR, a managed short-term rental in Sacramento, CA" width="752" height="800" loading="lazy" decoding="async"></div>
       <div class="portfolio-info">
         <p class="portfolio-city">Sacramento, CA</p>
         <p class="portfolio-name">Xen House 3BR — 10 Min Downtown</p>
@@ -924,7 +948,7 @@ footer{
       </div>
     </div>
     <div class="portfolio-card reveal reveal-d2">
-      <div class="portfolio-img" style="overflow:hidden;"><img src="images_xenstay/yubaCity.jpg" style="width:100%;height:100%;object-fit:cover;display:block;"></div>
+      <div class="portfolio-img" style="overflow:hidden;"><img src="images_xenstay/yubaCity.jpg" style="width:100%;height:100%;object-fit:cover;display:block;" alt="696 Scirocco Dr Duplex, a managed long-term rental in Yuba City, CA" width="735" height="800" loading="lazy" decoding="async"></div>
       <div class="portfolio-info">
         <p class="portfolio-city">Yuba City, CA</p>
         <p class="portfolio-city" style="color:var(--muted);margin-top:2px;font-size:0.6rem;letter-spacing:0;text-transform:none;">Long-term rental</p>
@@ -933,7 +957,7 @@ footer{
       </div>
     </div>
     <div class="portfolio-card reveal reveal-d3">
-      <div class="portfolio-img" style="overflow:hidden;"><img src="images_xenstay/roseville4br.jpg" style="width:100%;height:100%;object-fit:cover;display:block;"></div>
+      <div class="portfolio-img" style="overflow:hidden;"><img src="images_xenstay/roseville4br.jpg" style="width:100%;height:100%;object-fit:cover;display:block;" alt="207 D St Duplex, a managed long-term rental in Roseville, CA" width="724" height="800" loading="lazy" decoding="async"></div>
       <div class="portfolio-info">
         <p class="portfolio-city">Roseville, CA</p>
         <p class="portfolio-city" style="color:var(--muted);margin-top:2px;font-size:0.6rem;letter-spacing:0;text-transform:none;">Long-term rental</p>
@@ -1007,39 +1031,39 @@ footer{
   </div>
   <div class="faq-grid">
     <div>
-      <div class="faq-item" onclick="toggleFaq(this)">
-        <p class="faq-q">Is 10% really all-inclusive? <span class="faq-icon">+</span></p>
-        <p class="faq-a">Yes. Our 10% management fee covers listing creation, guest communication, turnover coordination, dynamic pricing, and monthly reporting. There are no setup fees, no maintenance markups, and no hidden charges. The only extras are direct cleaning costs, which are passed through at cost to the owner.</p>
+      <div class="faq-item">
+        <button class="faq-q" type="button" id="faq-q-1" aria-expanded="false" aria-controls="faq-a-1" onclick="toggleFaq(this)">Is 10% really all-inclusive? <span class="faq-icon">+</span></button>
+        <div class="faq-a" id="faq-a-1" role="region" aria-labelledby="faq-q-1"><p>Yes. Our 10% management fee covers listing creation, guest communication, turnover coordination, dynamic pricing, and monthly reporting. There are no setup fees, no maintenance markups, and no hidden charges. The only extras are direct cleaning costs, which are passed through at cost to the owner.</p></div>
       </div>
-      <div class="faq-item" onclick="toggleFaq(this)">
-        <p class="faq-q">How does the $1,000 lease signing bonus work? <span class="faq-icon">+</span></p>
-        <p class="faq-a">For long-term rental properties, we pay you a $1,000 bonus every time we successfully secure a new tenant and execute a signed lease. This is our way of rewarding owners who grow with us.</p>
+      <div class="faq-item">
+        <button class="faq-q" type="button" id="faq-q-2" aria-expanded="false" aria-controls="faq-a-2" onclick="toggleFaq(this)">How does the $1,000 lease signing bonus work? <span class="faq-icon">+</span></button>
+        <div class="faq-a" id="faq-a-2" role="region" aria-labelledby="faq-q-2"><p>For long-term rental properties, we pay you a $1,000 bonus every time we successfully secure a new tenant and execute a signed lease. This is our way of rewarding owners who grow with us.</p></div>
       </div>
-      <div class="faq-item" onclick="toggleFaq(this)">
-        <p class="faq-q">What's the difference between your STR and LTR fees? <span class="faq-icon">+</span></p>
-        <p class="faq-a">Short-term rentals (Airbnb/VRBO) are managed at 10% of monthly gross bookings. Long-term rentals are managed at 6% of monthly gross rent — plus the $1,000 lease signing bonus each time a new tenant is placed.</p>
+      <div class="faq-item">
+        <button class="faq-q" type="button" id="faq-q-3" aria-expanded="false" aria-controls="faq-a-3" onclick="toggleFaq(this)">What's the difference between your STR and LTR fees? <span class="faq-icon">+</span></button>
+        <div class="faq-a" id="faq-a-3" role="region" aria-labelledby="faq-q-3"><p>Short-term rentals (Airbnb/VRBO) are managed at 10% of monthly gross bookings. Long-term rentals are managed at 6% of monthly gross rent — plus the $1,000 lease signing bonus each time a new tenant is placed.</p></div>
       </div>
-      <div class="faq-item" onclick="toggleFaq(this)">
-        <p class="faq-q">How do owner payouts work? <span class="faq-icon">+</span></p>
-        <p class="faq-a">We pay owners monthly with a detailed statement showing gross revenue, the management fee, and your net payout. Payments are made directly to your bank account. You'll always know exactly what you earned and what we charged.</p>
+      <div class="faq-item">
+        <button class="faq-q" type="button" id="faq-q-4" aria-expanded="false" aria-controls="faq-a-4" onclick="toggleFaq(this)">How do owner payouts work? <span class="faq-icon">+</span></button>
+        <div class="faq-a" id="faq-a-4" role="region" aria-labelledby="faq-q-4"><p>We pay owners monthly with a detailed statement showing gross revenue, the management fee, and your net payout. Payments are made directly to your bank account. You'll always know exactly what you earned and what we charged.</p></div>
       </div>
     </div>
     <div>
-      <div class="faq-item" onclick="toggleFaq(this)">
-        <p class="faq-q">Do you operate outside the Sacramento area? <span class="faq-icon">+</span></p>
-        <p class="faq-a">Yes — we currently manage properties across Sacramento, Roseville, Auburn, Orangevale, Folsom, Rancho Cordova, Granite Bay, and Yuba City. We're actively expanding statewide across California. If your property is in CA, reach out and we'll let you know if we can service your market.</p>
+      <div class="faq-item">
+        <button class="faq-q" type="button" id="faq-q-5" aria-expanded="false" aria-controls="faq-a-5" onclick="toggleFaq(this)">Do you operate outside the Sacramento area? <span class="faq-icon">+</span></button>
+        <div class="faq-a" id="faq-a-5" role="region" aria-labelledby="faq-q-5"><p>Yes — we currently manage properties across Sacramento, Roseville, Auburn, Orangevale, Folsom, Rancho Cordova, Granite Bay, and Yuba City. We're actively expanding statewide across California. If your property is in CA, reach out and we'll let you know if we can service your market.</p></div>
       </div>
-      <div class="faq-item" onclick="toggleFaq(this)">
-        <p class="faq-q">How long does it take to get my property listed? <span class="faq-icon">+</span></p>
-        <p class="faq-a">After signing our management agreement, most properties are live and accepting bookings within 5–7 business days. This includes photo coordination, listing creation, pricing setup, and platform optimization.</p>
+      <div class="faq-item">
+        <button class="faq-q" type="button" id="faq-q-6" aria-expanded="false" aria-controls="faq-a-6" onclick="toggleFaq(this)">How long does it take to get my property listed? <span class="faq-icon">+</span></button>
+        <div class="faq-a" id="faq-a-6" role="region" aria-labelledby="faq-q-6"><p>After signing our management agreement, most properties are live and accepting bookings within 5–7 business days. This includes photo coordination, listing creation, pricing setup, and platform optimization.</p></div>
       </div>
-      <div class="faq-item" onclick="toggleFaq(this)">
-        <p class="faq-q">What happens if a guest damages the property? <span class="faq-icon">+</span></p>
-        <p class="faq-a">We coordinate all damage claims through Airbnb's AirCover program, which provides up to $3M in host protection. We handle the documentation and claims process on your behalf so you don't have to deal with the back-and-forth.</p>
+      <div class="faq-item">
+        <button class="faq-q" type="button" id="faq-q-7" aria-expanded="false" aria-controls="faq-a-7" onclick="toggleFaq(this)">What happens if a guest damages the property? <span class="faq-icon">+</span></button>
+        <div class="faq-a" id="faq-a-7" role="region" aria-labelledby="faq-q-7"><p>We coordinate all damage claims through Airbnb's AirCover program, which provides up to $3M in host protection. We handle the documentation and claims process on your behalf so you don't have to deal with the back-and-forth.</p></div>
       </div>
-      <div class="faq-item" onclick="toggleFaq(this)">
-        <p class="faq-q">Is there a long-term contract? <span class="faq-icon">+</span></p>
-        <p class="faq-a">Our standard management agreements are straightforward with no unreasonable lock-in periods. We believe our results speak for themselves — owners stay because they're happy, not because they're trapped.</p>
+      <div class="faq-item">
+        <button class="faq-q" type="button" id="faq-q-8" aria-expanded="false" aria-controls="faq-a-8" onclick="toggleFaq(this)">Is there a long-term contract? <span class="faq-icon">+</span></button>
+        <div class="faq-a" id="faq-a-8" role="region" aria-labelledby="faq-q-8"><p>Our standard management agreements are straightforward with no unreasonable lock-in periods. We believe our results speak for themselves — owners stay because they're happy, not because they're trapped.</p></div>
       </div>
     </div>
   </div>
@@ -1058,29 +1082,33 @@ footer{
       <p class="lead-perk">Response within 24 hours</p>
     </div>
   </div>
-  <div class="lead-form reveal reveal-d1">
+  <form class="lead-form reveal reveal-d1" id="lead-form">
     <p class="lead-form-title">Request your free analysis</p>
     <div class="frow">
       <div class="fg">
-        <label class="flabel">First name</label>
-        <input type="text" class="finput" placeholder="Jane">
+        <label class="flabel" for="f-firstName">First name</label>
+      <input type="text" id="f-firstName" autocomplete="given-name" class="finput" name="firstName" placeholder="Jane" required>
       </div>
       <div class="fg">
-        <label class="flabel">Last name</label>
-        <input type="text" class="finput" placeholder="Smith">
+        <label class="flabel" for="f-lastName">Last name</label>
+      <input type="text" id="f-lastName" autocomplete="family-name" class="finput" name="lastName" placeholder="Smith" required>
       </div>
     </div>
     <div class="fg">
-      <label class="flabel">Email address</label>
-      <input type="email" class="finput" placeholder="jane@email.com">
+      <label class="flabel" for="f-email">Email address</label>
+      <input type="email" id="f-email" autocomplete="email" class="finput" name="email" placeholder="jane@email.com" required>
     </div>
     <div class="fg">
-      <label class="flabel">Property city</label>
-      <input type="text" class="finput" placeholder="Sacramento, CA">
+      <label class="flabel" for="f-phone">Phone number</label>
+      <input type="tel" id="f-phone" autocomplete="tel" class="finput" name="phone" placeholder="(916) 555-0123">
     </div>
     <div class="fg">
-      <label class="flabel">Property type</label>
-      <select class="fselect">
+      <label class="flabel" for="f-city">Property city</label>
+      <input type="text" id="f-city" autocomplete="address-level2" class="finput" name="city" placeholder="Sacramento, CA">
+    </div>
+    <div class="fg">
+      <label class="flabel" for="f-propertyType">Property type</label>
+      <select id="f-propertyType" class="fselect" name="propertyType">
         <option>Single family home</option>
         <option>Condo / Apartment</option>
         <option>Duplex</option>
@@ -1089,8 +1117,8 @@ footer{
       </select>
     </div>
     <div class="fg">
-      <label class="flabel">Current situation</label>
-      <select class="fselect">
+      <label class="flabel" for="f-situation">Current situation</label>
+      <select id="f-situation" class="fselect" name="situation">
         <option>Currently self-managing on Airbnb</option>
         <option>Currently with a property manager</option>
         <option>Not yet listed — new to STR</option>
@@ -1098,11 +1126,12 @@ footer{
       </select>
     </div>
     <div class="fg">
-      <label class="flabel">Anything else we should know?</label>
-      <textarea class="ftextarea" placeholder="Tell us about your property, questions, or concerns..."></textarea>
+      <label class="flabel" for="f-notes">Anything else we should know?</label>
+      <textarea id="f-notes" class="ftextarea" name="notes" placeholder="Tell us about your property, questions, or concerns..."></textarea>
     </div>
-    <button class="fsubmit">Send My Free Analysis Request</button>
-  </div>
+    <p class="lead-form-status" id="lead-form-status" role="status" aria-live="polite" style="display:none;font-size:0.85rem;margin-bottom:1rem;"></p>
+    <button class="fsubmit" type="submit" id="lead-form-submit">Send My Free Analysis Request</button>
+  </form>
 </section>
 
 <!-- FOOTER -->
@@ -1115,17 +1144,33 @@ footer{
     <a href="#portfolio">Portfolio</a>
     <a href="#faq">FAQ</a>
     <a href="#lead">Get Analysis</a>
-    <a href="/book">Owner Login</a>
   </div>
   <p class="footer-copy">© 2026 XenStays LLC · xenstayhomes.com</p>
 </footer>
 
 <script>
+// Mobile menu — open, and close again on link tap / outside click / Escape
+const hamburger = document.getElementById('hamburger');
+const navLinks = document.getElementById('nav-links');
+
+function setMenu(open) {
+  navLinks.classList.toggle('mobile-open', open);
+  hamburger.setAttribute('aria-expanded', String(open));
+  hamburger.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
 }
-// Show hamburger on mobile
-if(window.innerWidth<=768){
-  document.querySelector('window.addEventListener('resize',()=>{
-  const btn = document.querySelector('}
+
+hamburger.addEventListener('click', (e) => {
+  e.stopPropagation();
+  setMenu(!navLinks.classList.contains('mobile-open'));
+});
+navLinks.querySelectorAll('a').forEach(a => a.addEventListener('click', () => setMenu(false)));
+document.addEventListener('click', (e) => {
+  if (navLinks.classList.contains('mobile-open') && !navLinks.contains(e.target)) setMenu(false);
+});
+document.addEventListener('keydown', (e) => {
+  if (e.key === 'Escape' && navLinks.classList.contains('mobile-open')) { setMenu(false); hamburger.focus(); }
+});
+
 // Nav scroll effect
 const nav = document.getElementById('nav');
 window.addEventListener('scroll', () => {
@@ -1153,13 +1198,56 @@ const barObs = new IntersectionObserver((entries) => {
 }, { threshold: 0.3 });
 document.querySelectorAll('.fee-compare').forEach(el => barObs.observe(el));
 
-// FAQ accordion
-function toggleFaq(item) {
+// FAQ accordion — `btn` is the <button class="faq-q">, the item is its parent
+function toggleFaq(btn) {
+  const item = btn.closest('.faq-item');
   const isOpen = item.classList.contains('open');
-  document.querySelectorAll('.faq-item.open').forEach(i => i.classList.remove('open'));
-  if (!isOpen) item.classList.add('open');
+  document.querySelectorAll('.faq-item.open').forEach(i => {
+    i.classList.remove('open');
+    i.querySelector('.faq-q').setAttribute('aria-expanded', 'false');
+  });
+  if (!isOpen) {
+    item.classList.add('open');
+    btn.setAttribute('aria-expanded', 'true');
+  }
 }
 
+// Lead form -> Google Sheet via Apps Script
+const LEAD_ENDPOINT = 'https://script.google.com/macros/s/AKfycbyrSAEsutENLJKBeJuWhrmZoWEKfJ-37MDYztp32kk4Xvb4LLdSCoiDr7ZddOP4p6M/exec';
+const leadForm = document.getElementById('lead-form');
+const leadStatus = document.getElementById('lead-form-status');
+const leadSubmit = document.getElementById('lead-form-submit');
+
+leadForm.addEventListener('submit', async (e) => {
+  e.preventDefault();
+  leadSubmit.disabled = true;
+  leadSubmit.textContent = 'Sending...';
+  leadStatus.style.display = 'none';
+
+  const data = Object.fromEntries(new FormData(leadForm).entries());
+  data.source = 'xenstayhomes.com';
+  data.submittedAt = new Date().toISOString();
+
+  try {
+    await fetch(LEAD_ENDPOINT, {
+      method: 'POST',
+      mode: 'no-cors',
+      headers: { 'Content-Type': 'text/plain' },
+      body: JSON.stringify(data)
+    });
+    leadForm.reset();
+    leadStatus.textContent = "Thanks! We'll send your free analysis within 24 hours.";
+    leadStatus.style.color = '#2E5D4B';
+    leadStatus.style.display = 'block';
+  } catch (err) {
+    leadStatus.textContent = 'Something went wrong. Please email us directly or try again.';
+    leadStatus.style.color = '#B33A3A';
+    leadStatus.style.display = 'block';
+  } finally {
+    leadSubmit.disabled = false;
+    leadSubmit.textContent = 'Send My Free Analysis Request';
+  }
+});
 
 </script>
 </body>
