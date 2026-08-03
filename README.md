@@ -16,21 +16,57 @@ Property management and direct booking website for XenStays LLC.
 
 ## How to update the site
 
-### Update WiFi passwords
-1. Open `book.html`
-2. Find the `wifiData` object (search for `const wifiData`)
-3. Replace the `net` and `pw` values for each property with the real network name and password
-4. Save the file and re-upload to this repo
-5. Vercel will automatically redeploy within 30 seconds
+### ⚠️ WiFi passwords — never put them in this repo
+
+**Do not store real WiFi credentials in any file here.** Every file in this repo is served
+to the public as-is. Anything in the HTML or JavaScript can be read by any visitor via
+"View Source" — there is no way to hide a password in a static site. A previous version of
+`book.html` had the network name and password for all 16 properties sitting in plain
+JavaScript on a public page with no login in front of it.
+
+Send WiFi details to guests through the booking platform's messaging (Airbnb/VRBO), or
+write them by hand on the printed cards from `archive/wifi-card.html`.
+
+If a self-serve lookup is worth building later, it needs a real backend that verifies the
+guest has an active booking and returns only that one property's credentials.
 
 ### Update property listings
 - To add or edit a listing on the main site → edit `index.html`
-- To add or edit a listing on the booking page → edit `book.html`
-- Both files use plain HTML/CSS/JS — no framework needed
+- Plain HTML/CSS/JS — no framework needed
 
 ### Update contact info
 - Search for `xenstayhomes.com` in `index.html` to find the contact section
 - Replace with your real email and phone number
+
+---
+
+## Lead capture setup (Google Sheets, free)
+
+The "Get Free Analysis" form on `index.html` submits to a Google Apps Script Web App, which appends each lead as a row in a Google Sheet you own. No paid service involved.
+
+1. Go to [sheets.google.com](https://sheets.google.com) and create a new blank spreadsheet. Name it "Xenstay Leads".
+2. In the sheet, go to **Extensions → Apps Script**.
+3. Delete the default code and paste in the contents of [`apps-script/Code.gs`](apps-script/Code.gs).
+4. Click **Deploy → New deployment**.
+   - Type: **Web app**
+   - Execute as: **Me**
+   - Who has access: **Anyone**
+5. Click **Deploy**, authorize the script when prompted (it's your own script, so this is safe).
+6. Copy the **Web app URL** it gives you (ends in `/exec`).
+7. In `index.html`, find `const LEAD_ENDPOINT = 'PASTE_YOUR_APPS_SCRIPT_WEB_APP_URL_HERE';` near the bottom of the file and replace the placeholder with that URL.
+8. Save, push to the repo, and Vercel will redeploy. Submit a test entry on the live site and confirm a row appears in the "Leads" tab of the sheet.
+
+If you ever change the script's code, you must create a **new deployment version** (Deploy → Manage deployments → Edit → New version) for changes to take effect — just saving the script isn't enough.
+
+---
+
+## Analytics setup (Vercel Web Analytics, free)
+
+`index.html` already includes the tracking script (`/_vercel/insights/script.js`). To start seeing data:
+
+1. In the Vercel dashboard, open this project.
+2. Go to the **Analytics** tab and click **Enable**.
+3. Free on the Hobby plan up to 2,500 tracked events/month.
 
 ---
 
