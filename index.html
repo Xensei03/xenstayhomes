@@ -5,8 +5,8 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <script>document.documentElement.classList.add('js')</script>
 
-<title>Sacramento Airbnb &amp; Property Management — 10% | Xenstay Homes</title>
-<meta name="description" content="Full-service short-term rental and Airbnb management in Sacramento, Roseville, Auburn &amp; Folsom for 10% — not the industry's 20–30%. 28 units managed, 4.9★ average. Free revenue analysis.">
+<title>Sacramento Airbnb Co-Hosting — from 10% | Xenstay Homes</title>
+<meta name="description" content="Full-service Airbnb co-hosting in Sacramento, Roseville, Auburn &amp; Folsom from 10% — not the industry's 20–30%. Your listing, your payouts. 28 homes co-hosted, 4.9★ average. Free revenue analysis.">
 <link rel="canonical" href="https://xenstayhomes.com/">
 <meta name="robots" content="index,follow,max-image-preview:large">
 <meta name="theme-color" content="#FAF7F2" media="(prefers-color-scheme: light)">
@@ -15,13 +15,13 @@
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://xenstayhomes.com/">
 <meta property="og:site_name" content="Xenstay Homes">
-<meta property="og:title" content="Sacramento Airbnb &amp; Property Management — 10% | Xenstay Homes">
-<meta property="og:description" content="Full-service STR and long-term rental management across Northern California for 10%. 28 units, 4.9★ average. Get a free revenue analysis.">
+<meta property="og:title" content="Sacramento Airbnb Co-Hosting — from 10% | Xenstay Homes">
+<meta property="og:description" content="Full-service short-term rental co-hosting across Northern California from 10%. You keep the listing and the payouts. 28 homes, 4.9★ average.">
 <meta property="og:image" content="https://xenstayhomes.com/img/skyline-1200.webp">
-<meta property="og:image:alt" content="Skyline Serenity Retreat, a Xenstay-managed home in Auburn, California">
+<meta property="og:image:alt" content="Skyline Serenity Retreat, a home Xenstay co-hosts in Auburn, California">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Sacramento Airbnb &amp; Property Management — 10% | Xenstay Homes">
-<meta name="twitter:description" content="Full-service STR management across Northern California for 10%. 28 units, 4.9★ average.">
+<meta name="twitter:title" content="Sacramento Airbnb Co-Hosting — from 10% | Xenstay Homes">
+<meta name="twitter:description" content="Full-service short-term rental co-hosting across Northern California from 10%. 28 homes, 4.9★ average.">
 <meta name="twitter:image" content="https://xenstayhomes.com/img/skyline-1200.webp">
 
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%2314120F'/%3E%3Ctext x='16' y='23' font-family='Georgia,serif' font-size='19' fill='%23C4954A' text-anchor='middle'%3EX%3C/text%3E%3C/svg%3E">
@@ -70,6 +70,7 @@
   --forest-solid:#1F4A3A; --on-forest:#FFFFFF;
   --on-gold:#FFFFFF;
   --lead-bg:#1F4A3A;     /* the green band stays green in both themes */
+  --on-inverse-ok:#6FBF9B; /* affirmative green on --inverse, both themes */
   --line:#E3DBCC; --line-2:#D3C8B4;
   --line-inverse:rgba(237,230,218,.14);
 
@@ -490,6 +491,38 @@ select.control{appearance:none;cursor:pointer;padding-right:2.6rem;
   font-size:var(--f-xs);font-weight:600;color:var(--forest);letter-spacing:.03em}
 .svc__inc::before{content:'✓';font-size:.9em}
 
+/* ─── PACKAGES ──────────────────────────────────── */
+.pkgs{display:grid;grid-template-columns:1fr 1fr;gap:var(--s5);align-items:stretch}
+.pkg{position:relative;display:flex;flex-direction:column;padding:var(--s7) var(--s6) var(--s6)}
+.on-dark .pkg--feat{border-color:var(--gold-bright)}
+.pkg__flag{position:absolute;top:0;left:var(--s6);transform:translateY(-50%)}
+.pkg__name{font-family:var(--font-display);font-size:var(--f-xl);font-weight:400;line-height:1.3;
+  color:var(--on-inverse)}
+.pkg__for{font-size:var(--f-sm);line-height:1.7;color:var(--on-inverse-2);margin-top:.45rem}
+.pkg__rate{display:flex;align-items:baseline;gap:.55rem;margin:var(--s5) 0 .4rem}
+.pkg__pct{font-family:var(--font-display);font-weight:300;font-variation-settings:'opsz' 144;
+  letter-spacing:-.03em;font-variant-numeric:tabular-nums;line-height:1;
+  font-size:clamp(2.6rem,2rem + 2.2vw,3.5rem);color:var(--on-inverse)}
+.pkg--feat .pkg__pct{color:var(--gold-bright)}
+.pkg__unit{font-size:var(--f-xs);font-weight:600;letter-spacing:var(--tr-caps);
+  text-transform:uppercase;color:var(--on-inverse-2)}
+.pkg__note{font-size:var(--f-sm);line-height:1.7;color:var(--on-inverse-2);
+  padding-bottom:var(--s5);border-bottom:1px solid var(--line-inverse)}
+.pkg__lead{font-size:var(--f-xs);font-weight:600;letter-spacing:var(--tr-caps);
+  text-transform:uppercase;color:var(--on-inverse);margin:var(--s5) 0 var(--s4)}
+.pkg__list{list-style:none;display:flex;flex-direction:column;gap:var(--s3);margin-bottom:var(--s6)}
+.pkg__list li{display:grid;grid-template-columns:auto 1fr;column-gap:.7rem;
+  font-size:var(--f-sm);line-height:1.6;color:var(--on-inverse)}
+.pkg__list li::before{content:'✓';grid-column:1;grid-row:1;color:var(--on-inverse-ok);
+  font-size:.85em;line-height:1.9}
+.pkg__list b{grid-column:2;font-weight:600}
+.pkg__list span{grid-column:2;font-size:var(--f-xs);line-height:1.6;
+  color:var(--on-inverse-2);margin-top:2px}
+.pkg__cta{margin-top:auto}
+.pkg__foot{margin-top:var(--s6);margin-inline:auto;max-width:62ch;text-align:center;
+  font-size:var(--f-sm);line-height:1.75;color:var(--on-inverse-2)}
+.pkg__foot b{color:var(--on-inverse);font-weight:600}
+
 /* ─── PORTFOLIO ──────────────────────────────────────────── */
 .filters{display:flex;gap:.5rem;flex-wrap:wrap;margin-bottom:var(--s6)}
 .chip{
@@ -700,6 +733,7 @@ form.sent+.formstate{display:block}
 @media (max-width:1020px){.nav__links,.nav__tel{display:none}.burger{display:grid}}
 @media (max-width:860px){
   .grid-3,.tgrid{grid-template-columns:1fr 1fr}
+  .pkgs{grid-template-columns:1fr;gap:var(--s6)}
   .rgrid{grid-template-columns:1fr 1fr}
   .faq{grid-template-columns:1fr}
   .dock{display:flex}
@@ -743,6 +777,7 @@ form.sent+.formstate{display:block}
     <nav class="nav__links" aria-label="Primary">
       <a href="#math">The Math</a>
       <a href="#included">What's Included</a>
+      <a href="#packages">Packages</a>
       <a href="#portfolio">Portfolio</a>
       <a href="#markets">Markets</a>
       <a href="#faq">FAQ</a>
@@ -764,6 +799,7 @@ form.sent+.formstate{display:block}
 <div class="drawer" id="drawer">
   <a href="#math">The Math</a>
   <a href="#included">What's Included</a>
+  <a href="#packages">Packages</a>
   <a href="#portfolio">Portfolio</a>
   <a href="#markets">Markets</a>
   <a href="#faq">FAQ</a>
@@ -780,8 +816,8 @@ form.sent+.formstate{display:block}
       <h1>Your rental should feel like <em>income.</em><br>Not a second job.</h1>
       <p class="hero__sub">
         We run 28 short- and long-term rentals across Northern California — the listings, the pricing,
-        the 2&nbsp;a.m. guest messages, the turnovers, the repairs. You get a statement and a deposit.
-        <strong>All of it for 10%, when the industry charges 20–30%.</strong>
+        the 2&nbsp;a.m. guest messages, the turnovers, the repairs. Airbnb pays you directly — your money never passes through us.
+        <strong>All of it from 10%, when the industry charges 20–30%.</strong>
       </p>
       <div class="hero__ctas">
         <a href="#analysis" class="btn btn--primary btn--lg">
@@ -796,20 +832,20 @@ form.sent+.formstate{display:block}
       </p>
 
       <div class="stats">
-        <div class="stat"><div class="stat__n" data-count="28">28</div><div class="stat__l">Units under management</div></div>
+        <div class="stat"><div class="stat__n" data-count="28">28</div><div class="stat__l">Homes we co‑host</div></div>
         <div class="stat"><div class="stat__n" data-count="4.9" data-dec="1" data-suffix="★">4.9★</div><div class="stat__l">Average guest rating</div></div>
         <div class="stat"><div class="stat__n" data-count="341" data-prefix="$" data-suffix="K">$341K</div><div class="stat__l">Annual gross booked</div></div>
-        <div class="stat"><div class="stat__n" data-count="10" data-suffix="%">10%</div><div class="stat__l">Our management fee</div></div>
+        <div class="stat"><div class="stat__n" data-count="10" data-suffix="%">10%</div><div class="stat__l">Our starting fee</div></div>
       </div>
     </div>
 
-    <div class="collage" aria-label="A selection of homes managed by Xenstay">
+    <div class="collage" aria-label="A selection of homes Xenstay co-hosts">
       <figure>
         <img src="img/skyline-800.webp"
              srcset="img/skyline-480.webp 480w, img/skyline-800.webp 800w, img/skyline-1200.webp 1200w"
              sizes="(max-width:640px) 45vw, (max-width:1080px) 250px, 25vw"
              width="800" height="600" fetchpriority="high" decoding="async"
-             alt="Skyline Serenity Retreat, a four-bedroom hillside home managed by Xenstay in Auburn, California">
+             alt="Skyline Serenity Retreat, a four-bedroom hillside home Xenstay co-hosts in Auburn, California">
         <figcaption><b>Skyline Serenity</b><span>Auburn, CA · $432 ADR</span></figcaption>
       </figure>
       <figure>
@@ -817,7 +853,7 @@ form.sent+.formstate{display:block}
              srcset="img/puntaMita-480.webp 480w, img/puntaMita-800.webp 800w, img/puntaMita-1200.webp 1200w"
              sizes="(max-width:640px) 45vw, (max-width:1080px) 250px, 25vw"
              width="800" height="600" loading="lazy" decoding="async"
-             alt="Punta Mita Surfers Paradise, a beachside villa managed by Xenstay in Punta Negra, Mexico">
+             alt="Punta Mita Surfers Paradise, a beachside villa Xenstay co-hosts in Punta Negra, Mexico">
         <figcaption><b>Punta Mita</b><span>Punta Negra, MX · 4.96★</span></figcaption>
       </figure>
       <figure>
@@ -825,7 +861,7 @@ form.sent+.formstate{display:block}
              srcset="img/beautiful4br-480.webp 480w, img/beautiful4br-800.webp 800w, img/beautiful4br-1200.webp 1200w"
              sizes="(max-width:640px) 45vw, (max-width:1080px) 250px, 25vw"
              width="800" height="600" loading="lazy" decoding="async"
-             alt="A bright four-bedroom downtown home managed by Xenstay in West Sacramento, California">
+             alt="A bright four-bedroom downtown home Xenstay co-hosts in West Sacramento, California">
         <figcaption><b>Beautiful 4BR</b><span>West Sacramento, CA</span></figcaption>
       </figure>
       <figure>
@@ -833,11 +869,11 @@ form.sent+.formstate{display:block}
              srcset="img/lakeNatoma-480.webp 480w, img/lakeNatoma-800.webp 800w, img/lakeNatoma-1200.webp 1200w"
              sizes="(max-width:640px) 45vw, (max-width:1080px) 250px, 25vw"
              width="800" height="600" loading="lazy" decoding="async"
-             alt="Lake Natoma Retreat, a three-bedroom home managed by Xenstay in Orangevale, California">
+             alt="Lake Natoma Retreat, a three-bedroom home Xenstay co-hosts in Orangevale, California">
         <figcaption><b>Lake Natoma</b><span>Orangevale, CA · 45 stays</span></figcaption>
       </figure>
       <div class="collage__seal" aria-hidden="true">
-        <b>10%</b><span>Flat fee</span>
+        <b>10%</b><span>Starting fee</span>
       </div>
     </div>
   </div>
@@ -857,9 +893,9 @@ form.sent+.formstate{display:block}
     <span class="strip__dot"></span>
     <span class="strip__item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Per-stay damage cover by <b>Safely</b></span>
     <span class="strip__dot"></span>
-    <span class="strip__item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg><b>$1,000</b> lease-signing bonus</span>
+    <span class="strip__item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg><b>$1,000–1,500</b> tenant finder's fee</span>
     <span class="strip__dot"></span>
-    <span class="strip__item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Owner payouts <b>every month</b></span>
+    <span class="strip__item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Airbnb pays <b>you</b>, direct</span>
     <span class="strip__dot"></span>
     <span class="strip__item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg><b>No</b> setup fees or lock-in</span>
     <span class="strip__dot"></span>
@@ -981,15 +1017,16 @@ form.sent+.formstate{display:block}
       <h2 class="h1">"What's the catch at&nbsp;<em>10%?</em>"</h2>
       <p class="lede" style="margin-top:var(--s5)">
         It's the first thing every owner asks, and it's the right question. Here's the honest answer:
-        we own rentals ourselves. We built the systems — pricing, cleaning crews, vendors, guest support —
-        to run our own portfolio, and the marginal cost of adding your property to it is small.
-        We'd rather manage 60 homes at 10% than 20 homes at 30%.
+        we own rentals ourselves. Two cleaning crews, a general contractor and a handyman already work
+        our own portfolio every week — we're not assembling a vendor list for you, we're adding your home
+        to an operation that already runs. The marginal cost of one more door is small.
+        We'd rather co-host 60 homes at 10% than 20 homes at 30%.
       </p>
       <div class="plist">
         <div class="pitem">
           <span class="pitem__ic"><svg viewBox="0 0 12 12"><polyline points="2,6 5,9 10,3"/></svg></span>
-          <span><b>No setup fees, no markups on maintenance</b>
-          <span>Vendor invoices are passed through at cost. We don't take a cut of your repairs — a common hidden margin elsewhere.</span></span>
+          <span><b>Our own crews, not a vendor list</b>
+          <span>Two cleaning crews, a GC and a handyman who already work our portfolio. Invoices pass through at cost — we don't take a cut of your repairs, a common hidden margin elsewhere.</span></span>
         </div>
         <div class="pitem">
           <span class="pitem__ic"><svg viewBox="0 0 12 12"><polyline points="2,6 5,9 10,3"/></svg></span>
@@ -999,12 +1036,12 @@ form.sent+.formstate{display:block}
         <div class="pitem">
           <span class="pitem__ic"><svg viewBox="0 0 12 12"><polyline points="2,6 5,9 10,3"/></svg></span>
           <span><b>Long-term rentals are only 6%</b>
-          <span>Plus a $1,000 bonus paid to you every time we place a new tenant and execute a lease.</span></span>
+          <span>Plus a $1,000–1,500 finder's fee paid to you every time we place a new tenant and execute a lease.</span></span>
         </div>
         <div class="pitem">
           <span class="pitem__ic"><svg viewBox="0 0 12 12"><polyline points="2,6 5,9 10,3"/></svg></span>
-          <span><b>You keep the keys and the control</b>
-          <span>Your listing, your calendar, your rules. Block dates for your own family whenever you like.</span></span>
+          <span><b>Your listing, your money</b>
+          <span>The listing stays in your name and Airbnb pays you directly — our share comes out as your co-host. Your calendar, your rules, and nothing routed through us.</span></span>
         </div>
       </div>
     </div>
@@ -1017,8 +1054,8 @@ form.sent+.formstate{display:block}
           <div class="mkpi__row"><span>Dynamic nightly pricing</span><b class="badge">Included</b></div>
           <div class="mkpi__row"><span>24/7 guest messaging &amp; check-in</span><b class="badge">Included</b></div>
           <div class="mkpi__row"><span>Turnover &amp; inspection coordination</span><b class="badge">Included</b></div>
-          <div class="mkpi__row"><span>Maintenance &amp; vendor management</span><b class="badge">Included</b></div>
-          <div class="mkpi__row"><span>Monthly owner statement &amp; payout</span><b class="badge">Included</b></div>
+          <div class="mkpi__row"><span>Maintenance by our own crews</span><b class="badge">Included</b></div>
+          <div class="mkpi__row"><span>Monthly owner statement</span><b class="badge">Included</b></div>
           <div class="mkpi__row"><span>Damage claims handled for you</span><b class="badge">Included</b></div>
           <div class="mkpi__row"><span>Guest cleaning fee</span><b class="badge badge--outline">Billed to guest</b></div>
           <div class="mkpi__row"><span>Repairs &amp; supplies</span><b class="badge badge--outline">At cost, your approval</b></div>
@@ -1050,7 +1087,7 @@ form.sent+.formstate{display:block}
       <div class="step reveal" data-d="1">
         <div class="step__n">2</div>
         <h3>You read a short agreement</h3>
-        <p>Plain-English management agreement. One fee, stated once. Thirty-day exit either way. No setup charge, nothing due at signing.</p>
+        <p>Plain-English co-hosting agreement. One fee, stated once. Thirty-day exit either way. No setup charge, nothing due at signing.</p>
         <span class="step__when">Day 2–3</span>
       </div>
       <div class="step reveal" data-d="2">
@@ -1062,7 +1099,7 @@ form.sent+.formstate{display:block}
       <div class="step reveal" data-d="3">
         <div class="step__n">4</div>
         <h3>You get paid</h3>
-        <p>Bookings start landing. Each month you receive a statement showing gross revenue, occupancy, our fee and your net — then the deposit hits your account.</p>
+        <p>Bookings start landing and Airbnb deposits them straight into your account. Each month you get a statement showing gross revenue, occupancy, our co-host share and your net.</p>
         <span class="step__when">Monthly, ongoing</span>
       </div>
     </div>
@@ -1080,46 +1117,100 @@ form.sent+.formstate{display:block}
     <div class="shead">
       <p class="eyebrow">What's included</p>
       <h2 class="h1">Everything a 30% manager does.<br><em>For a third of the fee.</em></h2>
-      <p class="lede">There is no premium tier, no à-la-carte menu, and no "management-plus" upsell. This is the whole service.</p>
+      <p class="lede">Every service below is included in both packages — no à-la-carte menu and no per-item charges. Xenhost adds marketing and direct booking on top of this; it never takes anything away.</p>
     </div>
     <div class="grid-3">
       <article class="card card--lift svc reveal">
         <div class="svc__ic"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="m21 15-5-5L5 21"/></svg></div>
         <h3 class="h3">Listing build &amp; optimisation</h3>
         <p>Professional photography, a title and description written to rank inside Airbnb search, amenity tagging, and publication across Airbnb and VRBO with synced calendars.</p>
-        <p class="svc__inc">Included at 10%</p>
+        <p class="svc__inc">Core &amp; Xenhost</p>
       </article>
       <article class="card card--lift svc reveal" data-d="1">
         <div class="svc__ic"><svg viewBox="0 0 24 24"><path d="M3 17l6-6 4 4 8-8"/><path d="M17 7h4v4"/></svg></div>
         <h3 class="h3">Dynamic nightly pricing</h3>
         <p>Rates move daily against local demand, events, weekday patterns and lead time — so you're not leaving money on peak weekends or sitting empty midweek.</p>
-        <p class="svc__inc">Included at 10%</p>
+        <p class="svc__inc">Core &amp; Xenhost</p>
       </article>
       <article class="card card--lift svc reveal" data-d="2">
         <div class="svc__ic"><svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg></div>
         <h3 class="h3">24/7 guest communication</h3>
         <p>Enquiries, screening, check-in instructions, midnight lockouts, complaints and review responses. Your phone never rings. Ours does.</p>
-        <p class="svc__inc">Included at 10%</p>
+        <p class="svc__inc">Core &amp; Xenhost</p>
       </article>
       <article class="card card--lift svc reveal">
         <div class="svc__ic"><svg viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><path d="M9 22V12h6v10"/></svg></div>
         <h3 class="h3">Turnovers &amp; inspections</h3>
-        <p>Vetted cleaning crews, a photo-verified checklist after every stay, linen and consumable restocking, and damage documented before the next guest arrives.</p>
-        <p class="svc__inc">Included at 10%</p>
+        <p>Our own two cleaning crews — not a marketplace — with a photo-verified checklist after every stay, linen and consumable restocking, and damage documented before the next guest arrives.</p>
+        <p class="svc__inc">Core &amp; Xenhost</p>
       </article>
       <article class="card card--lift svc reveal" data-d="1">
         <div class="svc__ic"><svg viewBox="0 0 24 24"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.8-3.8a6 6 0 0 1-7.9 7.9l-6.9 6.9a2.1 2.1 0 0 1-3-3l6.9-6.9a6 6 0 0 1 7.9-7.9z"/></svg></div>
         <h3 class="h3">Maintenance &amp; vendors</h3>
-        <p>Licensed local plumbers, electricians and handymen on call. Invoices passed through at cost with zero markup, and your written approval on anything over $250.</p>
-        <p class="svc__inc">Included at 10%</p>
+        <p>Our own general contractor and handyman, plus licensed local plumbers and electricians. Invoices passed through at cost with zero markup, and your written approval on anything over $250.</p>
+        <p class="svc__inc">Core &amp; Xenhost</p>
       </article>
       <article class="card card--lift svc reveal" data-d="2">
         <div class="svc__ic"><svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6"/><path d="M16 13H8M16 17H8"/></svg></div>
-        <h3 class="h3">Owner reporting &amp; payouts</h3>
-        <p>A monthly statement showing gross revenue, occupancy, ADR, every expense and your net — then the deposit. You always know exactly what you earned and what we charged.</p>
-        <p class="svc__inc">Included at 10%</p>
+        <h3 class="h3">Owner reporting</h3>
+        <p>A monthly statement showing gross revenue, occupancy, ADR, every expense and your net. Payouts land in your account from Airbnb directly — you always know what you earned and what we charged.</p>
+        <p class="svc__inc">Core &amp; Xenhost</p>
       </article>
     </div>
+  </div>
+</section>
+
+<!-- ═══════════════════ PACKAGES ═══════════════════ -->
+<section class="section on-dark" id="packages">
+  <div class="wrap">
+    <div class="shead shead--c">
+      <p class="eyebrow">Choose your package</p>
+      <h2 class="h1">Two packages.<br><em>One standard of care.</em></h2>
+      <p class="lede" style="margin-inline:auto">Core is the full co-hosting service at 10%. Xenhost adds your own direct-booking channel and a complete marketing package for 15%. The team, the crews and the response times are identical either way.</p>
+    </div>
+
+    <div class="pkgs">
+      <article class="card pkg reveal">
+        <h3 class="pkg__name">Xenstay Core</h3>
+        <p class="pkg__for">For owners who want the property run properly and the income handled, with nothing left to think about.</p>
+        <p class="pkg__rate"><span class="pkg__pct">10%</span><span class="pkg__unit">of gross bookings</span></p>
+        <p class="pkg__note">No setup fee, no vendor markup, no à-la-carte charges.</p>
+        <p class="pkg__lead">What's included</p>
+        <ul class="pkg__list">
+          <li>Listing build &amp; optimisation across Airbnb and VRBO</li>
+          <li>Dynamic nightly pricing</li>
+          <li>24/7 guest communication</li>
+          <li>Turnovers, inspections &amp; restocking</li>
+          <li>Maintenance and vetted local vendors</li>
+          <li>Monthly owner reporting</li>
+          <li>Damage claims handled through AirCover</li>
+        </ul>
+        <div class="pkg__cta"><a href="#analysis" class="btn btn--ghost btn--block">Start with Core</a></div>
+      </article>
+
+      <article class="card pkg pkg--feat reveal" data-d="1">
+        <span class="badge badge--gold pkg__flag">Most complete</span>
+        <h3 class="pkg__name">Xenhost</h3>
+        <p class="pkg__for">For owners who want the home marketed as a brand — its own booking channel, professional media and deeper revenue work.</p>
+        <p class="pkg__rate"><span class="pkg__pct">15%</span><span class="pkg__unit">of gross bookings</span></p>
+        <p class="pkg__note">Everything in Core, plus the marketing and care package below.</p>
+        <p class="pkg__lead">Everything in Core, plus</p>
+        <ul class="pkg__list">
+          <li><b>Direct booking</b><span>Guests book you directly, so repeat stays come back through your own channel instead of the platform.</span></li>
+          <li><b>Your own property website</b><span>A dedicated site for the home, built and hosted by us.</span></li>
+          <li><b>360° virtual tour</b><span>A walk-through tour embedded on the property website.</span></li>
+          <li><b>Professional property video</b><span>A full property film for the site and your listing pages.</span></li>
+          <li><b>VR lifestyle shoot</b><span>Immersive imagery that sells the stay, not just the floor plan.</span></li>
+          <li><b>Advanced analysis &amp; pricing</b><span>Deeper market modelling and a more hands-on rate strategy.</span></li>
+          <li><b>Performance reports</b><span>Detailed reporting on occupancy, ADR and channel mix.</span></li>
+          <li><b>Annual exterior pressure wash</b><span>Once a year, included, so the home keeps showing well.</span></li>
+          <li><b>$200 a year damage &amp; linen credit</b><span>We cover replacement linens and minor damage up to $200 each year.</span></li>
+        </ul>
+        <div class="pkg__cta"><a href="#analysis" class="btn btn--gold btn--block">Get Xenhost</a></div>
+      </article>
+    </div>
+
+    <p class="pkg__foot reveal">Not sure which fits? The free revenue analysis models your income under <b>both packages</b> and tells you honestly which one earns you more. Long-term rentals are handled separately at <b>6%</b> of gross rent, plus a <b>$1,000–1,500</b> finder's fee each time we place a new tenant.</p>
   </div>
 </section>
 
@@ -1129,7 +1220,7 @@ form.sent+.formstate{display:block}
     <div class="shead">
       <p class="eyebrow">Proof, not promises</p>
       <h2 class="h1">Homes we're running <em>right now</em></h2>
-      <p class="lede">Every property below is under active Xenstay management today — across price points, property types and two countries.</p>
+      <p class="lede">Every property below is live with Xenstay today — across price points, property types and two countries.</p>
     </div>
 
     <div class="filters" role="group" aria-label="Filter portfolio">
@@ -1174,7 +1265,7 @@ form.sent+.formstate{display:block}
           <img src="img/beautiful4br-480.webp" srcset="img/beautiful4br-480.webp 480w, img/beautiful4br-800.webp 800w"
                sizes="(max-width:640px) 50vw, (max-width:1080px) 30vw, 285px"
                width="480" height="360" loading="lazy" decoding="async"
-               alt="Four-bedroom downtown home managed by Xenstay in West Sacramento, California">
+               alt="Four-bedroom downtown home Xenstay co-hosts in West Sacramento, California">
           <span class="pcard__tag">Short-term</span>
         </div>
         <div class="pcard__b">
@@ -1324,7 +1415,7 @@ form.sent+.formstate{display:block}
           <img src="img/roseville4br-480.webp" srcset="img/roseville4br-480.webp 480w, img/roseville4br-800.webp 800w"
                sizes="(max-width:640px) 50vw, (max-width:1080px) 30vw, 285px"
                width="480" height="360" loading="lazy" decoding="async"
-               alt="A duplex under long-term Xenstay management in Roseville, California">
+               alt="A duplex Xenstay leases and looks after in Roseville, California">
           <span class="pcard__tag">Long-term</span>
         </div>
         <div class="pcard__b">
@@ -1339,7 +1430,7 @@ form.sent+.formstate{display:block}
           <img src="img/yubaCity-480.webp" srcset="img/yubaCity-480.webp 480w, img/yubaCity-800.webp 800w"
                sizes="(max-width:640px) 50vw, (max-width:1080px) 30vw, 285px"
                width="480" height="360" loading="lazy" decoding="async"
-               alt="A duplex under long-term Xenstay management in Yuba City, California">
+               alt="A duplex Xenstay leases and looks after in Yuba City, California">
           <span class="pcard__tag">Long-term</span>
         </div>
         <div class="pcard__b">
@@ -1354,7 +1445,7 @@ form.sent+.formstate{display:block}
           <img src="img/fairOaks-480.webp" srcset="img/fairOaks-480.webp 480w, img/fairOaks-800.webp 800w"
                sizes="(max-width:640px) 50vw, (max-width:1080px) 30vw, 285px"
                width="480" height="360" loading="lazy" decoding="async"
-               alt="A single-family rental home under long-term Xenstay management in Granite Bay, California">
+               alt="A single-family rental home Xenstay leases and looks after in Granite Bay, California">
           <span class="pcard__tag">Long-term</span>
         </div>
         <div class="pcard__b">
@@ -1411,7 +1502,7 @@ form.sent+.formstate{display:block}
       </div>
       <div class="rcell reveal" data-d="3">
         <span class="rcell__n" data-count="28">28</span>
-        <span class="rcell__l">Units under management</span>
+        <span class="rcell__l">Homes we co‑host</span>
         <span class="rcell__s">Short-term and long-term</span>
       </div>
     </div>
@@ -1426,7 +1517,7 @@ form.sent+.formstate{display:block}
       <h2 class="h1">Boots on the ground in <em>Greater Sacramento</em></h2>
       <p class="lede" style="margin-top:var(--s5)">
         We're not a national call centre with a franchise map. We live here, our cleaners live here,
-        and our plumber picks up on a Sunday. That's the part a 30% manager three states away can't sell you.
+        and our own GC picks up on a Sunday. That's the part a 30% manager three states away can't sell you.
       </p>
       <div class="mkpi">
         <div class="mkpi__row"><span>Active markets</span><b>10 cities</b></div>
@@ -1499,7 +1590,7 @@ form.sent+.formstate{display:block}
           </g>
         </svg>
         <div class="mlegend">
-          <span><i></i> Active market — properties under management</span>
+          <span><i></i> Active market — homes we look after</span>
         </div>
       </div>
     </div>
@@ -1544,25 +1635,29 @@ form.sent+.formstate{display:block}
       <div>
         <details class="q" name="faq">
           <summary>Is 10% really all-inclusive, or are there fees behind it?<span class="q__ic" aria-hidden="true"></span></summary>
-          <p class="q__a">It's all-inclusive for management. The 10% covers listing creation, photography coordination, dynamic pricing, 24/7 guest communication, turnover coordination, maintenance management, damage claims and monthly reporting. There is no setup fee and no markup on vendor invoices. Two things sit outside it: guest cleaning fees, which are charged to the guest and paid to the cleaner, and repairs or supplies, which are passed through at cost with your approval on anything over $250.</p>
+          <p class="q__a">It's all-inclusive for the co-hosting service. Our Core package at 10% covers listing creation, photography coordination, dynamic pricing, 24/7 guest communication, turnover coordination, maintenance coordination, damage claims and monthly reporting. There is no setup fee and no markup on vendor invoices. Two things sit outside it: guest cleaning fees, which are charged to the guest and paid to the cleaner, and repairs or supplies, which are passed through at cost with your approval on anything over $250.</p>
+        </details>
+        <details class="q" name="faq">
+          <summary>What's the difference between Core and Xenhost?<span class="q__ic" aria-hidden="true"></span></summary>
+          <p class="q__a">Core at 10% is the complete day-to-day service — listing, pricing, guests, turnovers, maintenance and reporting. Xenhost at 15% includes all of that and adds a direct booking channel, your own property website with a 360° tour, a professional property video, a VR lifestyle shoot, advanced analysis and pricing, detailed performance reports, an annual exterior pressure wash and a $200 a year damage and linen credit. Xenhost tends to pay for itself on higher-revenue homes, where direct bookings and stronger marketing move the number. We'll model both for you before you choose.</p>
         </details>
         <details class="q" name="faq">
           <summary>How can you charge 10% when everyone else charges 20–30%?<span class="q__ic" aria-hidden="true"></span></summary>
           <p class="q__a">Because we're not building a fee business — we're rental owners who already built the operation. The pricing tools, cleaning crews, vendor relationships and guest-support systems exist to run our own 28 units. Adding your property to a system that already runs costs us far less than it costs a firm that has to staff up for each new door. We'd rather run 60 homes well at 10% than 20 homes at 30%.</p>
         </details>
         <details class="q" name="faq">
-          <summary>What does long-term rental management cost?<span class="q__ic" aria-hidden="true"></span></summary>
-          <p class="q__a">Long-term rentals are 6% of monthly gross rent — lower than short-term because the workload is lower. On top of that we pay <em>you</em> a $1,000 bonus every time we place a new tenant and execute a signed lease. Tenant screening, rent collection, maintenance coordination and the monthly statement are all included in the 6%.</p>
+          <summary>What about long-term rentals?<span class="q__ic" aria-hidden="true"></span></summary>
+          <p class="q__a">Long-term rentals are 6% of monthly gross rent — lower than short-term because the workload is lower. On top of that we pay <em>you</em> a $1,000–1,500 finder's fee every time we place a new tenant and execute a signed lease. Marketing the vacancy, tenant screening, lease execution, maintenance coordination through our own crews and the monthly statement are all included in the 6%. Rent is paid to you, not to us.</p>
         </details>
         <details class="q" name="faq">
           <summary>Am I locked into a contract?<span class="q__ic" aria-hidden="true"></span></summary>
-          <p class="q__a">No. Our management agreement can be ended by either side with 30 days' written notice, and we'll honour any bookings already on the calendar so no guest gets stranded. We don't believe in retention by contract. If we aren't earning the fee, you should be free to leave.</p>
+          <p class="q__a">No. Our co-hosting agreement can be ended by either side with 30 days' written notice, and we'll honour any bookings already on the calendar so no guest gets stranded. We don't believe in retention by contract. If we aren't earning the fee, you should be free to leave.</p>
         </details>
       </div>
       <div>
         <details class="q" name="faq">
           <summary>How and when do I get paid?<span class="q__ic" aria-hidden="true"></span></summary>
-          <p class="q__a">Monthly, by direct deposit, alongside a statement that itemises gross revenue, occupancy, average nightly rate, every expense, our fee and your net. You'll never receive a payout you can't reconcile line by line, and you can request the underlying platform reports at any time.</p>
+          <p class="q__a">Airbnb pays you directly — the listing stays in your name and the payout goes to your bank, not ours. Our co-host share comes out of each payout automatically, so there is nothing to invoice and nothing to chase. Each month you also get a statement itemising gross revenue, occupancy, average nightly rate, every expense, our share and your net. You'll never receive a payout you can't reconcile line by line, and you can request the underlying platform reports at any time.</p>
         </details>
         <details class="q" name="faq">
           <summary>What happens if a guest damages my property?<span class="q__ic" aria-hidden="true"></span></summary>
@@ -1702,7 +1797,7 @@ form.sent+.formstate{display:block}
       <div>
         <a href="/" class="brand"><b>Xenstay</b><i>.</i><b>Homes</b></a>
         <p class="foot__about">
-          Short-term and long-term rental management across Greater Sacramento and Northern California.
+          Short-term rental co-hosting and long-term leasing across Greater Sacramento and Northern California.
           Full service at 10% — because we're owners too.
         </p>
       </div>
@@ -1711,6 +1806,7 @@ form.sent+.formstate{display:block}
         <ul>
           <li><a href="#math">The math</a></li>
           <li><a href="#included">What's included</a></li>
+          <li><a href="#packages">Packages</a></li>
           <li><a href="#how">How it works</a></li>
           <li><a href="#portfolio">Portfolio</a></li>
           <li><a href="#faq">FAQ</a></li>
@@ -1793,11 +1889,11 @@ form.sent+.formstate{display:block}
       "name":"Xenstay Homes",
       "legalName":"XenStays LLC",
       "url":"https://xenstayhomes.com/",
-      "description":"Full-service short-term rental, Airbnb and long-term property management across Greater Sacramento and Northern California at a 10% management fee.",
+      "description":"Full-service Airbnb and short-term rental co-hosting across Greater Sacramento and Northern California from 10%. Owners keep the listing in their own name and receive payouts directly; Xenstay also handles long-term tenant placement and leasing.",
       "image":"https://xenstayhomes.com/img/skyline-1200.webp",
       "telephone":"+1-916-915-3332",
       "email":"Byron@realtorphilosophy.com",
-      "priceRange":"10% of gross bookings",
+      "priceRange":"10–15% of gross bookings (short-term co-hosting)",
       "address":{
         "@type":"PostalAddress",
         "addressLocality":"Sacramento",
@@ -1817,13 +1913,13 @@ form.sent+.formstate{display:block}
         {"@type":"City","name":"Granite Bay","address":{"@type":"PostalAddress","addressRegion":"CA","addressCountry":"US"}},
         {"@type":"City","name":"Yuba City","address":{"@type":"PostalAddress","addressRegion":"CA","addressCountry":"US"}}
       ],
-      "knowsAbout":["Short-term rental management","Airbnb co-hosting","Vacation rental management","Long-term property management","Dynamic pricing"],
+      "knowsAbout":["Airbnb co-hosting","Short-term rental co-hosting","Vacation rental hosting","Guest communication","Dynamic pricing","Tenant placement and leasing"],
       "hasOfferCatalog":{
         "@type":"OfferCatalog",
-        "name":"Property management services",
+        "name":"Co-hosting and leasing services",
         "itemListElement":[
-          {"@type":"Offer","itemOffered":{"@type":"Service","name":"Short-term rental management","serviceType":"Airbnb and VRBO property management","description":"Listing creation, dynamic pricing, 24/7 guest communication, turnover coordination, maintenance and monthly owner reporting."},"priceSpecification":{"@type":"UnitPriceSpecification","price":"10","priceCurrency":"USD","unitText":"percent of gross bookings"}},
-          {"@type":"Offer","itemOffered":{"@type":"Service","name":"Long-term rental management","serviceType":"Residential property management","description":"Tenant screening and placement, rent collection, maintenance coordination and monthly owner statements, plus a $1,000 lease-signing bonus paid to the owner."},"priceSpecification":{"@type":"UnitPriceSpecification","price":"6","priceCurrency":"USD","unitText":"percent of gross rent"}}
+          {"@type":"Offer","itemOffered":{"@type":"Service","name":"Short-term rental co-hosting","serviceType":"Airbnb and VRBO co-hosting","description":"Listing creation, dynamic pricing, 24/7 guest communication, turnover coordination, maintenance and monthly owner reporting."},"priceSpecification":{"@type":"UnitPriceSpecification","price":"10","priceCurrency":"USD","unitText":"percent of gross bookings"}},
+          {"@type":"Offer","itemOffered":{"@type":"Service","name":"Long-term tenant placement and leasing","serviceType":"Residential leasing and tenant placement","description":"Vacancy marketing, tenant screening and placement, lease execution, maintenance coordination and monthly owner statements, plus a $1,000–1,500 tenant finder's fee paid to the owner. Rent is paid directly to the owner."},"priceSpecification":{"@type":"UnitPriceSpecification","price":"6","priceCurrency":"USD","unitText":"percent of gross rent"}}
         ]
       }
     },
@@ -1831,7 +1927,7 @@ form.sent+.formstate{display:block}
       "@type":"WebPage",
       "@id":"https://xenstayhomes.com/#webpage",
       "url":"https://xenstayhomes.com/",
-      "name":"Sacramento Airbnb & Property Management — 10% | Xenstay Homes",
+      "name":"Sacramento Airbnb Co-Hosting — from 10% | Xenstay Homes",
       "isPartOf":{"@id":"https://xenstayhomes.com/#website"},
       "about":{"@id":"https://xenstayhomes.com/#org"},
       "inLanguage":"en-US"
@@ -1840,11 +1936,12 @@ form.sent+.formstate{display:block}
       "@type":"FAQPage",
       "@id":"https://xenstayhomes.com/#faq",
       "mainEntity":[
-        {"@type":"Question","name":"Is 10% really all-inclusive, or are there fees behind it?","acceptedAnswer":{"@type":"Answer","text":"It's all-inclusive for management. The 10% covers listing creation, photography coordination, dynamic pricing, 24/7 guest communication, turnover coordination, maintenance management, damage claims and monthly reporting. There is no setup fee and no markup on vendor invoices. Guest cleaning fees are charged to the guest, and repairs or supplies are passed through at cost with owner approval on anything over $250."}},
+        {"@type":"Question","name":"Is 10% really all-inclusive, or are there fees behind it?","acceptedAnswer":{"@type":"Answer","text":"It's all-inclusive for the co-hosting service. Our Core package at 10% covers listing creation, photography coordination, dynamic pricing, 24/7 guest communication, turnover coordination, maintenance coordination, damage claims and monthly reporting. There is no setup fee and no markup on vendor invoices. Guest cleaning fees are charged to the guest, and repairs or supplies are passed through at cost with owner approval on anything over $250."}},
+        {"@type":"Question","name":"What is the difference between the Xenstay Core and Xenhost packages?","acceptedAnswer":{"@type":"Answer","text":"Xenstay Core is 10% of gross bookings and covers listing build, dynamic pricing, 24/7 guest communication, turnovers, maintenance coordination, owner reporting and damage claims. Xenhost is 15% and includes everything in Core plus direct booking, a dedicated property website with a 360° virtual tour, a professional property video, a VR lifestyle shoot, advanced property analysis and pricing, detailed performance reports, an annual exterior pressure wash and a $200 per year damage and linen replacement credit."}},
         {"@type":"Question","name":"How can Xenstay Homes charge 10% when other managers charge 20–30%?","acceptedAnswer":{"@type":"Answer","text":"Xenstay Homes is run by rental owners who already built the operation. The pricing tools, cleaning crews, vendor relationships and guest-support systems exist to run a 28-unit portfolio, so adding a property costs far less than for a firm that staffs up per door."}},
-        {"@type":"Question","name":"What does long-term rental management cost?","acceptedAnswer":{"@type":"Answer","text":"Long-term rentals are managed at 6% of monthly gross rent, and Xenstay pays the owner a $1,000 bonus each time a new tenant is placed and a lease is executed. Tenant screening, rent collection, maintenance coordination and monthly statements are included."}},
-        {"@type":"Question","name":"Am I locked into a long-term contract?","acceptedAnswer":{"@type":"Answer","text":"No. The management agreement can be ended by either party with 30 days' written notice, and bookings already on the calendar are honoured."}},
-        {"@type":"Question","name":"How and when do owners get paid?","acceptedAnswer":{"@type":"Answer","text":"Monthly by direct deposit, alongside a statement itemising gross revenue, occupancy, average nightly rate, expenses, the management fee and the owner's net payout."}},
+        {"@type":"Question","name":"What do Xenstay's long-term rental services cost?","acceptedAnswer":{"@type":"Answer","text":"Long-term rentals are 6% of monthly gross rent, and Xenstay pays the owner a $1,000–1,500 finder's fee each time a new tenant is placed and a lease is executed. Vacancy marketing, tenant screening, lease execution, maintenance coordination and monthly statements are included. Rent is paid directly to the owner."}},
+        {"@type":"Question","name":"Am I locked into a long-term contract?","acceptedAnswer":{"@type":"Answer","text":"No. The co-hosting agreement can be ended by either party with 30 days' written notice, and bookings already on the calendar are honoured."}},
+        {"@type":"Question","name":"How and when do owners get paid?","acceptedAnswer":{"@type":"Answer","text":"Airbnb pays the owner directly; the listing remains in the owner's name and payouts go to the owner's bank account. Xenstay's co-host share is deducted from each payout automatically. Owners also receive a monthly statement itemising gross revenue, occupancy, average nightly rate, expenses, the co-host fee and net."}},
         {"@type":"Question","name":"What happens if a guest damages my property?","acceptedAnswer":{"@type":"Answer","text":"Xenstay documents and files the claim on the owner's behalf. Airbnb bookings are covered by AirCover for Hosts including up to $3M in host damage protection, and direct bookings carry per-stay damage cover through Safely. Post-stay photo inspections provide the evidence claims require."}},
         {"@type":"Question","name":"How fast can my property be live and earning?","acceptedAnswer":{"@type":"Answer","text":"Typically 5–7 business days from a signed agreement to accepting bookings, covering photography, listing copy, amenity setup, pricing strategy, cleaner assignment and publication to Airbnb and VRBO."}},
         {"@type":"Question","name":"Can I still use my own property?","acceptedAnswer":{"@type":"Answer","text":"Yes. Owners can block any dates in the owner calendar and Xenstay keeps them clear."}}
